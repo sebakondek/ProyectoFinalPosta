@@ -1,0 +1,17 @@
+edu\curso\java\dao\UsuarioDAOImp.class
+edu\curso\java\bo\Roles.class
+edu\curso\java\controllers\HomeController.class
+edu\curso\java\bo\Tarea.class
+edu\curso\java\controllers\ProyectosController.class
+edu\curso\java\dao\UsuarioDAO.class
+edu\curso\java\controllers\forms\ProyectoForm.class
+edu\curso\java\services\ProyectoService.class
+edu\curso\java\services\UsuarioServiceImp.class
+edu\curso\java\bo\Usuario.class
+edu\curso\java\services\ProyectoServiceImp.class
+edu\curso\java\services\UsuarioService.class
+edu\curso\java\controllers\forms\UsuarioForm.class
+edu\curso\java\bo\Proyecto.class
+edu\curso\java\dao\ProyectoDAOImp.class
+edu\curso\java\controllers\UsuariosController.class
+edu\curso\java\dao\ProyectoDAO.class
