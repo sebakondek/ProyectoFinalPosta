@@ -1,8 +1,12 @@
 package edu.curso.java.bo;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 @Entity
 public class Tarea {
@@ -12,9 +16,17 @@ public class Tarea {
 	private Long id;
 	private String titulo;
 	private Double duracion;
+	@OneToMany
+	private List<Comentario> comentarios = new ArrayList<>();
 	
 	
 	
+	public List<Comentario> getComentarios() {
+		return comentarios;
+	}
+	public void setComentarios(List<Comentario> comentarios) {
+		this.comentarios = comentarios;
+	}
 	public Double getDuracion() {
 		return duracion;
 	}
