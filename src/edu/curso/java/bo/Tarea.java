@@ -11,16 +11,11 @@ public class Tarea {
 	@GeneratedValue
 	private Long id;
 	private String titulo;
-	private Double duracion;
+	private Double duracionEstimada;
+	private Double duracionReal;
+	private String descripcion;
 	
 	
-	
-	public Double getDuracion() {
-		return duracion;
-	}
-	public void setDuracion(Double duracion) {
-		this.duracion = duracion;
-	}
 	public Long getId() {
 		return id;
 	}
@@ -32,7 +27,26 @@ public class Tarea {
 	}
 	public void setTitulo(String titulo) {
 		this.titulo = titulo;
+	}		
+	public Double getDuracionEstimada() {
+		return duracionEstimada;
 	}
+	public void setDuracionEstimada(Double duracionEstimada) {
+		this.duracionEstimada = duracionEstimada;
+	}
+	public Double getDuracionReal() {
+		return duracionReal;
+	}
+	public void setDuracionReal(Double duracionReal) {
+		this.duracionReal = duracionReal;
+	}
+	public String getDescripcion() {
+		return descripcion;
+	}
+	public void setDescripcion(String descripcion) {
+		this.descripcion = descripcion;
+	}
+	
 	@Override
 	public int hashCode() {
 		final int prime = 31;

@@ -42,7 +42,7 @@ public class TareaController {
 		return null;
 	}
 	
-	@RequestMapping(value = "/vertarea")
+	@RequestMapping(value = "/vertarea")//
 	public String verTarea(@RequestParam Long id, Model model) {
 		Tarea tarea = tareaService.recuperarTareaPorId(id);
 		model.addAttribute("tarea", tarea);
@@ -55,26 +55,26 @@ public class TareaController {
 		return "redirect:/tareas/listar.html";
 	}
 	
-	@RequestMapping(value = "/nuevatarea")
+	@RequestMapping(value = "/nuevatarea")//
 	public String nuevaTarea(@RequestParam Long id, Model model) {
 		model.addAttribute("tareaForm", new TareaForm());
 		model.addAttribute("proyecto", proyectoService.recuperarProyectoPorId(id));
 		return "/tareas/form";
 	}
 	
-	@RequestMapping(value = "/guardartarea", method = RequestMethod.POST)
+	@RequestMapping(value = "/guardartarea", method = RequestMethod.POST)//
 	public String guardarTarea(@ModelAttribute("tareaForm") TareaForm tareaForm, Model model) {
 		Tarea tarea = null;
 		Long idActual = tareaForm.getId();
 		if(idActual != null){
 			tarea = tareaService.recuperarTareaPorId(idActual);
 			tarea.setTitulo(tareaForm.getTitulo());
-			tarea.setDuracion(tareaForm.getDuracion());
+			tarea.setDuracionEstimada(tareaForm.getDuracion());
 			tareaService.editarTarea(tarea);
 		} else {
 			tarea = new Tarea();
 			tarea.setTitulo(tareaForm.getTitulo());
-			tarea.setDuracion(tareaForm.getDuracion());
+			tarea.setDuracionEstimada(tareaForm.getDuracion());
 			tareaService.guardarTarea(tarea);
 		}
 	
@@ -88,12 +88,11 @@ public class TareaController {
 		
 		tareaForm.setId(tarea.getId());
 		tareaForm.setTitulo(tarea.getTitulo());
-		tareaForm.setDuracion(tarea.getDuracion());
+		tareaForm.setDuracion(tarea.getDuracionEstimada());
 	
 		model.addAttribute("tareaForm", tareaForm);
 		return "/tareas/formeditado";
 	}
-	
 		
 	@RequestMapping(value = "/buscartareas", method = RequestMethod.POST)
 	public String buscarTareas(@ModelAttribute String campoBuscar, Model model) {

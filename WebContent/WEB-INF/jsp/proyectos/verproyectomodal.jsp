@@ -28,6 +28,22 @@
 			</c:if>
 			</tr>
 		</table>
+		
+		<table class="table table-bordered">
+			<tr>
+				<th>Titulo</th>
+				<th>Duración</th>
+				<th></th>
+			</tr>
+			<c:forEach items="${proyecto.tareas}" var="t">
+				<tr>
+					<td>${t.titulo}</td>
+					<td>${t.duracionEstimada}</td>
+					<td></td>
+				</tr>
+			</c:forEach>
+		</table>
+		
       </div>
       <div class="modal-footer">
       	<button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
