@@ -16,16 +16,16 @@ public class Proyecto {
 	@Id
 	@GeneratedValue
 	private Long id;
-	
 	private String nombre;
 	private String descripcion;
 	@ManyToOne
 	private Usuario usuarioPrincipal;
 	@ManyToMany
 	private List<Usuario> usuarios = new ArrayList<Usuario>();
-	
 	@OneToMany
 	private List<Tarea> tareas = new ArrayList<>();
+	
+	
 	public List<Usuario> getUsuarios() {
 		return usuarios;
 	}

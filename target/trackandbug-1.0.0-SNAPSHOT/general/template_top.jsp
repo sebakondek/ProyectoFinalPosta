@@ -18,7 +18,9 @@
 	<link href="<c:url value="/css/select2.css" />" rel="stylesheet">
 	<script src="<c:url value="/js/jquery-3.1.0.js" />"></script>
     <script src="<c:url value="/js/bootstrap.min.js" />"></script>
+    <script src="<c:url value="/js/jquery.validate.js" />"></script>
     <script src="<c:url value="/js/select2.full.min.js" />"></script>
+    <script src="<c:url value="/js/funciones.js" />"></script>
   </head>
 
   <body>
