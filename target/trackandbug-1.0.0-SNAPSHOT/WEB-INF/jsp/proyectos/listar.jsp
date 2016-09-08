@@ -5,32 +5,27 @@
 
 <c:import url="/general/template_top.jsp" />
 
-<h1>Listado de usuarios</h1>
+<h1>Listado de Proyectos</h1>
 
-<a href="<c:url value="/proyectos/nuevoproyecto.html" />" class="btn btn-warning btnnuevo">Nuevo Proyecto</a>
+<button type="button" data-toggle="modal" onclick="opcionProyecto(0,'crear')" class="btn btn-primary">Editar</button>
+					
+<script>
+	listarInit();
+</script>
 
-<table class="table table-striped table-bordered table-hover">
-	<tr>
-		<th>Id</th>
-		<th>Titulo</th>
-		<th>Descripcion</th>
-		<th>Opciones</th>
-	</tr>
-	<c:forEach items="${proyectos}" var="p">
-		<tr>
-			<td>${p.id}</td>
-			<td>${p.nombre}</td>
-			<td>${p.descripcion}</td>
-			<td>
-				<a href="verproyecto.html?id=${p.id}" class="btn btn-primary">Ver</a>
-				
-				<a href="editarproyecto.html?id=${p.id}" class="btn btn-success">Editar</a>
-				
-				<a href="borrarproyecto.html?id=${p.id}" class="btn btn-danger">Borrar</a>
-				
-			</td>
-		</tr>
-	</c:forEach>
-</table>
+
+
+<form id="miFormBuscadorProy" method="post" action="buscarproyectos.html" class="form-inline">
+	<div class="form-group">
+		<input name="campoBuscar" class="form-control" id="campoBuscarProy" type="text" placeholder="Buscar">
+	</div>
+		<input type="button" class="btn btn-default" value="Buscar" id="btnBuscarProy">
+</form>
+
+<div id="divProyectos" class="table-responsive"></div>
+
+<div id="divTareas" class="table-responsive"></div>
+
+<div id="myModalProy" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"></div>
 
 <c:import url="/general/template_bottom.jsp" />

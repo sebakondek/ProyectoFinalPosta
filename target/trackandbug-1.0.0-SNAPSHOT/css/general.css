@@ -23,3 +23,11 @@ body {
 	float: right;
     margin-top: -40px;
 }
+
+.table-bordered>tbody>tr>th {
+	background-color: #F9F9F9;
+}
+
+.table-bordered>tbody>tr>td {
+	background-color: #ffffff;
+}
