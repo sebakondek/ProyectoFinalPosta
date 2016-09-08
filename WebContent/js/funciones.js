@@ -14,19 +14,6 @@ function formInit(clase){
 
 /****************************************LIST FUNCTIONS************************************/
 
-$("#btnBuscarProy").click(function(){
-	hacerBusquedaProy();
-});
-
-$("#campoBuscarProy").keypress(function (e) {
-    if ((e.which && e.which == 13) || (e.keyCode && e.keyCode == 13)) {
-    	hacerBusquedaProy();
-        return false;
-    } else {
-        return true;
-    }
-});
-
 function listarInit(){
 	hacerBusquedaProy();
 	//hacerBusquedaTarea();
@@ -71,7 +58,12 @@ function opcionProyecto(id, opcion){
 				$("#myModalProy").modal("show");
 			});
 			break;
-		case "borrar":
+
+		case "buscar":
+			var proyectos = $("#miFormBuscadorProy").serialize();
+			$.post("buscarproyectos.html", proyectos, function(resp){
+				$("#divProyectos").html(resp);
+			});
 			break;
 	}
 			
