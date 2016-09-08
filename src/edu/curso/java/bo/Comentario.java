@@ -4,7 +4,7 @@ import java.util.Date;
 
 import javax.persistence.*;
 
-
+@Entity
 public class Comentario {
 
 	@Id
