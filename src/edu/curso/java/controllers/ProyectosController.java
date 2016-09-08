@@ -55,7 +55,7 @@ public class ProyectosController {
 	public String nuevoProyecto(Model model) {
 		model.addAttribute("proyectoForm", new ProyectoForm());
 		model.addAttribute("usuarios", usuarioService.recuperarUsuarios());
-		return "/proyectos/form";
+		return "/proyectos/formeditado";
 	}
 	
 	@RequestMapping(value = "/guardarproyecto", method = RequestMethod.POST)
@@ -79,7 +79,7 @@ public class ProyectosController {
 		return "redirect:/proyectos/verproyecto.html?id=" + idActual;
 	}
 	
-	@RequestMapping(value="/editarproyecto")
+	@RequestMapping(value="/editarProyecto")
 	public String editarUsuario(Model model, @RequestParam Long id){
 		Proyecto proyecto = proyectoService.recuperarProyectoPorId(id);
 		ProyectoForm proyectoForm = new ProyectoForm();
@@ -112,7 +112,7 @@ public class ProyectosController {
 	}
 		
 	@RequestMapping(value = "/buscarproyectos", method = RequestMethod.POST)
-	public String buscarProyectos(@RequestParam String campoBuscar, Model model) {
+	public String buscarProyectos(@ModelAttribute String campoBuscar, Model model) {
 		log.info("Listando los proyectos");
 		List<Proyecto> proyectos = proyectoService.buscarProyectosPorNombre(campoBuscar);
 		model.addAttribute("proyectos",proyectos);

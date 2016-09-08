@@ -6,9 +6,7 @@
 <c:import url="/general/template_top.jsp" />
 
 <script>
-$(function(){
-	$("#formusuario").validate();
-})
+formInit("usuario");
 
 </script>
 
@@ -16,7 +14,7 @@ $(function(){
 
 
 <div class="form form-group table">
-	<form:form method="post" modelAttribute="usuarioForm" action="guardarusuario.html" id="formusuario">
+	<form:form method="post" modelAttribute="usuarioForm" action="guardarusuario.html" id="form">
 		<form:input path="id" type="hidden" />
 		<div class="form-group">
 			<label for="nombreCompleto">Nombre Completo</label>

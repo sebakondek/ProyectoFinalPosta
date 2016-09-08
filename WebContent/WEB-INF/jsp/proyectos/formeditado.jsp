@@ -7,15 +7,23 @@
 
 <script>
 $(function(){
-	$("#select-single").select2();
-	$(".js-example-basic-multiple").select2();
-	$(".form").validate();
+	formInit("proyecto");
 });
 
 </script>
 
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
-
+<c:choose>
+	<c:when test="${proyectoForm.nombre != null}">
+		<div class="modal-dialog" role="dialog">
+	    <div class="modal-content">
+	      <div class="modal-header">
+	        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+	        <h4 class="modal-title" id="myModalLabel"><b>${proyectoForm.nombre}</b></h4>
+	    </div>
+	    <div class="modal-body" id="modal-body">
+	</c:when>
+</c:choose>
 
 <div class="form form-group table">
 	<form:form method="post" modelAttribute="proyectoForm" action="guardaredicionproyecto.html">
@@ -47,5 +55,14 @@ $(function(){
 		</div>
 	</form:form>
 </div>
-
+<c:choose>
+	<c:when test="${ proyectoForm.nombre != null}">
+	 </div>
+	      <div class="modal-footer">
+	      	<button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+	      </div>
+	    </div>
+	</div>
+	</c:when>
+</c:choose>
 <c:import url="/general/template_bottom.jsp" />

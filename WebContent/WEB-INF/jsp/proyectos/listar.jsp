@@ -7,51 +7,10 @@
 
 <h1>Listado de Proyectos</h1>
 
-<a href="<c:url value="/proyectos/nuevoproyecto.html" />" class="btn btn-warning btnnuevo">Nuevo Proyecto</a>
-
+<button type="button" data-toggle="modal" onclick="opcionProyecto(0,'crear')" class="btn btn-primary">Editar</button>
+					
 <script>
-	$(document).ready(function(){
-		
-		hacerBusquedaProy();
-		hacerBusquedaTarea();
-		
-		$("#btnBuscarProy").click(function(){
-			hacerBusquedaProy();
-		});
-
-		$("#campoBuscarProy").keypress(function (e) {
-	        if ((e.which && e.which == 13) || (e.keyCode && e.keyCode == 13)) {
-	        	hacerBusquedaProy();
-	            return false;
-	        } else {
-	            return true;
-	        }
-	    });
-		
-		
-		$("#divProyectos").delegate(".btn-ver-proyecto", "click", function(){
-			var id = $(this).data("id-proyecto");
-			$.get("verproyecto.html?id=" + id, function(resp){
-				$("#myModalProy").html(resp);
-			$("#myModalProy").modal("show");
-			});
-		});
-		
-	});
-	
-	function hacerBusquedaProy() {
-		var proyectos = $("#miFormBuscadorProy").serialize();
-		$.post("buscarproyectos.html", proyectos, function(resp) {
-			$("#divProyectos").html(resp);
-		});
-	}
-	
-	function hacerBusquedaTarea() {
-		var tareas = $("#miFormBuscadorTareas").serialize();
-		$.post("<c:url value='/tareas/buscartareas.html'/>", tareas, function(resp){
-			$("#divTareas").html(resp);
-		});
-	}
+	listarInit();
 </script>
 
 
@@ -64,11 +23,6 @@
 </form>
 
 <div id="divProyectos" class="table-responsive"></div>
-
-
-
-
-
 
 <div id="divTareas" class="table-responsive"></div>
 

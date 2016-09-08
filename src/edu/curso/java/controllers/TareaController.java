@@ -96,7 +96,7 @@ public class TareaController {
 	
 		
 	@RequestMapping(value = "/buscartareas", method = RequestMethod.POST)
-	public String buscarTareas(@RequestParam String campoBuscar, Model model) {
+	public String buscarTareas(@ModelAttribute String campoBuscar, Model model) {
 		log.info("Listando los proyectos");
 		List<Tarea> tareas = tareaService.buscarTareaPorNombre(campoBuscar);
 		model.addAttribute("tareas",tareas);

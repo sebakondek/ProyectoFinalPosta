@@ -20,9 +20,9 @@
 					<td>${p.usuarioPrincipal.nombreCompleto}</td>
 				</c:if>
 				<td>
-					<button type="button" data-toggle="modal" data-id-proyecto="${p.id}" class="btn btn-primary btn-ver-proyecto">Ver</button>
+					<button type="button" data-toggle="modal" onclick="opcionProyecto(${p.id},'ver')" data-id-proyecto="${p.id}" class="btn btn-primary">Ver</button>
 										
-					<a href="editarproyecto.html?id=${p.id}" class="btn btn-success">Editar</a>
+					<button type="button" data-toggle="modal" onclick="opcionProyecto(${p.id},'editar')" class="btn btn-primary">Editar</button>
 					
 					<a href="borrarproyecto.html?id=${p.id}" class="btn btn-danger">Borrar</a>
 					
