@@ -16,6 +16,8 @@ public class ProyectoForm {
 	private Long idUsuarioPrincipal;
 	private Long[] idUsuarios;
 	
+	
+	
 	public Long getIdUsuarioPrincipal() {
 		return idUsuarioPrincipal;
 	}
