@@ -9,7 +9,7 @@ import edu.curso.java.bo.Usuario;
 
 public interface TareaService {
 
-	public Long guardarTarea(Tarea tarea);
+	public void guardarTarea(Tarea tarea, Long idProyecto);
 	public List<Tarea> listarTareas();
 	
 	Tarea recuperarTareaPorId(Long id);

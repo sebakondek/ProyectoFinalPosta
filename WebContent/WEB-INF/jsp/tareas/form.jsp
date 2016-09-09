@@ -12,14 +12,19 @@
 <div class="form form-group table">
 	<form:form method="post" modelAttribute="tareaForm" action="guardartarea.html" class="form">
 		<form:input path="id" type="hidden" />
-		<form:input path="horasRestantes" type="hidden" />
+		<form:input path="idProyecto" type="hidden"/>
+		<form:input path="duracionReal" type="hidden"/>
 		<div class="form-group">
 			<label for="titulo">Titulo</label>
 			<form:input class="form-control" path="titulo" type="text" />
 		</div>
 		<div class="form-group">
-			<label for="totalHoras">Horas Totales</label>
-			<form:input class="form-control" path="totalHoras" type="number"/>
+			<label for="descripcion">Descripcion</label>
+			<form:textarea class="form-control required" path="descripcion" />
+		</div>
+		<div class="form-group">
+			<label for="totalHoras">Duracion Estimada</label>
+			<form:input class="form-control" path="duracionEstimada" type="number"/>
 		</div>
 		<div class="form-group">
 			<input type="submit" class="btn btn-success" value="Guardar">

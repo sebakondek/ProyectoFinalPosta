@@ -28,6 +28,31 @@
 			</c:if>
 			</tr>
 		</table>
+		
+		<!-- Tareas -->
+		
+		<table class="table table-striped table-bordered table-hover table-responsive">
+		<tr>
+			<th>Id</th>
+			<th>Titulo</th>
+			<th>Duracion Estimada</th>
+			<th></th>
+		</tr>
+		<c:forEach items="${proyecto.tareas}" var="t">
+			<tr>
+				<td>${t.id}</td>
+				<td>${t.titulo}</td>
+				<td>${t.duracionEstimada}</td>
+				<td>
+					<button type="button" data-toggle="modal" onclick="#" data-id-proyecto="" class="btn btn-primary">Ver</button>
+					<button type="button" data-toggle="modal" onclick="#" class="btn btn-primary">Cargar Horas Trabajadas</button>
+					<button type="button" data-toggle="modal" onclick="#" class="btn btn-primary">Editar</button>
+				</td>
+			</tr>
+		</c:forEach>
+	</table>
+		
+		
       </div>
       <div class="modal-footer">
       	<button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>

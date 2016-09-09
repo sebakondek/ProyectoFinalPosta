@@ -22,7 +22,7 @@ public class Tarea {
 	private List<Comentario> comentarios = new ArrayList<>();
 	
 	
-	
+
 	public List<Comentario> getComentarios() {
 		return comentarios;
 	}
@@ -88,6 +88,5 @@ public class Tarea {
 			return false;
 		return true;
 	}
-
 	
 }

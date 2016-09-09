@@ -29,6 +29,10 @@ public class Proyecto {
 	public List<Usuario> getUsuarios() {
 		return usuarios;
 	}
+
+	public void setUsuarios(List<Usuario> usuarios) {
+		this.usuarios = usuarios;
+	}
 	
 	public List<Tarea> getTareas() {
 		return tareas;
@@ -36,10 +40,6 @@ public class Proyecto {
 
 	public void setTareas(List<Tarea> tareas) {
 		this.tareas = tareas;
-	}
-
-	public void setUsuarios(List<Usuario> usuarios) {
-		this.usuarios = usuarios;
 	}
 
 	public Long getId() {
