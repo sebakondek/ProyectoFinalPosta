@@ -5,7 +5,6 @@
 
 <c:import url="/general/template_top.jsp" />
 
-<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 
 
 
@@ -13,7 +12,7 @@
 	<form:form method="post" modelAttribute="comentarioForm" action="guardarcomentario.html" class="form">
 		<form:input path="id" type="hidden" />
 		<form:input path="idUsuario" type="hidden" />
-		<form:input path="fecha" type="hidden" />
+		<form:input path="idTarea" type="hidden" />
 		<div class="form-group">
 			<label for="comentario">Comentario</label>
 			<form:textarea class="form-control" path="comentario" type="text" />

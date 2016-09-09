@@ -9,7 +9,7 @@ public class ComentarioForm {
 	private Long id;
 	private String comentario;
 	private Long idUsuario;
-	private Date fecha;
+	private Long idTarea;
 	
 	
 	public Long getIdUsuario() {
@@ -30,12 +30,12 @@ public class ComentarioForm {
 	public void setComentario(String comentario) {
 		this.comentario = comentario;
 	}
-	public Date getFecha() {
-		return fecha;
+	public Long getIdTarea() {
+		return idTarea;
 	}
-	public void setFecha(Date fecha) {
-		this.fecha = fecha;
+	public void setIdTarea(Long idTarea) {
+		this.idTarea = idTarea;
 	}
-	
+
 	
 }
