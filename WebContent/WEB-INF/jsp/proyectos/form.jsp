@@ -3,8 +3,6 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
-<c:import url="/general/template_top.jsp" />
-
 
 <script>
 
@@ -56,4 +54,3 @@
       </div>
     </div>
 </div>
-<c:import url="/general/template_bottom.jsp" />

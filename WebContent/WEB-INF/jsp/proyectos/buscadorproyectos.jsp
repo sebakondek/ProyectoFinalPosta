@@ -20,7 +20,7 @@
 					<td>${p.usuarioPrincipal.nombreCompleto}</td>
 				</c:if>
 				<td>
-					<button type="button" data-toggle="modal" onclick="opcionProyecto(${p.id},'ver')" data-id-proyecto="${p.id}" class="btn btn-primary">Ver</button>
+					<button type="button" data-toggle="modal" onclick="opcionProyecto(${p.id},'ver')" class="btn btn-primary">Ver</button>
 										
 					<button type="button" data-toggle="modal" onclick="opcionProyecto(${p.id},'editar')" class="btn btn-primary">Editar</button>
 					

@@ -14,16 +14,35 @@ function formInit(clase){
 
 /****************************************LIST FUNCTIONS************************************/
 
-function listarInit(){
-	hacerBusquedaProy();
-	//hacerBusquedaTarea();
+function listarInit(clase){
+	
+		hacerBusqueda(clase);	
 }
 
-function hacerBusquedaProy() {
-	var proyectos = $("#miFormBuscadorProy").serialize();
-	$.post("buscarproyectos.html", proyectos, function(resp) {
-		$("#divProyectos").html(resp);
-	});
+function hacerBusqueda(clase) {
+	
+	
+	switch (clase) {
+	
+	case "Usuario":
+		var datosDelForm = $("#miFormBuscadorUsu").serialize();
+		$.post("buscarUsuarios.html", datosDelForm, function(resp) {
+			$("#divUsuarios").html(resp);
+		});	
+		break;
+
+	case "Proyecto":
+		var datosDelForm = $("#miFormBuscadorProy").serialize();
+		$.post("buscarproyectos.html", datosDelForm, function(resp) {
+			$("#divProyectos").html(resp);
+		});	
+		
+		break;
+
+	default:
+		break;
+	}
+	
 }
 
 function hacerBusquedaTarea() {
@@ -33,7 +52,7 @@ function hacerBusquedaTarea() {
 	});
 }
 
-/*********************************ABM Listado***********************************/
+/*********************************ABM Listado PROYECTO***********************************/
 function opcionProyecto(id, opcion){
 	
 	switch (opcion) {
@@ -65,11 +84,48 @@ function opcionProyecto(id, opcion){
 				$("#divProyectos").html(resp);
 			});
 			break;
-	}
 			
+		default:
+			 Alert("Acaba de ocurrir un error. Por favor contactese con los areperos...")
+			break;
+	}
 		
 }
-	
+		
+/*******************************ABM LISTADO USUARIO************************************/
+function opcionUsuario(id, opcion){
+			
+			switch (opcion) {
+			
+				case "editar":
+					$.get("editarUsuario.html?id=" + id, function(resp){
+						$("#myModalUsu").html(resp);
+						$("#myModalUsu").modal("show");
+					});
+					break;
+				
+				case "ver":	
+					$.get("verUsuario.html?id=" + id, function(resp){
+						$("#myModalUsu").html(resp);
+						$("#myModalUsu").modal("show");
+					});
+					break;
+				case "crear":
+					$.get("nuevoUsuario.html", function(resp){
+						$("#myModalUsu").html(resp);
+						$("#myModalUsu").modal("show");
+					});
+					break;
 
-
-
+				case "buscar":
+					var usuarios = $("#miFormBuscadorUsu").serialize();
+					$.post("buscarUsuarios.html", usuarios, function(resp){
+						$("#divUsuarios").html(resp);
+					});
+					break;
+					
+				default:
+					 Alert("Acaba de ocurrir un error. Por favor contactese con los areperos...")
+					break;
+			}	
+}

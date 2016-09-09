@@ -2,7 +2,6 @@
     pageEncoding="ISO-8859-1"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
-
     <table class="table table-striped table-bordered table-hover table-responsive">
 		<tr>
 			<th>Id</th>
@@ -23,25 +22,13 @@
 					</c:choose>
 				</td>
 				<td>
-					<button type="button" data-toggle="modal" data-id-usuario="${u.id}" class="btn btn-primary btn-ver-usuario">Ver</button>
+					<button type="button" data-toggle="modal" onclick="opcionUsuario(${u.id},'ver')" class="btn btn-primary">Ver</button>
 										
-					<a href="editarusuario.html?id=${u.id}" class="btn btn-success">Editar</a>
+					<button type="button" data-toggle="modal" onclick="opcionUsuario(${u.id},'editar')" class="btn btn-primary">Editar</button>
 					
 					<a href="borrarusuario.html?id=${u.id}" class="btn btn-danger">Borrar</a>
 					
 					
-					
-					
-					<div class="modal fade" id="${u.id}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-					  <div class="modal-dialog" role="dialog">
-					    <div class="modal-content">
-					      <div class="modal-header">
-					        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-					        		<span aria-hidden="true">&times;</span>
-					        </button>
-					        <h4 class="modal-title" id="myModalLabel"><b>${u.nombreCompleto}</b></h4>
-					      </div>
-					      <div class="modal-body">
 							<table class="table table-bordered">
 								<tr>
 								 	<th>Usuario</th>
@@ -57,12 +44,6 @@
 									</td>
 								</tr>
 							</table>
-					      </div>
-					      <div class="modal-footer">
-					      </div>
-					    </div>
-					  </div>
-					</div>
 				</td>
 			</tr>
 		</c:forEach>
