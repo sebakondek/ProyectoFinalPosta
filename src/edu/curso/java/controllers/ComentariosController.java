@@ -70,14 +70,13 @@ public class ComentariosController {
 			comentario.setUsuario(usuarioService.recuperarUsuarioPorId(idUsuario));
 			comentario.setFecha(new Date());
 			comentarioDAO.editarComentario(comentario);
-			tareaService.guardarComentario(comentario, idTarea);
 		} else {
 			comentario = new Comentario();
 			comentario.setComentario(comentarioForm.getComentario());
 			comentario.setUsuario(usuarioService.recuperarUsuarioPorId(idUsuario));
 			comentario.setFecha(new Date());
-			idActual = comentarioDAO.guardarComentario(comentario);
-			tareaService.guardarComentario(comentario, idTarea);
+			idActual = tareaService.guardarComentario(comentario, idTarea);
+			tareaService.editarTarea(tareaService.recuperarTareaPorId(idTarea));
 		}
 	
 		return "redirect:/comentarios/vercomentario.html?id=" + idActual;
