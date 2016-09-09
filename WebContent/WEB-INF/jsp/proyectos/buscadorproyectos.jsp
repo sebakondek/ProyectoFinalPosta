@@ -20,7 +20,7 @@
 					<td>${p.usuarioPrincipal.nombreCompleto}</td>
 				</c:if>
 				<td>
-					<button type="button" data-toggle="modal" onclick="opcionProyecto(${p.id},'ver')" data-id-proyecto="${p.id}" class="btn btn-primary">Ver</button>
+					<button type="button" data-toggle="modal" onclick="opcionProyecto(${p.id},'ver')" class="btn btn-primary">Ver</button>
 										
 					<button type="button" data-toggle="modal" onclick="opcionProyecto(${p.id},'editar')" class="btn btn-primary">Editar</button>
 					
@@ -29,6 +29,8 @@
 					<a href="<c:url value="/tareas/nuevatarea.html?id=${p.id}" />" class="btn btn-warning">Nueva Tarea</a>
 					
 					<button type="button" data-id-proyecto="${p.id}" class=" btn btn-primary btn-ver-tareas">Ver Tareas</button>
+					
+					<a type="button" href="<c:url value="/comentarios/nuevocomentario.html?id=${p.id}" />" class="btn btn-primary">Nuevo Comentario</a>
 					
 				</td>
 			</tr>

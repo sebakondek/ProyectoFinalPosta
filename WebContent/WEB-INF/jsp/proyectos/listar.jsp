@@ -10,7 +10,7 @@
 <a class="btn btn-warning btnnuevo" onclick="opcionProyecto(0,'crear')">Nuevo Proyecto</a>
 					
 <script>
-	listarInit();
+	listarInit("Proyecto");
 </script>
 
 <form id="miFormBuscadorProy" method="post" onsubmit="opcionProyecto(0,'buscar'); return false;" class="form-inline">
@@ -20,12 +20,17 @@
 		<input type="submit" class="btn btn-default" value="Buscar" id="btnBuscarProy">
 </form>
 
-
-
 <div id="divProyectos" class="table-responsive"></div>
+
+
+
+
+
+
+
 
 <div id="divTareas" class="table-responsive"></div>
 
-<div id="myModalProy" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" style="margin-top: 5%;"></div>
+<div id="myModalProy" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"></div>
 
 <c:import url="/general/template_bottom.jsp" />

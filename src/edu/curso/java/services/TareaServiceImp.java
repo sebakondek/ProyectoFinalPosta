@@ -3,19 +3,16 @@ package edu.curso.java.services;
 import java.util.Date;
 import java.util.List;
 
+
 import org.apache.log4j.Logger;
-import org.hibernate.Query;
-import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
 
 import edu.curso.java.bo.Comentario;
 import edu.curso.java.bo.Proyecto;
 import edu.curso.java.bo.Tarea;
-import edu.curso.java.bo.Usuario;
-import edu.curso.java.controllers.TareaController;
 import edu.curso.java.dao.ComentarioDAO;
 import edu.curso.java.dao.ProyectoDAO;
 import edu.curso.java.dao.TareaDAO;

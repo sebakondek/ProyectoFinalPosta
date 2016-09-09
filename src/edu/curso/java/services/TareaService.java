@@ -12,14 +12,14 @@ public interface TareaService {
 	public void guardarTarea(Tarea tarea, Long idProyecto);
 	public List<Tarea> listarTareas();
 	
-	Tarea recuperarTareaPorId(Long id);
+	public Tarea recuperarTareaPorId(Long id);
 
 
 	
 	public void agregarTareaProyecto(Tarea tarea, Long idProyecto);
-	void borrarTareaPorId(Long id);
+	public void borrarTareaPorId(Long id);
 	
-	void editarTarea(Tarea tarea);
+	public void editarTarea(Tarea tarea);
 	public List<Tarea> buscarTareaPorNombre(String campoBuscar);
 	
 	public Long guardarComentario(Comentario comentario, Long idTarea);
