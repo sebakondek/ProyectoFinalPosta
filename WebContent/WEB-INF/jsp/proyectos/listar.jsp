@@ -20,11 +20,14 @@
 		<input type="submit" class="btn btn-default" value="Buscar" id="btnBuscarProy">
 </form>
 
-
-
 <div id="divProyectos" class="table-responsive"></div>
 
-<button type="button" data-toggle="modal" onclick="opcionProyecto(0,'crear')" class="btn btn-primary">Nuevo Comentario</button>
+
+
+
+
+
+
 
 <div id="divTareas" class="table-responsive"></div>
 
