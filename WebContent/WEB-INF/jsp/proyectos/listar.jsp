@@ -24,6 +24,8 @@
 
 <div id="divProyectos" class="table-responsive"></div>
 
+<button type="button" data-toggle="modal" onclick="opcionProyecto(0,'crear')" class="btn btn-primary">Nuevo Comentario</button>
+
 <div id="divTareas" class="table-responsive"></div>
 
 <div id="myModalProy" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" style="margin-top: 5%;"></div>

@@ -19,6 +19,8 @@ public class ProyectoServiceImp implements ProyectoService {
 	ProyectoDAO proyectoDAO;
 	@Autowired
 	UsuarioDAO usuarioDAO;
+	
+	
 	@Override
 	public Long guardarProyecto(Proyecto proyecto) {
 		return proyectoDAO.guardarProyecto(proyecto);
