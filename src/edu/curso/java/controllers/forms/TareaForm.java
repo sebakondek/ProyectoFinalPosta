@@ -4,6 +4,7 @@ public class TareaForm {
 
 	private Long id;
 	private String titulo;
+	private Double duracionEstimada;
 	private Double duracion;
 	
 	
@@ -19,12 +20,18 @@ public class TareaForm {
 	public void setTitulo(String titulo) {
 		this.titulo = titulo;
 	}
+	public Double getDuracionEstimada() {
+		return duracionEstimada;
+	}
+	public void setDuracionEstimada(Double duracionEstimada) {
+		this.duracionEstimada = duracionEstimada;
+	}
 	public Double getDuracion() {
 		return duracion;
 	}
 	public void setDuracion(Double duracion) {
 		this.duracion = duracion;
 	}
-	
+
 	
 }

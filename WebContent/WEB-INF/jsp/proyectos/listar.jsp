@@ -20,9 +20,14 @@
 		<input type="submit" class="btn btn-default" value="Buscar" id="btnBuscarProy">
 </form>
 
-
-
 <div id="divProyectos" class="table-responsive"></div>
+
+
+
+
+
+
+
 
 <div id="divTareas" class="table-responsive"></div>
 

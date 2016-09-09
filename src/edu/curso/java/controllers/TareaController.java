@@ -1,5 +1,6 @@
 package edu.curso.java.controllers;
 
+import java.util.Date;
 import java.util.List;
 
 import org.apache.log4j.Logger;
@@ -11,12 +12,15 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import edu.curso.java.bo.Comentario;
 import edu.curso.java.bo.Proyecto;
 import edu.curso.java.bo.Tarea;
 import edu.curso.java.bo.Usuario;
+import edu.curso.java.controllers.forms.ComentarioForm;
 import edu.curso.java.controllers.forms.ProyectoForm;
 import edu.curso.java.controllers.forms.TareaForm;
 import edu.curso.java.controllers.forms.UsuarioForm;
+import edu.curso.java.dao.ComentarioDAO;
 import edu.curso.java.services.ProyectoService;
 import edu.curso.java.services.TareaService;
 import edu.curso.java.services.UsuarioService;
@@ -32,6 +36,12 @@ public class TareaController {
 	
 	@Autowired
 	private ProyectoService proyectoService;
+	
+	@Autowired
+	ComentarioDAO comentarioDAO;
+	
+	@Autowired
+	UsuarioService usuarioService;
 	
 	
 	@RequestMapping(value = "/listar", method = RequestMethod.GET)
@@ -103,4 +113,10 @@ public class TareaController {
 		return "/tareas/buscadortareas";
 	}
 	
+	
+	
+	
+//	Seccion Comentarios
+	
+
 }

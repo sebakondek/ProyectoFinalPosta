@@ -30,6 +30,8 @@
 					
 					<button type="button" data-id-proyecto="${p.id}" class=" btn btn-primary btn-ver-tareas">Ver Tareas</button>
 					
+					<a type="button" href="<c:url value="/comentarios/nuevocomentario.html?id=${p.id}" />" class="btn btn-primary">Nuevo Comentario</a>
+					
 				</td>
 			</tr>
 			
