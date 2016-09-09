@@ -15,7 +15,9 @@ public class Tarea {
 	@GeneratedValue
 	private Long id;
 	private String titulo;
-	private Double duracion;
+	private Double duracionEstimada;
+	private Double duracionReal;
+	private String descripcion;
 	@OneToMany
 	private List<Comentario> comentarios = new ArrayList<>();
 	
@@ -27,11 +29,23 @@ public class Tarea {
 	public void setComentarios(List<Comentario> comentarios) {
 		this.comentarios = comentarios;
 	}
-	public Double getDuracion() {
-		return duracion;
+	public Double getDuracionEstimada() {
+		return duracionEstimada;
 	}
-	public void setDuracion(Double duracion) {
-		this.duracion = duracion;
+	public void setDuracionEstimada(Double duracionEstimada) {
+		this.duracionEstimada = duracionEstimada;
+	}
+	public Double getDuracionReal() {
+		return duracionReal;
+	}
+	public void setDuracionReal(Double duracionReal) {
+		this.duracionReal = duracionReal;
+	}
+	public String getDescripcion() {
+		return descripcion;
+	}
+	public void setDescripcion(String descripcion) {
+		this.descripcion = descripcion;
 	}
 	public Long getId() {
 		return id;

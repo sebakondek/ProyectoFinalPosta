@@ -69,12 +69,12 @@ public class TareaController {
 		if(idActual != null){
 			tarea = tareaService.recuperarTareaPorId(idActual);
 			tarea.setTitulo(tareaForm.getTitulo());
-			tarea.setDuracion(tareaForm.getDuracion());
+			tarea.setDuracionEstimada(tareaForm.getDuracion());
 			tareaService.editarTarea(tarea);
 		} else {
 			tarea = new Tarea();
 			tarea.setTitulo(tareaForm.getTitulo());
-			tarea.setDuracion(tareaForm.getDuracion());
+			tarea.setDuracionEstimada(tareaForm.getDuracion());
 			tareaService.guardarTarea(tarea);
 		}
 	
@@ -88,7 +88,7 @@ public class TareaController {
 		
 		tareaForm.setId(tarea.getId());
 		tareaForm.setTitulo(tarea.getTitulo());
-		tareaForm.setDuracion(tarea.getDuracion());
+		tareaForm.setDuracion(tarea.getDuracionEstimada());
 	
 		model.addAttribute("tareaForm", tareaForm);
 		return "/tareas/formeditado";
