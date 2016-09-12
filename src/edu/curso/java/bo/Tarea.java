@@ -3,10 +3,12 @@ package edu.curso.java.bo;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+
 
 @Entity
 public class Tarea {
@@ -18,7 +20,7 @@ public class Tarea {
 	private Double duracionEstimada;
 	private Double duracionReal;
 	private String descripcion;
-	@OneToMany
+	@OneToMany(cascade=CascadeType.ALL)
 	private List<Comentario> comentarios = new ArrayList<>();
 	
 	
