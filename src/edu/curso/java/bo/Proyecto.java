@@ -25,8 +25,17 @@ public class Proyecto {
 	private List<Usuario> usuarios = new ArrayList<Usuario>();
 	@OneToMany(cascade=CascadeType.ALL)
 	private List<Tarea> tareas = new ArrayList<>();
+	private Boolean estado;
 	
 	
+	public Boolean getEstado() {
+		return estado;
+	}
+
+	public void setEstado(Boolean estado) {
+		this.estado = estado;
+	}
+
 	public List<Usuario> getUsuarios() {
 		return usuarios;
 	}

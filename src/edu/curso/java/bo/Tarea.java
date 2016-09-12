@@ -22,9 +22,15 @@ public class Tarea {
 	private String descripcion;
 	@OneToMany(cascade=CascadeType.ALL)
 	private List<Comentario> comentarios = new ArrayList<>();
-	
+	private Boolean estado;
 	
 
+	public Boolean getEstado() {
+		return estado;
+	}
+	public void setEstado(Boolean estado) {
+		this.estado = estado;
+	}
 	public List<Comentario> getComentarios() {
 		return comentarios;
 	}

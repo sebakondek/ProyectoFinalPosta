@@ -14,8 +14,15 @@ public class Comentario {
 	@ManyToOne
 	private Usuario usuario;
 	private Date fecha;
+	private Boolean estado;
 	
 	
+	public Boolean getEstado() {
+		return estado;
+	}
+	public void setEstado(Boolean estado) {
+		this.estado = estado;
+	}
 	public Long getId() {
 		return id;
 	}
