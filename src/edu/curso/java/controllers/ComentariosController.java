@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import edu.curso.java.bo.Comentario;
 import edu.curso.java.bo.Tarea;
 import edu.curso.java.controllers.forms.ComentarioForm;
+import edu.curso.java.controllers.forms.TareaForm;
 import edu.curso.java.dao.ComentarioDAO;
 import edu.curso.java.services.TareaService;
 import edu.curso.java.services.UsuarioService;
@@ -63,28 +64,45 @@ public class ComentariosController {
 		Comentario comentario = null;
 		Long idActual = comentarioForm.getId();
 		Long idTarea = comentarioForm.getIdTarea();
-		Long idUsuario = (long) 1; //a cambiar cuando se implemente el login
+		Long idUsuario = (long) 1;				 //a cambiar cuando se implemente el login
 		if(idActual != null){
 			comentario = comentarioDAO.recuperarComentarioPorId(idActual);
 			comentario.setComentario(comentarioForm.getComentario());
 			comentario.setUsuario(usuarioService.recuperarUsuarioPorId(idUsuario));
 			comentario.setFecha(new Date());
+			comentario.setEstado(comentarioForm.getEstado());
 			comentarioDAO.editarComentario(comentario);
 		} else {
 			comentario = new Comentario();
 			comentario.setComentario(comentarioForm.getComentario());
 			comentario.setUsuario(usuarioService.recuperarUsuarioPorId(idUsuario));
 			comentario.setFecha(new Date());
+			comentario.setEstado(true);
 			idActual = tareaService.guardarComentario(comentario, idTarea);
 			tareaService.editarTarea(tareaService.recuperarTareaPorId(idTarea));
 		}
 	
-		return "redirect:/comentarios/vercomentario.html?id=" + idActual;
+		return "redirect:/tareas/vertarea.html?id=" + idTarea;
 	}
 	
 	@RequestMapping(value="/borrarcomentario")
 	public String borrarComentario(@RequestParam Long id) {
 		comentarioDAO.borrarComentarioPorId(id);
 		return "redirect:/comentarios/listar.html";
+	}
+	
+	@RequestMapping(value="/editarcomentario")
+	public String editarComentario(Model model, @RequestParam Long idC, Long idT){
+		Comentario comentario = comentarioDAO.recuperarComentarioPorId(idC);
+		ComentarioForm comentarioForm = new ComentarioForm();
+		
+		comentarioForm.setId(comentario.getId());
+		comentarioForm.setComentario(comentario.getComentario());
+		comentarioForm.setEstado(comentario.getEstado());
+		comentarioForm.setIdUsuario(comentario.getUsuario().getId());
+		comentarioForm.setIdTarea(idT);
+	
+		model.addAttribute("comentarioForm", comentarioForm);
+		return "/comentarios/formeditado";
 	}
 }

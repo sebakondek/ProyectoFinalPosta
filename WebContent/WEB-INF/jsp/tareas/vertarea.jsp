@@ -53,7 +53,7 @@
 				<td>${c.usuario.nombreCompleto}</td>
 				<td>${c.fecha}</td>
 				<td>
-					<a href="<c:url value="/tareas/vertarea.html?id=${t.id}" />" class="btn btn-primary">Ver </a>
+					<a href="<c:url value="/comentarios/editarcomentario.html?idC=${c.id}&idT=${tarea.id}" />" class="btn btn-primary">Editar</a>
 				</td>
 			</tr>
 		</c:forEach>

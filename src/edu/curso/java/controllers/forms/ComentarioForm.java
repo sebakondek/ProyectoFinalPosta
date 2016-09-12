@@ -1,17 +1,20 @@
 package edu.curso.java.controllers.forms;
 
-import java.util.Date;
-
-import edu.curso.java.bo.Usuario;
-
 public class ComentarioForm {
 
 	private Long id;
 	private String comentario;
 	private Long idUsuario;
 	private Long idTarea;
+	private Boolean estado;
 	
 	
+	public Boolean getEstado() {
+		return estado;
+	}
+	public void setEstado(Boolean estado) {
+		this.estado = estado;
+	}
 	public Long getIdUsuario() {
 		return idUsuario;
 	}
