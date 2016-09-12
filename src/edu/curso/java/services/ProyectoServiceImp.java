@@ -7,7 +7,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import edu.curso.java.bo.Proyecto;
-import edu.curso.java.bo.Tarea;
 import edu.curso.java.bo.Usuario;
 import edu.curso.java.dao.ProyectoDAO;
 import edu.curso.java.dao.UsuarioDAO;

@@ -36,7 +36,13 @@ function hacerBusqueda(clase) {
 		$.post("buscarproyectos.html", datosDelForm, function(resp) {
 			$("#divProyectos").html(resp);
 		});	
+		break;
 		
+	case "Comentarios":
+		var datosDelForm = $("#miFormBuscadorComent").serialize();
+		$.post("buscarcomentarios.html",datosDelForm, function(resp){
+			$("#divComentarios").html(resp);
+		});
 		break;
 
 	default:
@@ -128,4 +134,20 @@ function opcionUsuario(id, opcion){
 					 Alert("Acaba de ocurrir un error. Por favor contactese con los areperos...")
 					break;
 			}	
+}
+/*********************************ABM Listado COMENTARIOS***********************************/
+function opcionComentario(opcion){
+	
+	switch (opcion) {
+		case "buscar":
+			var datosDelForm = $("#miFormBuscadorComent").serialize();
+			$.post("buscarcomentarios.html",datosDelForm, function(resp){
+				$("#divComentarios").html(resp);
+			});
+			break;
+			
+		default:
+			 Alert("Acaba de ocurrir un error. Por favor contactese con los areperos...")
+			break;
+	}	
 }

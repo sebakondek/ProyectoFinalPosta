@@ -4,7 +4,6 @@
 
 
 
-
 <div class="modal-dialog" role="dialog">
     <div class="modal-content">
       <div class="modal-header">
@@ -44,9 +43,7 @@
 				<td>${t.titulo}</td>
 				<td>${t.duracionEstimada}</td>
 				<td>
-					<button type="button" data-toggle="modal" onclick="#" data-id-proyecto="" class="btn btn-primary">Ver</button>
-					<button type="button" data-toggle="modal" onclick="#" class="btn btn-primary">Cargar Horas Trabajadas</button>
-					<button type="button" data-toggle="modal" onclick="#" class="btn btn-primary">Editar</button>
+					<a href="<c:url value="/tareas/vertarea.html?id=${t.id}" />" class="btn btn-primary">Ver </a>
 				</td>
 			</tr>
 		</c:forEach>

@@ -21,6 +21,7 @@ public class ComentarioDAOImp implements ComentarioDAO {
 		return (Long) sessionFactory.getCurrentSession().save(comentario);
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public List<Comentario> listarComentarios() {
 		Query query = sessionFactory.getCurrentSession().createQuery("from Comentario");
@@ -44,11 +45,13 @@ public class ComentarioDAOImp implements ComentarioDAO {
 		
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
-	public List<Comentario> buscarComentarioPorContenido(String campoBuscar) {
-		String hql = "from Comentario as c where c.descripcion like :textoBuscar ";
+	public List<Comentario> buscarComentario(String campoBuscar, String idBuscar) {
+		String hql = "from Tarea as t inner join Comentario as c on t.id = :idBuscar AND c.comentario like :textoBuscar ";
 		Query query = sessionFactory.getCurrentSession().createQuery(hql);
 		query.setString("textoBuscar", "%" + campoBuscar + "%");
+		query.setString("idBuscar", "%" + idBuscar + "%");
 		return query.list();
 	}
 

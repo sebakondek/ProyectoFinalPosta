@@ -2,37 +2,43 @@
     pageEncoding="ISO-8859-1"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
+<c:import url="/general/template_top.jsp" />
+
+<script>
+	listarInit("Comentarios");
+</script>
+
+<table class="table table-striped table-bordered table-hover table-responsive">
+	<tr>
+	    <th>ID:</th>
+	    <td>${tarea.id}</td>
+ 	</tr>
+    <tr>
+	    <th>Titulo:</th>
+	    <td>${tarea.titulo}</td>
+	</tr>
+    <tr>
+	    <th>Duración Estimada:</th>
+	    <td>${tarea.duracionEstimada}</td>
+    </tr>
+    <tr>
+	    <th>Descripción:</th>
+	    <td>${tarea.descripcion}</td>
+    </tr>
+</table>
 
 
+<form id="miFormBuscadorComent" method="post" onsubmit="opcionComentario(0,'buscar'); return false;" class="form-inline">
+	<div class="form-group">
+		<input type="hidden" name="idTarea" value="${tarea.id}">
+		<input name="campoBuscar" class="form-control" id="campoBuscarCom" type="text" placeholder="Buscar">
+	</div>
+		<input type="submit" class="btn btn-default" value="Buscar" id="btnBuscarCom">
+</form>
 
-<div class="modal-dialog" role="dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="myModalLabel"><b>${tarea.nombre}</b></h4>
-      </div>
-      <div class="modal-body" id="modal-body">
-		<table class="table table-bordered">
-			<tr>
-			 	<th>ID de la Tarea</th>
-			 	<td>${tarea.id}</td>
-			</tr>
-			<tr>
-			 	<th>Titulo</th>
-			 	<td>${tarea.descripcion}</td>
-			</tr>
-			<tr>
-		 		<th>Horas Totales</th>
-		 		<td>${tarea.totalHoras}</td>
-			</tr>
-			<tr>
-				<th>Horas Restantes</th>
-				<td>${tarea.horasRestantes}</td>
-			</tr>
-		</table>
-      </div>
-      <div class="modal-footer">
-      	<button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
-      </div>
-    </div>
+
+<div id="divComentarios" class="table-responsive">
 </div>
+
+
+<c:import url="/general/template_bottom.jsp" />

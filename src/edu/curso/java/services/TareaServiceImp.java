@@ -82,5 +82,10 @@ public class TareaServiceImp implements TareaService {
 		tareaDAO.editarTarea(tarea);
 		return comentario.getId();
 	}
+	
+	@Override
+	public List<Comentario> buscarComentario(String campoBuscar, String idBuscar) {
+		return comentarioDAO.buscarComentario(campoBuscar, idBuscar);
+	}
 
 }
