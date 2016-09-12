@@ -50,7 +50,7 @@
 			<tr>
 				<td>${c.id}</td>
 				<td>${c.comentario}</td>
-				<td>${c.usuario}</td>
+				<td>${c.usuario.nombreCompleto}</td>
 				<td>${c.fecha}</td>
 				<td>
 					<a href="<c:url value="/tareas/vertarea.html?id=${t.id}" />" class="btn btn-primary">Ver </a>
