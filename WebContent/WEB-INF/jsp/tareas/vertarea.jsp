@@ -30,15 +30,34 @@
 
 <form id="miFormBuscadorComent" method="post" onsubmit="opcionComentario(0,'buscar'); return false;" class="form-inline">
 	<div class="form-group">
-		<input type="hidden" name="idTarea" value="${tarea.id}">
 		<input name="campoBuscar" class="form-control" id="campoBuscarCom" type="text" placeholder="Buscar">
 	</div>
 		<input type="submit" class="btn btn-default" value="Buscar" id="btnBuscarCom">
 </form>
 
 
-<div id="divComentarios" class="table-responsive">
-</div>
+<!-- Comentarios -->
+		
+		<table class="table table-striped table-bordered table-hover table-responsive">
+		<tr>
+			<th>Id</th>
+			<th>Comentario</th>
+			<th>Usuario</th>
+			<th>Fecha</th>
+			<th>Opciones</th>
+		</tr>
+		<c:forEach items="${tarea.comentarios}" var="c">
+			<tr>
+				<td>${c.id}</td>
+				<td>${c.comentario}</td>
+				<td>${c.usuario}</td>
+				<td>${c.fecha}</td>
+				<td>
+					<a href="<c:url value="/tareas/vertarea.html?id=${t.id}" />" class="btn btn-primary">Ver </a>
+				</td>
+			</tr>
+		</c:forEach>
+	</table>
 
 
 <c:import url="/general/template_bottom.jsp" />

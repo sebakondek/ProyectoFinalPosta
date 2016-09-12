@@ -21,6 +21,6 @@ public interface TareaService {
 	public List<Tarea> buscarTareaPorNombre(String campoBuscar);
 	
 	public Long guardarComentario(Comentario comentario, Long idTarea);
-	public List<Comentario> buscarComentario(String campoBuscar, String idBuscar);
+	public List<Comentario> buscarComentarioPorContenido(String campoBuscar);
 	
 }

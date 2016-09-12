@@ -84,8 +84,8 @@ public class TareaServiceImp implements TareaService {
 	}
 	
 	@Override
-	public List<Comentario> buscarComentario(String campoBuscar, String idBuscar) {
-		return comentarioDAO.buscarComentario(campoBuscar, idBuscar);
+	public List<Comentario> buscarComentarioPorContenido(String campoBuscar) {
+		return comentarioDAO.buscarComentarioPorContenido(campoBuscar);
 	}
 
 }

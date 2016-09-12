@@ -115,12 +115,11 @@ public class TareaController {
 	}
 	
 	@RequestMapping(value = "/buscarcomentarios", method = RequestMethod.POST)
-	public String buscarProyectos(@ModelAttribute("campoBuscar") String campoBuscar, @ModelAttribute("idBuscar") String idBuscar, Model model) {
+	public String buscarProyectos(@ModelAttribute("campoBuscar") String campoBuscar, Model model) {
 		log.info("Listando los comentarios");
-		List<Comentario> comentarios = tareaService.buscarComentario(campoBuscar, idBuscar);
+		List<Comentario> comentarios = tareaService.buscarComentarioPorContenido(campoBuscar);
 		model.addAttribute("comentarios",comentarios);
 		return "/comentarios/tarea-comentarios";
 	}
-		
 
 }

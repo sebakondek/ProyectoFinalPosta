@@ -28,7 +28,7 @@
 			</tr>
 		</table>
 		
-		<!-- Tareas -->
+<!-- Tareas -->
 		
 		<table class="table table-striped table-bordered table-hover table-responsive">
 		<tr>
