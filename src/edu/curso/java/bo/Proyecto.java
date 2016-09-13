@@ -27,6 +27,9 @@ public class Proyecto {
 	private List<Tarea> tareas = new ArrayList<>();
 	private Boolean estado;
 	
+	public Proyecto(){
+		this.estado = true;
+	}
 	
 	public Boolean getEstado() {
 		return estado;

@@ -7,6 +7,7 @@ import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import edu.curso.java.bo.Comentario;
 import edu.curso.java.bo.Proyecto;
 import edu.curso.java.bo.Tarea;
 import edu.curso.java.bo.Usuario;
@@ -30,7 +31,7 @@ public class TareaDAOImp implements TareaDAO {
 
 	@Override
 	public List<Tarea> listarTareas() {
-		Query query = sessionFactory.getCurrentSession().createQuery("from Tarea");
+		Query query = sessionFactory.getCurrentSession().createQuery("from Tarea where estado=1");
 		return query.list();
 	}
 
@@ -46,9 +47,14 @@ public class TareaDAOImp implements TareaDAO {
 	}
 
 	@Override
-	public void borrarTareaPorId(Long id) {
+	public List<Comentario> borrarTareaPorId(Long id) {
 		Tarea tarea = this.recuperarTareaPorId(id);
-		sessionFactory.getCurrentSession().delete(tarea);
+		List<Comentario> comentarios = tarea.getComentarios();
+		
+		tarea.setEstado(false);
+		editarTarea(tarea);
+		
+		return comentarios;
 	}
 
 	@Override
@@ -58,7 +64,7 @@ public class TareaDAOImp implements TareaDAO {
 
 	@Override
 	public List<Tarea> buscarTareaPorNombre(String campoBuscar) {
-		String hql = "from Tarea as t where t.titulo like :textoBuscar";
+		String hql = "from Tarea as t where t.titulo like :textoBuscar and estado=1";
 		Query query = sessionFactory.getCurrentSession().createQuery(hql);
 		query.setString("textoBuscar", "%" + campoBuscar + "%");
 		return query.list();

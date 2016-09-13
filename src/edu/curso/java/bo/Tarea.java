@@ -24,7 +24,9 @@ public class Tarea {
 	private List<Comentario> comentarios = new ArrayList<>();
 	private Boolean estado;
 	
-
+	public Tarea(){
+		this.estado = true;
+	}
 	public Boolean getEstado() {
 		return estado;
 	}
