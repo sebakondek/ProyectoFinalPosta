@@ -56,7 +56,6 @@ public class UsuariosController {
 		usuario.setNombreCompleto(usuarioForm.getNombreCompleto());
 		usuario.setUsuario(usuarioForm.getUsuario());
 		usuario.setPassword(usuarioForm.getPassword());
-		usuario.setActivo(usuarioForm.isActivo());
 
 		Long idGenerado = usuarioService.crearNuevoUsuario(usuario);
 

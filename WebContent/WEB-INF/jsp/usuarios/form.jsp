@@ -28,9 +28,6 @@ formInit("usuario");
 			<label for="password">Contraseña</label>
 			<form:input class="form-control required" path="password" type="password" />
 		</div>
-		<div class="form-group">
-			<label for="activo">Activo<form:checkbox  path="activo"/></label>
-		</div>
 		<div>
 			<input type="submit" class="btn btn-success" value="Guardar">
 			<a href="<c:url value="/usuarios/listar.html" />" class="btn btn-danger">Cancelar</a>

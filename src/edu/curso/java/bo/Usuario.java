@@ -20,6 +20,10 @@ public class Usuario {
 	private List<Roles> rol;
 	
 	
+	public Usuario(){
+		this.activo=true;
+	}
+	
 	
 	public List<Roles> getRol() {
 		return rol;
