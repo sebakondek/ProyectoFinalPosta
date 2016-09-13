@@ -56,7 +56,7 @@
 			</form>
 		</td>
 		<td>
-			<a type="button" href="<c:url value="/comentarios/nuevocomentario.html?id=${tarea.id}" />" 
+			<a type="button" href="<c:url value="/comentarios/nuevocomentario.html?idC=${c.id}&idT=${tarea.id}&idP=${proyecto.id}" />" 
 					class="btn btn-warning" id="nuevoComentarioBtn">Nuevo Comentario</a>
 		</td>
 		</tr>

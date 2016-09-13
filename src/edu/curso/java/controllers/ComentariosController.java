@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import edu.curso.java.bo.Comentario;
 import edu.curso.java.bo.Proyecto;
+import edu.curso.java.bo.Tarea;
 import edu.curso.java.controllers.forms.ComentarioForm;
 import edu.curso.java.dao.ComentarioDAO;
 import edu.curso.java.services.ProyectoService;
@@ -53,11 +54,13 @@ public class ComentariosController {
 	}
 	
 	@RequestMapping(value="/nuevocomentario")
-	public String nuevoComentario(@RequestParam Long id, Model model) {
+	public String nuevoComentario(@RequestParam Long idC, Long idT, Long idP, Model model) {
+		Proyecto proyecto = proyectoService.recuperarProyectoPorId(idP);
 		ComentarioForm comentarioForm = new ComentarioForm();
-		comentarioForm.setIdTarea(id);
+		comentarioForm.setIdTarea(idT);
 		model.addAttribute("comentarioForm", comentarioForm);
-		log.info("ejecutando nuevo comentario para id tarea" + id);
+		model.addAttribute("proyecto", proyecto);
+		log.info("ejecutando nuevo comentario para id tarea" + idC);
 		return "comentarios/form";
 	}
 	
