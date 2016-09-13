@@ -9,8 +9,7 @@
 
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 
-<c:choose>
-<c:when test="${tiempoProyecto > 0}"> 
+
 <div class="form form-group table">
 	<form:form method="post" modelAttribute="tareaForm" action="guardartarea.html" class="form">
 		<form:input path="id" type="hidden" />
@@ -28,16 +27,20 @@
 			<label for="totalHoras">Duracion Estimada en Horas <span style="color: red;">Tiene hasta ${tiempoProyecto} para asignar</span></label>
 			<form:input class="form-control" path="duracionEstimada"  max="${tiempoProyecto}" min="0" type="number"/>
 		</div>
+			<div class="form-group">
+			<label for="idUsuarios">Prioridad</label>
+			<form:select id="select-multiple" class="js-example-basic-single js-states form-control" 
+				path="prioridad" itemLabel="nombreCompleto" itemValue="id">
+				<option value="Alta"> Alta</option>
+				<option value="Media">Media</option>
+				<option value="Baja">Baja</option>
+		</form:select>
+		</div>
 		<div class="form-group">
 			<input type="submit" class="btn btn-success" value="Guardar">
 			<a href="<c:url value="/proyectos/listar.html" />" class="btn btn-danger">Volver </a>
 		</div>
 	</form:form>
 </div>
-</c:when>
-<c:otherwise>
-					<h1 style="color: red;"> Usted no tiene horas para asignar la tarea</h1>
-</c:otherwise>
 
-</c:choose>
 <c:import url="/general/template_bottom.jsp" />

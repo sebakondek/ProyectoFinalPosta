@@ -25,6 +25,14 @@ public class Usuario {
 	}
 	
 	
+	public Usuario(String nombreCompleto, String usuarioPassword, String usuarioPerfil) {
+		// TODO Auto-generated constructor stub
+		this.setNombreCompleto(nombreCompleto);
+		this.setPassword(usuarioPassword);
+		this.setUsuario(usuarioPerfil);
+	}
+
+
 	public List<Roles> getRol() {
 		return rol;
 	}

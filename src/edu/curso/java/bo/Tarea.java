@@ -23,10 +23,21 @@ public class Tarea {
 	@OneToMany(cascade=CascadeType.ALL)
 	private List<Comentario> comentarios = new ArrayList<>();
 	private Boolean estado;
+	private String prioridad;
+	
 	
 	public Tarea(){
 		this.estado = true;
 	}
+	
+	public String getPrioridad() {
+		return prioridad;
+	}
+
+	public void setPrioridad(String prioridad) {
+		this.prioridad = prioridad;
+	}
+
 	public Boolean getEstado() {
 		return estado;
 	}
@@ -69,6 +80,7 @@ public class Tarea {
 	public void setTitulo(String titulo) {
 		this.titulo = titulo;
 	}
+	
 	@Override
 	public int hashCode() {
 		final int prime = 31;

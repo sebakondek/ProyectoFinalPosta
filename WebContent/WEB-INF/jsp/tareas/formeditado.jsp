@@ -20,6 +20,15 @@
 			<form:textarea rows="3" cols="70" class="form-control required" path="descripcion" />
 		</div>
 		<div class="form-group">
+			<label for="Prioridad">Prioridad</label>
+			<form:select id="select-multiple" class="js-example-basic-single js-states form-control" 
+				path="prioridad" itemLabel="nombreCompleto" itemValue="id">
+				<option value="Alta"> Alta</option>
+				<option value="Media">Media</option>
+				<option value="Baja">Baja</option>
+		</form:select>
+		</div>
+		<div class="form-group">
 			<label for="totalHoras">Duracion Estimada en Horas<span style="color: red;">Tiene hasta ${tiempoProyecto} para asignar</span></label>
 			<form:input class="form-control" path="duracionEstimada" min="0" max="${tiempoProyecto}" type="number"/>
 		</div>

@@ -55,6 +55,7 @@ public class ProyectosController {
 	@RequestMapping(value = "/nuevoproyecto")
 	public String nuevoProyecto(Model model) {
 		model.addAttribute("proyectoForm", new ProyectoForm());
+		model.addAttribute("usuario", new Usuario());
 		model.addAttribute("usuarios", usuarioService.recuperarUsuarios());
 		return "/proyectos/form";
 	}
@@ -65,6 +66,7 @@ public class ProyectosController {
 		Long idActual = proyectoForm.getId();
 		Long idUsuarioPrincipal = proyectoForm.getIdUsuarioPrincipal();
 		Long [] idUsuarios = proyectoForm.getIdUsuarios();
+		
 		if(idActual != null){
 			proyecto= proyectoService.recuperarProyectoPorId(idActual);
 			proyecto.setNombre(proyectoForm.getNombre());

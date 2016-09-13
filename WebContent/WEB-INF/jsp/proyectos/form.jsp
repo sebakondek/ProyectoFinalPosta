@@ -35,6 +35,14 @@
 			<label for="totalHoras">Duracion Estimada en Horas</label>
 			<form:input class="form-control" path="tiempoEstimado"  max="1000" min="0" type="number"/>
 		</div>
+<c:choose>
+<c:when test="${empty usuarios}">
+			<div class="alert alert-warning">
+   			<strong>No tiene Usuarios!</strong> Debe crear un usuuario para asignar al proyecto.
+   			<a href="../usuarios/nuevousuario.html" class="btn btn-warning">Nuevo Usuario</a>
+    		</div>
+</c:when>
+<c:otherwise>
 		<div class="form-group">
 			<label for="idUsuarioPrincipal">Usuario Principal</label>
 			<form:select path="idUsuarioPrincipal" id="select-single" class="js-example-basic-single js-states form-control" items="${usuarios}" itemLabel="nombreCompleto" itemValue="id">
@@ -49,6 +57,8 @@
 		<div class="form-group">
 			<input type="submit" class="btn btn-success" value="Guardar">
 		</div>
+</c:otherwise>
+</c:choose>
 	</form:form>
 </div>
 </div>

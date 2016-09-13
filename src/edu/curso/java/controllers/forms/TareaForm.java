@@ -14,7 +14,7 @@ public class TareaForm {
 	private String descripcion;
 	private List<Comentario> comentarios = new ArrayList<>();
 	private Long idProyecto;
-
+	private String prioridad;
 	
 	public Long getId() {
 		return id;
@@ -57,6 +57,12 @@ public class TareaForm {
 	}
 	public void setIdProyecto(Long idProyecto) {
 		this.idProyecto=idProyecto;
+	}
+	public String getPrioridad() {
+		return prioridad;
+	}
+	public void setPrioridad(String prioridad) {
+		this.prioridad = prioridad;
 	}
 
 }
