@@ -3,6 +3,7 @@ package edu.curso.java.bo;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -22,10 +23,22 @@ public class Proyecto {
 	private Usuario usuarioPrincipal;
 	@ManyToMany
 	private List<Usuario> usuarios = new ArrayList<Usuario>();
-	@OneToMany
+	@OneToMany(cascade=CascadeType.ALL)
 	private List<Tarea> tareas = new ArrayList<>();
+	private Boolean estado;
 	
+	public Proyecto(){
+		this.estado = true;
+	}
 	
+	public Boolean getEstado() {
+		return estado;
+	}
+
+	public void setEstado(Boolean estado) {
+		this.estado = estado;
+	}
+
 	public List<Usuario> getUsuarios() {
 		return usuarios;
 	}

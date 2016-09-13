@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import edu.curso.java.bo.Proyecto;
+import edu.curso.java.bo.Tarea;
 import edu.curso.java.bo.Usuario;
 import edu.curso.java.dao.ProyectoDAO;
 import edu.curso.java.dao.UsuarioDAO;
@@ -20,6 +21,8 @@ public class ProyectoServiceImp implements ProyectoService {
 	@Autowired
 	UsuarioDAO usuarioDAO;
 	
+	@Autowired
+	TareaService tareaService;
 	
 	@Override
 	public Long guardarProyecto(Proyecto proyecto) {
@@ -45,7 +48,10 @@ public class ProyectoServiceImp implements ProyectoService {
 
 	@Override
 	public void borrarProyectoPorId(Long id) {
-		proyectoDAO.borrarProyectoPorId(id);
+		List<Tarea> tareas = proyectoDAO.borrarProyectoPorId(id);
+		for(Tarea tarea : tareas){
+			tareaService.borrarTareaPorId(tarea.getId());
+		}
 		
 	}
 

@@ -16,7 +16,10 @@ public class Comentario {
 	private Date fecha;
 	private Boolean estado;
 	
-	
+
+	public Comentario(){
+		this.estado = true;
+	}
 	public Boolean getEstado() {
 		return estado;
 	}

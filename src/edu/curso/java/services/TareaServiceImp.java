@@ -32,7 +32,8 @@ public class TareaServiceImp implements TareaService {
 	ProyectoDAO proyectoDAO;
 	
 	@Autowired
-	private ComentarioDAO comentarioDAO;
+	ComentarioDAO comentarioDAO;
+	
 
 	@Override
 	public void guardarTarea(Tarea tarea, Long idProyecto) {
@@ -60,7 +61,10 @@ public class TareaServiceImp implements TareaService {
 
 	@Override
 	public void borrarTareaPorId(Long id) {
-		tareaDAO.borrarTareaPorId(id);
+		List<Comentario> comentarios = tareaDAO.borrarTareaPorId(id);
+		for(Comentario comentario : comentarios){
+			comentarioDAO.borrarComentarioPorId(comentario.getId());
+		}
 	}
 
 	@Override

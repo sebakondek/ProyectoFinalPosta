@@ -24,7 +24,7 @@ public class ComentarioDAOImp implements ComentarioDAO {
 	@SuppressWarnings("unchecked")
 	@Override
 	public List<Comentario> listarComentarios() {
-		Query query = sessionFactory.getCurrentSession().createQuery("from Comentario");
+		Query query = sessionFactory.getCurrentSession().createQuery("from Comentario where estado=1");
 		return query.list();
 	}
 
@@ -36,7 +36,8 @@ public class ComentarioDAOImp implements ComentarioDAO {
 	@Override
 	public void borrarComentarioPorId(Long id) {
 		Comentario comentario = this.recuperarComentarioPorId(id);
-		sessionFactory.getCurrentSession().delete(comentario);
+		comentario.setEstado(false);
+		editarComentario(comentario);
 	}
 
 	@Override
@@ -48,7 +49,7 @@ public class ComentarioDAOImp implements ComentarioDAO {
 	@SuppressWarnings("unchecked")
 	@Override
 	public List<Comentario> buscarComentarioPorContenido(String campoBuscar) {
-		String hql = "from Comentario as c where c.comentario like :textoBuscar ";
+		String hql = "from Comentario as c where c.comentario like :textoBuscar and estado=1";
 		Query query = sessionFactory.getCurrentSession().createQuery(hql);
 		query.setString("textoBuscar", "%" + campoBuscar + "%");
 		return query.list();

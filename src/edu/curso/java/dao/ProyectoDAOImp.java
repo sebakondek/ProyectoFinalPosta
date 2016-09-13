@@ -1,5 +1,6 @@
 package edu.curso.java.dao;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.apache.log4j.Logger;
@@ -8,7 +9,9 @@ import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import edu.curso.java.bo.Comentario;
 import edu.curso.java.bo.Proyecto;
+import edu.curso.java.bo.Tarea;
 import edu.curso.java.bo.Usuario;
 
 @Repository
@@ -27,7 +30,7 @@ public class ProyectoDAOImp implements ProyectoDAO {
 	@SuppressWarnings("unchecked")
 	@Override
 	public List<Proyecto> listarProyectos() {
-        Query query = sessionFactory.getCurrentSession().createQuery("from Proyecto");
+        Query query = sessionFactory.getCurrentSession().createQuery("from Proyecto where estado=1");
         return query.list();
 	}
 
@@ -46,21 +49,26 @@ public class ProyectoDAOImp implements ProyectoDAO {
 	}
 
 	@Override
-	public void borrarProyectoPorId(Long id) {
+	public List<Tarea> borrarProyectoPorId(Long id) {
 		Proyecto proyecto = this.recuperarProyectoPorId(id);
-		sessionFactory.getCurrentSession().delete(proyecto);
+		List<Tarea> tareas = proyecto.getTareas();
+		
+		proyecto.setEstado(false);
+		editarProyecto(proyecto);
+		
+		return tareas;
 	}
 
 	@Override
 	public void editarProyecto(Proyecto proyecto) {
 		sessionFactory.getCurrentSession().update(proyecto);
-		log.info("El proyecto es: "+proyecto.getId()+"// La tarea es: "+(proyecto.getTareas()).get((proyecto.getTareas().size() - 1)));
+		//log.info("El proyecto es: "+proyecto.getId()+"// La tarea es: "+(proyecto.getTareas()).get((proyecto.getTareas().size() - 1)));
 	}
 
 	@SuppressWarnings("unchecked")
 	@Override
 	public List<Proyecto> buscarProyectoPorNombre(String campoBuscar) {
-		String hql = "from Proyecto as p where p.nombre like :textoBuscar OR p.descripcion like :textoBuscar";
+		String hql = "from Proyecto as p where p.estado=1 and (p.nombre like :textoBuscar OR p.descripcion like :textoBuscar)";
 		Query query = sessionFactory.getCurrentSession().createQuery(hql);
 		query.setString("textoBuscar", "%" + campoBuscar + "%");
 		return query.list();
