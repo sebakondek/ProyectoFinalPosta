@@ -3,26 +3,36 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
-<c:import url="/general/template_top.jsp" />
+<script>
+	formInit("Comentarios");
+</script>
 
+<div class="modal-dialog" role="dialog">
+	 <div class="modal-content">
+	    <div class="modal-header">
+       		<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        	<h4 class="modal-title" id="myModalLabel"><b>Nuevo Comentario</b></h4>
+      </div>
+		<div class="modal-body" id="modal-body">
 
-
-
-<div class="form form-group table">
-	<form:form method="post" modelAttribute="comentarioForm" action="guardarcomentario.html" class="form">
-		<form:input path="id" type="hidden" />
-		<form:input path="idUsuario" type="hidden" />
-		<form:input path="idTarea" type="hidden" />
-		<form:input path="idProyecto" type="hidden" value="${proyecto.id}" />
-		<div class="form-group">
-			<label for="comentario">Comentario</label>
-			<form:textarea class="form-control" path="comentario" type="text" />
+			<div class="form form-group table">
+				<form:form method="post" modelAttribute="comentarioForm" action="../comentarios/guardarcomentario.html" class="form" id="form">
+					<form:input path="id" type="hidden" />
+					<form:input path="idTarea" type="hidden" />
+					<form:input path="idProyecto" type="hidden" />
+					<div class="form-group">
+						<label for="comentario">Comentario</label>
+						<form:textarea class="form-control required" path="comentario" type="text" />
+					</div>
+					<div class="form-group">
+						<input type="submit" class="btn btn-success" value="Guardar">
+					</div>
+				</form:form>
+			</div>
+			
 		</div>
-		<div class="form-group">
-			<input type="submit" class="btn btn-success" value="Guardar">
-			<a href="<c:url value="/tareas/vertarea.html?idT=${comentarioForm.idTarea}&idP=${proyecto.id}" />" class="btn btn-danger">Volver</a>
-		</div>
-	</form:form>
+      <div class="modal-footer">
+      	<button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+      </div>
+    </div>
 </div>
-
-<c:import url="/general/template_bottom.jsp" />

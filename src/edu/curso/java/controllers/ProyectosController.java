@@ -13,9 +13,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import edu.curso.java.bo.Proyecto;
-import edu.curso.java.bo.Usuario;
 import edu.curso.java.controllers.forms.ProyectoForm;
-import edu.curso.java.controllers.forms.UsuarioForm;
 import edu.curso.java.services.ProyectoService;
 import edu.curso.java.services.UsuarioService;
 

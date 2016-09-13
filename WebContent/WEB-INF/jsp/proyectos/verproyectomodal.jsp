@@ -42,6 +42,10 @@
 					</c:choose>
 				</td>
 			</tr>
+			<tr>
+				<th>Tiempo Asignado</th>
+				<td>${proyecto.tiempoEstimado} horas</td>
+			</tr>
 		</table>
 		
 <!-- Tareas -->
