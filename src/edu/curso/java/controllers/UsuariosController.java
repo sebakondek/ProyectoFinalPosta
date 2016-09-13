@@ -60,7 +60,7 @@ public class UsuariosController {
 
 		Long idGenerado = usuarioService.crearNuevoUsuario(usuario);
 
-		return "redirect:/usuarios/verusuario.html?id=" + idGenerado;
+		return "redirect:/usuarios/listar.html";
 	}
 
 	@RequestMapping(value = "/editarUsuario")

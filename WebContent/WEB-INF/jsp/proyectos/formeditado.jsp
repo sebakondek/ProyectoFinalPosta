@@ -46,7 +46,6 @@ $(function(){
 		</div>
 		<div>	
 			<input type="submit" class="btn btn-success" value="Guardar">
-			<a href="listar.html" class="btn btn-danger">Cancelar</a>
 		</div>
 	</form:form>
 </div>

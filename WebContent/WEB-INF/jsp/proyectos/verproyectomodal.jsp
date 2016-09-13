@@ -21,10 +21,26 @@
 			 	<td><textarea rows="2" cols="50" class="textAreaDesc" readonly>${proyecto.descripcion}</textarea></td>
 			</tr>
 			<tr>
-		 	<th>Usuario Principal</th>
-		 	<c:if test="${not empty proyecto.usuarioPrincipal}">
-				<td>${proyecto.usuarioPrincipal.nombreCompleto}</td>
-			</c:if>
+		 		<th>Usuario Principal</th>
+			 	<c:if test="${not empty proyecto.usuarioPrincipal}">
+					<td>${proyecto.usuarioPrincipal.nombreCompleto}</td>
+				</c:if>
+			</tr>
+			<tr>
+				<th>Usuarios en el Proyecto</th>
+				<td>	
+					<c:choose>
+						<c:when test="${not empty proyecto.usuarios}">
+							<c:forEach items="${proyecto.usuarios}" var="u" varStatus="loop">
+								${u.nombreCompleto}
+								<c:if test="${!loop.last}">,&nbsp;</c:if>
+							</c:forEach>
+						</c:when>
+						<c:otherwise>
+							No hay usuarios asignados además del principal.
+						</c:otherwise>
+					</c:choose>
+				</td>
 			</tr>
 		</table>
 		
@@ -55,7 +71,6 @@
 			</tr>
 		</c:forEach>
 	</table>
-		
 		
       </div>
       <div class="modal-footer">

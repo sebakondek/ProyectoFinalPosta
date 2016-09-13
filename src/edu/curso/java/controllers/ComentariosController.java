@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import edu.curso.java.bo.Comentario;
 import edu.curso.java.bo.Proyecto;
-import edu.curso.java.bo.Tarea;
 import edu.curso.java.controllers.forms.ComentarioForm;
 import edu.curso.java.dao.ComentarioDAO;
 import edu.curso.java.services.ProyectoService;
