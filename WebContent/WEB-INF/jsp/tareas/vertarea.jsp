@@ -4,9 +4,6 @@
 
 <c:import url="/general/template_top.jsp" />
 
-<script>
-	listarInit("Comentarios");
-</script>
 
 <h2><b>${proyecto.nombre}</b></h2>
 
@@ -40,7 +37,6 @@
 
 
 
-
 <!-- Comentarios -->
 
 	<hr>
@@ -48,7 +44,7 @@
 	<table id="comentTableHeader">
 		<tr>
 		<td>
-			<form id="miFormBuscadorComent" method="post" onsubmit="opcionComentario(0,'buscar'); return false;" class="form-inline">
+			<form id="miFormBuscadorComent" method="post" onsubmit="opcionComentario('buscar'); return false;" class="form-inline">
 				<div class="form-group">
 					<input name="campoBuscar" class="form-control" id="campoBuscarCom" type="text" placeholder="Buscar">
 				</div>
@@ -56,12 +52,15 @@
 			</form>
 		</td>
 		<td>
-			<a type="button" href="<c:url value="/comentarios/nuevocomentario.html?idC=${c.id}&idT=${tarea.id}&idP=${proyecto.id}" />" 
-					class="btn btn-warning" id="nuevoComentarioBtn">Nuevo Comentario</a>
+			<a onclick="opcionComentario(${tarea.id}, ${proyecto.id},'crear')" class="btn btn-warning" id="nuevoComentarioBtn">Nuevo Comentario</a>
 		</td>
 		</tr>
 	</table>
 		
+		
+<div id="myModalComent" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"></div>
+
+
 	<c:choose>
 		<c:when test="${not empty tarea.comentarios}">
 			<table class="table table-striped table-bordered table-responsive" id="tablaTareas">

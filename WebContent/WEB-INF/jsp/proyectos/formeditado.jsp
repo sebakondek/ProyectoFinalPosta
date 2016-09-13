@@ -21,7 +21,7 @@ $(function(){
 		<div class="modal-body" id="modal-body">
 
 		<div class="form form-group table">
-	<form:form method="post" modelAttribute="proyectoForm" action="guardaredicionproyecto.html">
+	<form:form method="post" modelAttribute="proyectoForm" action="guardaredicionproyecto.html" id="form">
 		<form:input path="id" type="hidden" />
 		<div class="form-group">
 			<label for="nombre">Nombre</label>
@@ -33,7 +33,7 @@ $(function(){
 		</div>
 		<div class="form-group">
 			<label for="totalHoras">Duracion Estimada en Horas</label>
-			<form:input class="form-control" path="tiempoEstimado"  max="1000" min="0" type="number"/>
+			<form:input class="form-control required" path="tiempoEstimado"  max="1000" min="0" type="number"/>
 		</div>
 		<div class="form-group">
 			<label for="idUsuarioPrincipal">Usuario Principal</label>

@@ -2,7 +2,7 @@
 
 function formInit(clase){
 	
-	$(".form").validate();
+	$("#form").validate();
 	
 	if (clase=="proyecto") {
 		$("#select-single").select2();
@@ -136,13 +136,20 @@ function opcionUsuario(id, opcion){
 			}	
 }
 /*********************************ABM Listado COMENTARIOS***********************************/
-function opcionComentario(opcion){
+function opcionComentario(idT, idP, opcion){
 	
 	switch (opcion) {
 		case "buscar":
 			var datosDelForm = $("#miFormBuscadorComent").serialize();
-			$.post("buscarcomentarios.html",datosDelForm, function(resp){
+			$.post("../comentarios/buscarcomentarios.html",datosDelForm, function(resp){
 				$("#divComentarios").html(resp);
+			});
+			break;
+			
+		case "crear":
+			$.get("../comentarios/nuevocomentario.html?idT=" + idT + "&idP=" + idP, function(resp){
+				$("#myModalComent").html(resp);
+				$("#myModalComent").modal("show");
 			});
 			break;
 			

@@ -53,18 +53,17 @@ public class ComentariosController {
 	}
 	
 	@RequestMapping(value="/nuevocomentario")
-	public String nuevoComentario(@RequestParam Long idC, Long idT, Long idP, Model model) {
-		Proyecto proyecto = proyectoService.recuperarProyectoPorId(idP);
+	public String nuevoComentario(@RequestParam Long idT, Long idP, Model model) {
 		ComentarioForm comentarioForm = new ComentarioForm();
 		comentarioForm.setIdTarea(idT);
+		comentarioForm.setIdProyecto(idP);
 		model.addAttribute("comentarioForm", comentarioForm);
-		model.addAttribute("proyecto", proyecto);
-		log.info("ejecutando nuevo comentario para id tarea" + idC);
 		return "comentarios/form";
 	}
 	
 	@RequestMapping(value = "/guardarcomentario", method = RequestMethod.POST)
 	public String guardarComentario(@ModelAttribute("comentarioForm") ComentarioForm comentarioForm, Model model) {
+		
 		log.info("llego el comentario para el id" + comentarioForm.getIdTarea());
 		
 		Comentario comentario = null;
