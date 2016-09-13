@@ -15,7 +15,7 @@ public class ProyectoForm {
 	private List<Tarea> tareas = new ArrayList<>();
 	private Long idUsuarioPrincipal;
 	private Long[] idUsuarios;
-	
+	private Double tiempoEstimado;
 	
 	
 	public Long getIdUsuarioPrincipal() {
@@ -87,6 +87,17 @@ public class ProyectoForm {
 	public void setIdUsuarios(Long[] idUsuarios) {
 		this.idUsuarios = idUsuarios;
 	}
+	
+	public Double getTiempoEstimado() {
+		return tiempoEstimado;
+	}
+
+
+	public void setTiempoEstimado(Double tiempoEstimado) {
+		this.tiempoEstimado = tiempoEstimado;
+	}
+
+
 
 	
 }

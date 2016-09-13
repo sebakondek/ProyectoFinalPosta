@@ -1,6 +1,7 @@
 package edu.curso.java.bo;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -26,6 +27,8 @@ public class Proyecto {
 	@OneToMany(cascade=CascadeType.ALL)
 	private List<Tarea> tareas = new ArrayList<>();
 	private Boolean estado;
+	private double tiempoEstimado;
+	private Date fechaAlta;
 	
 	public Proyecto(){
 		this.estado = true;
@@ -85,6 +88,22 @@ public class Proyecto {
 
 	public void setUsuarioPrincipal(Usuario usuarioPrincipal) {
 		this.usuarioPrincipal = usuarioPrincipal;
+	}
+
+	public double getTiempoEstimado() {
+		return tiempoEstimado;
+	}
+
+	public void setTiempoEstimado(double tiempoEstimado) {
+		this.tiempoEstimado = tiempoEstimado;
+	}
+
+	public Date getFechaAlta() {
+		return fechaAlta;
+	}
+
+	public void setFechaAlta(Date fechaAlta) {
+		this.fechaAlta = fechaAlta;
 	}
 	
 	

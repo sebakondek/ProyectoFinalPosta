@@ -1,5 +1,6 @@
 package edu.curso.java.controllers;
 
+import java.util.Date;
 import java.util.List;
 
 import org.apache.log4j.Logger;
@@ -68,11 +69,14 @@ public class ProyectosController {
 			proyecto= proyectoService.recuperarProyectoPorId(idActual);
 			proyecto.setNombre(proyectoForm.getNombre());
 			proyecto.setDescripcion(proyectoForm.getDescripcion());
+			proyecto.setTiempoEstimado(proyectoForm.getTiempoEstimado());
 			idActual = proyectoService.actualizarProyecto(proyecto,idUsuarioPrincipal, idUsuarios);
 		} else {
 			proyecto = new Proyecto();
+			proyecto.setFechaAlta(new Date());
 			proyecto.setNombre(proyectoForm.getNombre());
 			proyecto.setDescripcion(proyectoForm.getDescripcion());
+			proyecto.setTiempoEstimado(proyectoForm.getTiempoEstimado());
 			idActual = proyectoService.actualizarProyecto(proyecto, idUsuarioPrincipal, idUsuarios);
 		}
 	
@@ -90,7 +94,8 @@ public class ProyectosController {
 		proyectoForm.setIdUsuarioPrincipal(proyecto.getUsuarioPrincipal().getId());
 		proyectoForm.setUsuarios(proyecto.getUsuarios());
 		proyectoForm.setTareas(proyecto.getTareas());
-	
+		proyectoForm.setTiempoEstimado(proyecto.getTiempoEstimado());
+		
 		model.addAttribute("proyectoForm", proyectoForm);
 		model.addAttribute("usuarios", usuarioService.recuperarUsuarios());
 		return "/proyectos/formeditado";
@@ -106,6 +111,7 @@ public class ProyectosController {
 		proyecto= proyectoService.recuperarProyectoPorId(idActual);
 		proyecto.setNombre(proyectoForm.getNombre());
 		proyecto.setDescripcion(proyectoForm.getDescripcion());
+		proyecto.setTiempoEstimado(proyectoForm.getTiempoEstimado());
 		idActual = proyectoService.actualizarProyecto(proyecto,idUsuarioPrincipal, idUsuarios);
 	
 		return "redirect:/proyectos/listar.html";

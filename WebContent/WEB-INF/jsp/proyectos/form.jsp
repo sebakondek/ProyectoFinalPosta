@@ -32,6 +32,10 @@
 			<form:textarea class="form-control required" path="descripcion" />
 		</div>
 		<div class="form-group">
+			<label for="totalHoras">Duracion Estimada en Horas</label>
+			<form:input class="form-control" path="tiempoEstimado"  max="1000" min="0" type="number"/>
+		</div>
+		<div class="form-group">
 			<label for="idUsuarioPrincipal">Usuario Principal</label>
 			<form:select path="idUsuarioPrincipal" id="select-single" class="js-example-basic-single js-states form-control" items="${usuarios}" itemLabel="nombreCompleto" itemValue="id">
 		</form:select>
