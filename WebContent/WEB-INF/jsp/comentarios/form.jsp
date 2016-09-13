@@ -22,7 +22,7 @@
 					<form:input path="idProyecto" type="hidden" />
 					<div class="form-group">
 						<label for="comentario">Comentario</label>
-						<form:textarea class="form-control required" path="comentario" type="text" />
+						<form:textarea class="form-control required" minlength="8" path="comentario" type="text" />
 					</div>
 					<div class="form-group">
 						<input type="submit" class="btn btn-success" value="Guardar">
