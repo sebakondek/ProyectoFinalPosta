@@ -75,7 +75,7 @@
 						<td>${c.usuario.nombreCompleto}</td>
 						<td rowspan="2"><textarea rows="3" cols="90" class="textAreaDesc" readonly>${c.comentario}</textarea></td>
 						<td rowspan="2" class="tdOpciones">
-							<a href="<c:url value="/comentarios/editarcomentario.html?idC=${c.id}&idT=${tarea.id}" />" class="btn btn-primary">Editar</a>
+							<a href="<c:url value="/comentarios/editarcomentario.html?idC=${c.id}&idT=${tarea.id}&idP=${proyecto.id}" />" class="btn btn-primary">Editar</a>
 						</td>
 					</tr>
 					<tr>

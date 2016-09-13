@@ -6,9 +6,16 @@ public class ComentarioForm {
 	private String comentario;
 	private Long idUsuario;
 	private Long idTarea;
+	private Long idProyecto;
 	private Boolean estado;
 	
 	
+	public Long getIdProyecto() {
+		return idProyecto;
+	}
+	public void setIdProyecto(Long idProyecto) {
+		this.idProyecto = idProyecto;
+	}
 	public Boolean getEstado() {
 		return estado;
 	}

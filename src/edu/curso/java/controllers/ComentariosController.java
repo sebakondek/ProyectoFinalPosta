@@ -13,8 +13,10 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import edu.curso.java.bo.Comentario;
+import edu.curso.java.bo.Proyecto;
 import edu.curso.java.controllers.forms.ComentarioForm;
 import edu.curso.java.dao.ComentarioDAO;
+import edu.curso.java.services.ProyectoService;
 import edu.curso.java.services.TareaService;
 import edu.curso.java.services.UsuarioService;
 
@@ -32,6 +34,9 @@ public class ComentariosController {
 	
 	@Autowired
 	UsuarioService usuarioService;
+	
+	@Autowired
+	ProyectoService proyectoService;
 
 	@RequestMapping(value="/listarcomentarios", method = RequestMethod.GET)
 	public String listarComentarios(Model model) {
@@ -63,6 +68,7 @@ public class ComentariosController {
 		Comentario comentario = null;
 		Long idActual = comentarioForm.getId();
 		Long idTarea = comentarioForm.getIdTarea();
+		Long idProyecto = comentarioForm.getIdProyecto();
 		Long idUsuario = (long) 1;				 //a cambiar cuando se implemente el login
 		
 		if(idActual != null){
@@ -82,7 +88,7 @@ public class ComentariosController {
 			tareaService.editarTarea(tareaService.recuperarTareaPorId(idTarea));
 		}
 	
-		return "redirect:/tareas/vertarea.html?id=" + idTarea;
+		return "redirect:/tareas/vertarea.html?idT=" + idTarea + "&idP=" + idProyecto;
 	}
 	
 	@RequestMapping(value="/borrarcomentario")
@@ -92,8 +98,9 @@ public class ComentariosController {
 	}
 	
 	@RequestMapping(value="/editarcomentario")
-	public String editarComentario(Model model, @RequestParam Long idC, Long idT){
+	public String editarComentario(Model model, @RequestParam Long idC, Long idT, Long idP){
 		Comentario comentario = comentarioDAO.recuperarComentarioPorId(idC);
+		Proyecto proyecto = proyectoService.recuperarProyectoPorId(idP);
 		ComentarioForm comentarioForm = new ComentarioForm();
 		
 		comentarioForm.setId(comentario.getId());
@@ -103,6 +110,7 @@ public class ComentariosController {
 		comentarioForm.setIdTarea(idT);
 	
 		model.addAttribute("comentarioForm", comentarioForm);
+		model.addAttribute("proyecto", proyecto);
 		return "/comentarios/formeditado";
 	}
 	
