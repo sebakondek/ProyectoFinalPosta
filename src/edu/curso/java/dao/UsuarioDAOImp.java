@@ -36,6 +36,7 @@ public class UsuarioDAOImp implements UsuarioDAO {
 	/* (non-Javadoc)
 	 * @see edu.curso.java.dao.UsuarioDAO#recuperarUsuarios()
 	 */
+	@SuppressWarnings("unchecked")
 	@Override
 	public List<Usuario> recuperarUsuarios() {
 		String hql = "from Usuario as u order by u.nombreCompleto";
@@ -55,6 +56,7 @@ public class UsuarioDAOImp implements UsuarioDAO {
 		sessionFactory.getCurrentSession().update(usuario);
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public List<Usuario> buscarUsuariosPorNombre(String campoBuscar) {
 		String hql = "from Usuario as u where u.nombreCompleto like :textoBuscar or u.usuario like :textoBuscar";

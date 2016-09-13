@@ -9,7 +9,6 @@ import org.springframework.stereotype.Repository;
 
 import edu.curso.java.bo.Proyecto;
 import edu.curso.java.bo.Tarea;
-import edu.curso.java.bo.Usuario;
 import edu.curso.java.services.ProyectoService;
 
 @Repository
@@ -28,6 +27,7 @@ public class TareaDAOImp implements TareaDAO {
 		return (Long) sessionFactory.getCurrentSession().save(tarea);
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public List<Tarea> listarTareas() {
 		Query query = sessionFactory.getCurrentSession().createQuery("from Tarea");
@@ -56,9 +56,10 @@ public class TareaDAOImp implements TareaDAO {
 		sessionFactory.getCurrentSession().update(tarea);
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public List<Tarea> buscarTareaPorNombre(String campoBuscar) {
-		String hql = "from Tarea as t where t.titulo like :textoBuscar";
+		String hql = "from Tarea as t where t.titulo like :textoBuscar OR t.descripcion like :textoBuscar";
 		Query query = sessionFactory.getCurrentSession().createQuery(hql);
 		query.setString("textoBuscar", "%" + campoBuscar + "%");
 		return query.list();

@@ -6,8 +6,27 @@ body {
 	margin-top: 30px;
 }
 
-.table-bordered>tbody>tr>th,.table-bordered>tbody>tr>td {
+.tdFecha {
+	color: #b1abab;
+	border-top-style: none;
+	background-color: #FFFFFF !important; 
+}
+
+.tdOpciones {
+	vertical-align: middle !important;
+}
+
+#tablaTareas>tbody>tr>td, #tablaTareas>tbody>tr>th {
+	border-left-style: hidden;
+	border-right-style: hidden;
+}
+
+.table-bordered>tbody>tr>th, .table-bordered>tbody>tr>td {
 	text-align: center;
+}
+
+.table-bordered>tbody>tr>th, .table-bordered>tbody>tr>td {
+	vertical-align: middle;
 }
 
 .navbar-inverse .navbar-nav>.active>a, .navbar-inverse .navbar-nav>.active>a:focus, .navbar-inverse .navbar-nav>.active>a:hover {
@@ -30,4 +49,43 @@ body {
 
 .table-bordered>tbody>tr>td {
 	background-color: #ffffff;
+}
+
+#nuevaTareaBtn {
+	float: right;
+	margin-bottom: 30px;
+}
+
+hr {
+	border-top: 1px solid #d4cece;
+}
+
+#nuevoComentarioBtn {
+	float: right;
+
+}
+
+#comentTableHeader {
+	width: 100%;
+	margin-top: 50px;
+}
+
+.textAreaDesc, textarea.textAreaDesc:focus {
+	outline: none;
+	border-style: none; 
+    border-color: Transparent;
+    text-align: center;
+}
+
+textarea {
+    resize: none;
+}
+
+.select2-container {
+	width: 100% !important;
+}
+
+#btnVolverTarea {
+	float: right;
+	margin-top: 20px;
 }

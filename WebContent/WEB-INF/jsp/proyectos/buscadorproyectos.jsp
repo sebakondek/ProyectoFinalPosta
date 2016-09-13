@@ -15,21 +15,17 @@
 			<tr>
 				<td>${p.id}</td>
 				<td>${p.nombre}</td>
-				<td>${p.descripcion}</td>
+				<td><textarea rows="2" cols="70" class="textAreaDesc" readonly>${p.descripcion}</textarea></td>
 				<c:if test="${not empty p.usuarioPrincipal}">
 					<td>${p.usuarioPrincipal.nombreCompleto}</td>
 				</c:if>
 				<td>
-					<button type="button" data-toggle="modal" onclick="opcionProyecto(${p.id},'ver')" class="btn btn-primary">Ver</button>
+					<button type="button" data-toggle="modal" onclick="opcionProyecto(${p.id},'ver')" class="btn btn-success">Ver</button>
 										
 					<button type="button" data-toggle="modal" onclick="opcionProyecto(${p.id},'editar')" class="btn btn-primary">Editar</button>
 					
 					<a href="borrarproyecto.html?id=${p.id}" class="btn btn-danger">Borrar</a>
-					
-					<a href="<c:url value="/tareas/nuevatarea.html?id=${p.id}" />" class="btn btn-warning">Nueva Tarea</a>
-					
-					<a type="button" href="<c:url value="/comentarios/nuevocomentario.html?id=${p.id}" />" class="btn btn-primary">Nuevo Comentario</a>
-					
+															
 				</td>
 			</tr>
 			

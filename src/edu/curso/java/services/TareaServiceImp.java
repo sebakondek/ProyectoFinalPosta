@@ -22,6 +22,7 @@ import edu.curso.java.dao.TareaDAO;
 @Transactional
 public class TareaServiceImp implements TareaService {
 
+	@SuppressWarnings("unused")
 	private static final Logger log = Logger.getLogger(TareaServiceImp.class);
 	
 	@Autowired

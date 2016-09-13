@@ -98,6 +98,7 @@ public class TareaController {
 		
 		tareaForm.setId(tarea.getId());
 		tareaForm.setTitulo(tarea.getTitulo());
+		tareaForm.setDescripcion(tarea.getDescripcion());
 		tareaForm.setDuracionEstimada(tarea.getDuracionEstimada());
 		tareaForm.setDuracionReal(tarea.getDuracionReal());
 	

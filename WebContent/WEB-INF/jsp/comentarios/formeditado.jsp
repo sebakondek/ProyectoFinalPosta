@@ -18,8 +18,8 @@
 			<form:textarea class="form-control" path="comentario" type="text" />
 		</div>
 		<div class="form-group">
-			<input type="submit" class="btn btn-success" value="Editar">
-			<a href="<c:url value="/proyectos/listar.html" />" class="btn btn-danger">Volver </a>
+			<input type="submit" class="btn btn-success" value="Guardar">
+			<a href="<c:url value="/tareas/vertarea.html?id=${comentarioForm.idTarea}" />" class="btn btn-danger">Volver </a>
 		</div>
 	</form:form>
 </div>

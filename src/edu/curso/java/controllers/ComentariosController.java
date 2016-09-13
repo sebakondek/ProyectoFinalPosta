@@ -13,9 +13,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import edu.curso.java.bo.Comentario;
-import edu.curso.java.bo.Tarea;
 import edu.curso.java.controllers.forms.ComentarioForm;
-import edu.curso.java.controllers.forms.TareaForm;
 import edu.curso.java.dao.ComentarioDAO;
 import edu.curso.java.services.TareaService;
 import edu.curso.java.services.UsuarioService;
@@ -61,10 +59,12 @@ public class ComentariosController {
 	@RequestMapping(value = "/guardarcomentario", method = RequestMethod.POST)
 	public String guardarComentario(@ModelAttribute("comentarioForm") ComentarioForm comentarioForm, Model model) {
 		log.info("llego el comentario para el id" + comentarioForm.getIdTarea());
+		
 		Comentario comentario = null;
 		Long idActual = comentarioForm.getId();
 		Long idTarea = comentarioForm.getIdTarea();
 		Long idUsuario = (long) 1;				 //a cambiar cuando se implemente el login
+		
 		if(idActual != null){
 			comentario = comentarioDAO.recuperarComentarioPorId(idActual);
 			comentario.setComentario(comentarioForm.getComentario());
@@ -104,5 +104,12 @@ public class ComentariosController {
 	
 		model.addAttribute("comentarioForm", comentarioForm);
 		return "/comentarios/formeditado";
+	}
+	
+	@RequestMapping(value = "/buscarcomentarios", method = RequestMethod.POST)
+	public String buscarProyectos(@ModelAttribute("campoBuscar") String campoBuscar, Model model) {
+		List<Comentario> comentarios = comentarioDAO.buscarComentarioPorContenido(campoBuscar);
+		model.addAttribute("comentarios",comentarios);
+		return "/comentarios/buscadorcomentarios";
 	}
 }

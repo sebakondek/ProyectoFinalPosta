@@ -6,9 +6,6 @@
 <c:import url="/general/template_top.jsp" />
 
 
-
-<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
-
 <div class="form form-group table">
 	<form:form method="post" modelAttribute="tareaForm" action="guardartarea.html" class="form">
 		<form:input path="id" type="hidden" />
@@ -20,7 +17,7 @@
 		</div>
 		<div class="form-group">
 			<label for="descripcion">Descripcion</label>
-			<form:textarea class="form-control required" path="descripcion" />
+			<form:textarea rows="3" cols="70" class="form-control required" path="descripcion" />
 		</div>
 		<div class="form-group">
 			<label for="totalHoras">Duracion Estimada en Horas</label>

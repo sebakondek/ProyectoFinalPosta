@@ -18,7 +18,7 @@
 			</tr>
 			<tr>
 			 	<th>Descripcion</th>
-			 	<td>${proyecto.descripcion}</td>
+			 	<td><textarea rows="2" cols="50" class="textAreaDesc" readonly>${proyecto.descripcion}</textarea></td>
 			</tr>
 			<tr>
 		 	<th>Usuario Principal</th>
@@ -29,6 +29,11 @@
 		</table>
 		
 <!-- Tareas -->
+
+		<hr>
+		<h2>Tareas</h2>
+		
+		<a href="<c:url value="/tareas/nuevatarea.html?id=${proyecto.id}" />" id="nuevaTareaBtn" class="btn btn-warning">Nueva Tarea</a>
 		
 		<table class="table table-striped table-bordered table-hover table-responsive">
 		<tr>
@@ -41,9 +46,11 @@
 			<tr>
 				<td>${t.id}</td>
 				<td>${t.titulo}</td>
-				<td>${t.duracionEstimada}</td>
+				<td>${t.duracionEstimada} horas</td>
 				<td>
-					<a href="<c:url value="/tareas/vertarea.html?id=${t.id}" />" class="btn btn-primary">Ver </a>
+					<a href="<c:url value="/tareas/vertarea.html?id=${t.id}" />" class="btn btn-success">Ver</a>
+					
+					<a href="<c:url value="/tareas/editartarea.html?id=${t.id}" />" class="btn btn-primary">Editar</a>
 				</td>
 			</tr>
 		</c:forEach>

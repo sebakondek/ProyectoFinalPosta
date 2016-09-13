@@ -48,6 +48,4 @@ public class Comentario {
 		this.fecha = fecha;
 	}
 	
-	
-	
 }

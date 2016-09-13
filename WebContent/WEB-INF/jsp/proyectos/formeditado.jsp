@@ -16,7 +16,7 @@ $(function(){
 	 <div class="modal-content">
 	    <div class="modal-header">
 	        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-	        <h4 class="modal-title" id="myModalLabel"><b>${proyectoForm.nombre}</b></h4>
+	        <h4 class="modal-title" id="myModalLabel"><b>Editar</b></h4>
 	    </div>
 		<div class="modal-body" id="modal-body">
 
@@ -45,7 +45,7 @@ $(function(){
 			</form:select>
 		</div>
 		<div>	
-			<input type="submit" class="btn btn-success" value="Editar">
+			<input type="submit" class="btn btn-success" value="Guardar">
 			<a href="listar.html" class="btn btn-danger">Cancelar</a>
 		</div>
 	</form:form>

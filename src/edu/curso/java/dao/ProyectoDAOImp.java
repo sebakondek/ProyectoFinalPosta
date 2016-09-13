@@ -9,9 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import edu.curso.java.bo.Proyecto;
-import edu.curso.java.bo.Tarea;
 import edu.curso.java.bo.Usuario;
-import edu.curso.java.controllers.TareaController;
 
 @Repository
 public class ProyectoDAOImp implements ProyectoDAO {
@@ -59,9 +57,12 @@ public class ProyectoDAOImp implements ProyectoDAO {
 		log.info("El proyecto es: "+proyecto.getId()+"// La tarea es: "+(proyecto.getTareas()).get((proyecto.getTareas().size() - 1)));
 	}
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public List<Proyecto> buscarProyectoPorNombre(String campoBuscar) {
-		Query query = sessionFactory.getCurrentSession().createQuery("from Proyecto as p where p.nombre like '%" + campoBuscar + "%'");
+		String hql = "from Proyecto as p where p.nombre like :textoBuscar OR p.descripcion like :textoBuscar";
+		Query query = sessionFactory.getCurrentSession().createQuery(hql);
+		query.setString("textoBuscar", "%" + campoBuscar + "%");
 		return query.list();
 	}
 
