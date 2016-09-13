@@ -49,8 +49,17 @@
 		<hr>
 		<h2>Tareas</h2>
 		
-		<a href="<c:url value="/tareas/nuevatarea.html?id=${proyecto.id}" />" id="nuevaTareaBtn" class="btn btn-warning">Nueva Tarea</a>
-		
+		<c:choose>
+		<c:when test="${proyecto.tiempoEstimado > 0  }">
+			<a href="<c:url value="/tareas/nuevatarea.html?id=${proyecto.id}" />" id="nuevaTareaBtn" class="btn btn-warning">Nueva Tarea</a>
+		</c:when>
+		<c:otherwise>
+				<div class="alert alert-warning">
+    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+    <strong>No tiene Horas disponibles!</strong> contactese con ${proyecto.usuarioPrincipal.nombreCompleto} para que le asigne.
+    </div>
+		</c:otherwise>
+		</c:choose>
 		<table class="table table-striped table-bordered table-hover table-responsive">
 		<tr>
 			<th>Id</th>

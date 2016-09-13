@@ -151,3 +151,7 @@ function opcionComentario(opcion){
 			break;
 	}	
 }
+/*******************************ALERTS************************************************/
+function noTieneHorasAsignadas(usuarioPpal){
+	alert("Usted no tiene horas para asignarle a la tarea, contactese con "+ usuarioPpal +" para que le asigne");
+}

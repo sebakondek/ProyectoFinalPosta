@@ -68,7 +68,8 @@ public class TareaController {
 		
 		TareaForm tareaForm = new TareaForm();
 		tareaForm.setIdProyecto(id);
-		
+		Proyecto proyecto = proyectoService.recuperarProyectoPorId(tareaForm.getIdProyecto());
+		model.addAttribute("tiempoProyecto", proyecto.getTiempoEstimado());
 		model.addAttribute("tareaForm", tareaForm);
 		return "/tareas/form";
 	}
@@ -83,6 +84,7 @@ public class TareaController {
 			tarea.setDuracionEstimada(tareaForm.getDuracionEstimada());
 			tarea.setDuracionReal(0.0);
 			tarea.setDescripcion(tareaForm.getDescripcion());
+			proyectoService.editarTiempoProyecto(tareaForm.getDuracionEstimada(), tareaForm.getIdProyecto());
 			tareaService.editarTarea(tarea);
 		} else {
 			//log.info("La id de PROYECTO en TareaController:" +tareaForm.getIdProyecto());
@@ -91,6 +93,7 @@ public class TareaController {
 			tarea.setDuracionEstimada(tareaForm.getDuracionEstimada());
 			tarea.setDuracionReal(0.0);
 			tarea.setDescripcion(tareaForm.getDescripcion());
+			proyectoService.editarTiempoProyecto(tareaForm.getDuracionEstimada(), tareaForm.getIdProyecto());
 			tareaService.guardarTarea(tarea,tareaForm.getIdProyecto());
 		}
 	
@@ -108,7 +111,9 @@ public class TareaController {
 		tareaForm.setDescripcion(tarea.getDescripcion());
 		tareaForm.setDuracionEstimada(tarea.getDuracionEstimada());
 		tareaForm.setDuracionReal(tarea.getDuracionReal());
-	
+		
+		Proyecto proyecto = proyectoService.recuperarProyectoPorId(tareaForm.getIdProyecto());
+		model.addAttribute("tiempoProyecto", proyecto.getTiempoEstimado());
 		model.addAttribute("tareaForm", tareaForm);
 		return "/tareas/formeditado";
 	}

@@ -20,8 +20,8 @@
 			<form:textarea rows="3" cols="70" class="form-control required" path="descripcion" />
 		</div>
 		<div class="form-group">
-			<label for="totalHoras">Duracion Estimada en Horas</label>
-			<form:input class="form-control" path="duracionEstimada" type="number"/>
+			<label for="totalHoras">Duracion Estimada en Horas<span style="color: red;">Tiene hasta ${tiempoProyecto} para asignar</span></label>
+			<form:input class="form-control" path="duracionEstimada" min="0" max="${tiempoProyecto}" type="number"/>
 		</div>
 		<div class="form-group">
 			<input type="submit" class="btn btn-success" value="Guardar">
