@@ -48,7 +48,7 @@
 				<td>${t.titulo}</td>
 				<td>${t.duracionEstimada} horas</td>
 				<td>
-					<a href="<c:url value="/tareas/vertarea.html?id=${t.id}" />" class="btn btn-success">Ver</a>
+					<a href="<c:url value="/tareas/vertarea.html?idT=${t.id}&idP=${proyecto.id}" />" class="btn btn-success">Ver</a>
 					
 					<a href="<c:url value="/tareas/editartarea.html?id=${t.id}" />" class="btn btn-primary">Editar</a>
 				</td>

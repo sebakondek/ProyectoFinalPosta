@@ -13,9 +13,11 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import edu.curso.java.bo.Comentario;
+import edu.curso.java.bo.Proyecto;
 import edu.curso.java.bo.Tarea;
 import edu.curso.java.controllers.forms.TareaForm;
 import edu.curso.java.dao.ComentarioDAO;
+import edu.curso.java.services.ProyectoService;
 import edu.curso.java.services.TareaService;
 import edu.curso.java.services.UsuarioService;
 
@@ -34,6 +36,9 @@ public class TareaController {
 	@Autowired
 	UsuarioService usuarioService;
 	
+	@Autowired
+	ProyectoService proyectoService;
+	
 	
 	@RequestMapping(value = "/listar", method = RequestMethod.GET)
 	public String listar(Model model) {
@@ -44,9 +49,11 @@ public class TareaController {
 	}
 	
 	@RequestMapping(value = "/vertarea")
-	public String verTarea(@RequestParam Long id, Model model) {
-		Tarea tarea = tareaService.recuperarTareaPorId(id);
+	public String verTarea(@RequestParam Long idT, Long idP, Model model) {
+		Tarea tarea = tareaService.recuperarTareaPorId(idT);
+		Proyecto proyecto = proyectoService.recuperarProyectoPorId(idP);
 		model.addAttribute("tarea", tarea);
+		model.addAttribute("proyecto", proyecto);
 		return null;
 	}
 	

@@ -7,6 +7,9 @@
 <script>
 	listarInit("Comentarios");
 </script>
+
+<h2><b>${proyecto.nombre}</b></h2>
+
 <table class="table">
 	<td>
 		<h2><b>Tarea</b></h2>
