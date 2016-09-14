@@ -69,7 +69,7 @@ public class TareaController {
 		TareaForm tareaForm = new TareaForm();
 		tareaForm.setIdProyecto(id);
 		Proyecto proyecto = proyectoService.recuperarProyectoPorId(tareaForm.getIdProyecto());
-		model.addAttribute("tiempoProyecto", proyecto.getTiempoEstimado());
+		model.addAttribute("tiempoProyecto", proyecto.getTiempoReal());
 		model.addAttribute("tareaForm", tareaForm);
 		
 		return "/tareas/form";

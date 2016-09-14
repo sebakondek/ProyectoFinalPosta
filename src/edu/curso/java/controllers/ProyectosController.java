@@ -71,6 +71,7 @@ public class ProyectosController {
 			proyecto.setNombre(proyectoForm.getNombre());
 			proyecto.setDescripcion(proyectoForm.getDescripcion());
 			proyecto.setTiempoEstimado(proyectoForm.getTiempoEstimado());
+			proyecto.setTiempoReal(proyectoForm.getTiempoEstimado());
 			idActual = proyectoService.actualizarProyecto(proyecto,idUsuarioPrincipal, idUsuarios);
 		} else {
 			proyecto = new Proyecto();
@@ -78,6 +79,7 @@ public class ProyectosController {
 			proyecto.setNombre(proyectoForm.getNombre());
 			proyecto.setDescripcion(proyectoForm.getDescripcion());
 			proyecto.setTiempoEstimado(proyectoForm.getTiempoEstimado());
+			proyecto.setTiempoReal(proyectoForm.getTiempoEstimado());
 			idActual = proyectoService.actualizarProyecto(proyecto, idUsuarioPrincipal, idUsuarios);
 		}
 	

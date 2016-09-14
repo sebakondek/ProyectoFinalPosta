@@ -28,6 +28,7 @@ public class Proyecto {
 	private List<Tarea> tareas = new ArrayList<>();
 	private Boolean estado;
 	private double tiempoEstimado;
+	private double tiempoReal;
 	private Date fechaAlta;
 	
 	public Proyecto(){
@@ -104,6 +105,14 @@ public class Proyecto {
 
 	public void setFechaAlta(Date fechaAlta) {
 		this.fechaAlta = fechaAlta;
+	}
+
+	public double getTiempoReal() {
+		return tiempoReal;
+	}
+
+	public void setTiempoReal(double tiempoReal) {
+		this.tiempoReal = tiempoReal;
 	}
 	
 	

@@ -94,7 +94,7 @@ public class ProyectoServiceImp implements ProyectoService {
 	@Override
 	public void editarTiempoProyecto(Double duracionEstimada, Long idProyecto) {
 		Proyecto proyecto = proyectoDAO.recuperarProyectoPorId(idProyecto);
-		proyecto.setTiempoEstimado(proyecto.getTiempoEstimado()-duracionEstimada);
+		proyecto.setTiempoReal(proyecto.getTiempoReal()-duracionEstimada);
 		proyectoDAO.guardarProyecto(proyecto);
 	}
 }
