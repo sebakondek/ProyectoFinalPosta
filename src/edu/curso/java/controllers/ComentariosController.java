@@ -109,6 +109,7 @@ public class ComentariosController {
 		comentarioForm.setEstado(comentario.getEstado());
 		comentarioForm.setIdUsuario(comentario.getUsuario().getId());
 		comentarioForm.setIdTarea(idT);
+		comentarioForm.setIdProyecto(idP);
 	
 		model.addAttribute("comentarioForm", comentarioForm);
 		model.addAttribute("proyecto", proyecto);

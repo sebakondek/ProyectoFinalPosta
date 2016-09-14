@@ -26,7 +26,7 @@ function hacerBusqueda(clase) {
 	
 	case "Usuario":
 		var datosDelForm = $("#miFormBuscadorUsu").serialize();
-		$.post("buscarUsuarios.html", datosDelForm, function(resp) {
+		$.post("buscarusuarios.html", datosDelForm, function(resp) {
 			$("#divUsuarios").html(resp);
 		});	
 		break;
@@ -104,20 +104,20 @@ function opcionUsuario(id, opcion){
 			switch (opcion) {
 			
 				case "editar":
-					$.get("editarUsuario.html?id=" + id, function(resp){
+					$.get("editarusuario.html?id=" + id, function(resp){
 						$("#myModalUsu").html(resp);
 						$("#myModalUsu").modal("show");
 					});
 					break;
 				
 				case "ver":	
-					$.get("verUsuario.html?id=" + id, function(resp){
+					$.get("verusuario.html?id=" + id, function(resp){
 						$("#myModalUsu").html(resp);
 						$("#myModalUsu").modal("show");
 					});
 					break;
 				case "crear":
-					$.get("nuevoUsuario.html", function(resp){
+					$.get("nuevousuario.html", function(resp){
 						$("#myModalUsu").html(resp);
 						$("#myModalUsu").modal("show");
 					});
@@ -125,7 +125,7 @@ function opcionUsuario(id, opcion){
 
 				case "buscar":
 					var usuarios = $("#miFormBuscadorUsu").serialize();
-					$.post("buscarUsuarios.html", usuarios, function(resp){
+					$.post("buscarusuarios.html", usuarios, function(resp){
 						$("#divUsuarios").html(resp);
 					});
 					break;
@@ -136,7 +136,7 @@ function opcionUsuario(id, opcion){
 			}	
 }
 /*********************************ABM Listado COMENTARIOS***********************************/
-function opcionComentario(idT, idP, opcion){
+function opcionComentario(idC, idT, idP, opcion){
 	
 	switch (opcion) {
 		case "buscar":
@@ -153,8 +153,15 @@ function opcionComentario(idT, idP, opcion){
 			});
 			break;
 			
+		case "editar":
+			$.get("../comentarios/editarcomentario.html?idC=" + idC + "&idT=" + idT + "&idP=" + idP, function(resp){
+				$("#myModalComent").html(resp);
+				$("#myModalComent").modal("show");
+			});
+			break;
+			
 		default:
-			 Alert("Acaba de ocurrir un error. Por favor contactese con los areperos...")
+			 alert("Acaba de ocurrir un error. Por favor contactese con los areperos...")
 			break;
 	}	
 }

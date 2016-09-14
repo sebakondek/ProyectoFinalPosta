@@ -7,7 +7,7 @@
 
 <h1>Listado de Usuarios</h1>
 
-<a href="nuevousuario.html" class="btn btn-warning btnnuevo">Nuevo Usuario</a>
+<a class="btn btn-warning btnnuevo" onclick="opcionUsuario(0,'crear')">Nuevo Usuario</a>
 
 <script>
 	listarInit("Usuario");

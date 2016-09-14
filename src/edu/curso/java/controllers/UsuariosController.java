@@ -30,7 +30,7 @@ public class UsuariosController {
 		return null;
 	}
 
-	@RequestMapping(value = "/verUsuario")
+	@RequestMapping(value = "/verusuario")
 	public String verUsuarioModal(@RequestParam Long id, Model model) {
 		Usuario usuario = usuarioService.recuperarUsuarioPorId(id);
 		model.addAttribute("usuario", usuario);
@@ -62,7 +62,7 @@ public class UsuariosController {
 		return "redirect:/usuarios/listar.html";
 	}
 
-	@RequestMapping(value = "/editarUsuario")
+	@RequestMapping(value = "/editarusuario")
 	public String editarUsuario(@RequestParam Long id, Model model) {
 		Usuario usuario = usuarioService.recuperarUsuarioPorId(id);
 		UsuarioForm usuarioForm= new UsuarioForm();
@@ -90,7 +90,7 @@ public class UsuariosController {
 		return "redirect:/usuarios/verusuario.html?id="+ usuario.getId();
 	}
 	
-	@RequestMapping(value = "/buscarUsuarios", method = RequestMethod.POST)
+	@RequestMapping(value = "/buscarusuarios", method = RequestMethod.POST)
 	public String buscarUsuarios(@ModelAttribute("campoBuscar") String campoBuscar, Model model) {
 		List<Usuario> usuarios = usuarioService.buscarUsuariosPorNombre(campoBuscar);
 		model.addAttribute("usuarios",usuarios);

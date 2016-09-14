@@ -52,7 +52,7 @@
 			</form>
 		</td>
 		<td>
-			<a onclick="opcionComentario(${tarea.id}, ${proyecto.id},'crear')" class="btn btn-warning" id="nuevoComentarioBtn">Nuevo Comentario</a>
+			<a onclick="opcionComentario(0, ${tarea.id}, ${proyecto.id},'crear')" class="btn btn-warning" id="nuevoComentarioBtn">Nuevo Comentario</a>
 		</td>
 		</tr>
 	</table>
@@ -74,7 +74,7 @@
 						<td>${c.usuario.nombreCompleto}</td>
 						<td rowspan="2"><textarea rows="3" cols="90" class="textAreaDesc" readonly>${c.comentario}</textarea></td>
 						<td rowspan="2" class="tdOpciones">
-							<a href="<c:url value="/comentarios/editarcomentario.html?idC=${c.id}&idT=${tarea.id}&idP=${proyecto.id}" />" class="btn btn-primary">Editar</a>
+							<a onclick="opcionComentario(${c.id}, ${tarea.id}, ${proyecto.id},'editar')" class="btn btn-primary">Editar</a>
 						</td>
 					</tr>
 					<tr>
