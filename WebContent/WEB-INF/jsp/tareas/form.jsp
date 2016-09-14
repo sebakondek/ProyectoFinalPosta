@@ -25,7 +25,7 @@
 		</div>
 		<div class="form-group">
 			<label for="totalHoras">Duracion Estimada en Horas <span style="color: red;">Tiene hasta ${tiempoProyecto} para asignar</span></label>
-			<form:input class="form-control" path="duracionEstimada"  max="${tiempoProyecto}" min="0" type="number"/>
+			<form:input class="form-control" path="duracionEstimada"  max="${tiempoProyecto}" min="0" type="number" name=""/>
 		</div>
 			<div class="form-group">
 			<label for="idUsuarios">Prioridad</label>

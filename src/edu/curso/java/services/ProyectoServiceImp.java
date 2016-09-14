@@ -37,7 +37,7 @@ public class ProyectoServiceImp implements ProyectoService {
 	@Override
 	public Proyecto recuperarProyectoPorId(Long id) {
 		
-		return proyectoDAO.recuperarProyectoPorId(id);
+		return (Proyecto) proyectoDAO.recuperarProyectoPorId(id);
 	}
 
 	@Override
@@ -95,6 +95,7 @@ public class ProyectoServiceImp implements ProyectoService {
 	public void editarTiempoProyecto(Double duracionEstimada, Long idProyecto) {
 		Proyecto proyecto = proyectoDAO.recuperarProyectoPorId(idProyecto);
 		proyecto.setTiempoReal(proyecto.getTiempoReal()-duracionEstimada);
+		proyecto.setTiempoAcumulado(proyecto.getTiempoAcumulado() + duracionEstimada);
 		proyectoDAO.guardarProyecto(proyecto);
 	}
 }

@@ -117,7 +117,7 @@ public class TareaController {
 		tareaForm.setPrioridad(tarea.getPrioridad());
 		
 		Proyecto proyecto = proyectoService.recuperarProyectoPorId(tareaForm.getIdProyecto());
-		model.addAttribute("tiempoProyecto", proyecto.getTiempoEstimado());
+		model.addAttribute("tiempoProyecto", proyecto.getTiempoReal());
 		model.addAttribute("tareaForm", tareaForm);
 		return "/tareas/formeditado";
 	}

@@ -60,8 +60,8 @@ public class ProyectosController {
 	}
 	
 	@RequestMapping(value = "/guardarproyecto", method = RequestMethod.POST)
-	public String guardarUsuario(@ModelAttribute("proyectoForm") ProyectoForm proyectoForm, Model model) {
-		Proyecto proyecto = null;
+	public String guardarProyecto(@ModelAttribute("proyectoForm") ProyectoForm proyectoForm, Model model) {
+		Proyecto proyecto= null;
 		Long idActual = proyectoForm.getId();
 		Long idUsuarioPrincipal = proyectoForm.getIdUsuarioPrincipal();
 		Long [] idUsuarios = proyectoForm.getIdUsuarios();
@@ -71,7 +71,7 @@ public class ProyectosController {
 			proyecto.setNombre(proyectoForm.getNombre());
 			proyecto.setDescripcion(proyectoForm.getDescripcion());
 			proyecto.setTiempoEstimado(proyectoForm.getTiempoEstimado());
-			proyecto.setTiempoReal(proyectoForm.getTiempoEstimado());
+			proyecto.setTiempoReal(proyectoForm.getTiempoEstimado() - proyecto.getTiempoAcumulado());
 			idActual = proyectoService.actualizarProyecto(proyecto,idUsuarioPrincipal, idUsuarios);
 		} else {
 			proyecto = new Proyecto();
@@ -80,6 +80,7 @@ public class ProyectosController {
 			proyecto.setDescripcion(proyectoForm.getDescripcion());
 			proyecto.setTiempoEstimado(proyectoForm.getTiempoEstimado());
 			proyecto.setTiempoReal(proyectoForm.getTiempoEstimado());
+			proyecto.setTiempoAcumulado(0.0);
 			idActual = proyectoService.actualizarProyecto(proyecto, idUsuarioPrincipal, idUsuarios);
 		}
 	
@@ -98,27 +99,12 @@ public class ProyectosController {
 		proyectoForm.setUsuarios(proyecto.getUsuarios());
 		proyectoForm.setTareas(proyecto.getTareas());
 		proyectoForm.setTiempoEstimado(proyecto.getTiempoEstimado());
-		
 		model.addAttribute("proyectoForm", proyectoForm);
 		model.addAttribute("usuarios", usuarioService.recuperarUsuarios());
 		return "/proyectos/formeditado";
 	}
 	
-	@RequestMapping(value = "/guardaredicionproyecto", method = RequestMethod.POST)
-	public String guardarEdicionUsuario(@ModelAttribute("proyectoForm") ProyectoForm proyectoForm, Model model, @RequestParam Long id) {
-		Proyecto proyecto = null;
-		Long idActual = proyectoForm.getId();
-		Long idUsuarioPrincipal = proyectoForm.getIdUsuarioPrincipal();
-		Long [] idUsuarios = proyectoForm.getIdUsuarios();
 	
-		proyecto= proyectoService.recuperarProyectoPorId(idActual);
-		proyecto.setNombre(proyectoForm.getNombre());
-		proyecto.setDescripcion(proyectoForm.getDescripcion());
-		proyecto.setTiempoEstimado(proyectoForm.getTiempoEstimado());
-		idActual = proyectoService.actualizarProyecto(proyecto,idUsuarioPrincipal, idUsuarios);
-	
-		return "redirect:/proyectos/listar.html";
-	}
 		
 	@RequestMapping(value = "/buscarproyectos", method = RequestMethod.POST)
 	public String buscarProyectos(@ModelAttribute("campoBuscar") String campoBuscar, Model model) {

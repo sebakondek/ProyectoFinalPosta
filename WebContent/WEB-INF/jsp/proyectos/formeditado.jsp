@@ -21,7 +21,7 @@ $(function(){
 		<div class="modal-body" id="modal-body">
 
 		<div class="form form-group table">
-	<form:form method="post" modelAttribute="proyectoForm" action="guardaredicionproyecto.html" id="form">
+	<form:form method="post" modelAttribute="proyectoForm" action="guardarproyecto.html" id="form">
 		<form:input path="id" type="hidden" />
 		<div class="form-group">
 			<label for="nombre">Nombre</label>
