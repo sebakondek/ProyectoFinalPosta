@@ -5,7 +5,9 @@
 
 
 <script>
-formInit("usuario");
+$(function(){
+	formInit("usuario");	
+});
 </script>
 
 

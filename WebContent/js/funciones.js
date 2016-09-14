@@ -2,7 +2,20 @@
 
 function formInit(clase){
 	
-	$("#form").validate();
+	var campotexto= "<span style='color: red;'>Solo caracteres de A-z estan permitidos </span>";
+	$("#form").validate({
+	
+		messages : {
+			nombre : campotexto,
+			nombreCompleto : campotexto,
+			usuario : campotexto,
+			descripcion: campotexto,
+			titulo : "<span style='color: red;'>El titulo debe ser alfanumerico</span>",
+			duracionEstimada: "<span style='color: red;'>solo puede ingresar numeros hasta la duracion estimada del proyecto</span>", 
+			tiempoEstimado: "<span style='color: red;'>solo puede ingresar numeros</span>",
+			password : "<span style='color: red;'>Solo se permiten caracteres A-z y 0-9</span>"		
+		}
+	});
 	
 	if (clase=="proyecto") {
 		$("#select-single").select2();

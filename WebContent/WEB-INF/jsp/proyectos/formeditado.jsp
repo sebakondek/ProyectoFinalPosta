@@ -21,11 +21,11 @@ $(function(){
 		<div class="modal-body" id="modal-body">
 
 		<div class="form form-group table">
-	<form:form method="post" modelAttribute="proyectoForm" action="guardarproyecto.html" id="form">
+	<form:form method="post" modelAttribute="proyectoForm" action="guardarproyecto.html" id="form" >
 		<form:input path="id" type="hidden" />
 		<div class="form-group">
 			<label for="nombre">Nombre</label>
-			<form:input class="form-control required" path="nombre" type="text" minlength="4" required="true" />
+			<form:input class="form-control required" path="nombre" type="text" minlength="4" required="true"  />
 		</div>
 		<div class="form-group">
 			<label for="descripcion">Descripcion</label>

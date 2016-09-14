@@ -4,7 +4,11 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <c:import url="/general/template_top.jsp" />
-
+<script>
+$(function(){
+	formInit("tarea");	
+});
+</script>
 
 <div class="form form-group table">
 	<form:form method="post" modelAttribute="tareaForm" action="guardartarea.html" class="form">
