@@ -54,7 +54,7 @@
 		<h2>Tareas</h2>
 		
 		<c:choose>
-		<c:when test="${proyecto.tiempoEstimado > 0  }">
+		<c:when test="${proyecto.tiempoEstimado > 0}">
 			<a href="<c:url value="/tareas/nuevatarea.html?id=${proyecto.id}" />" id="nuevaTareaBtn" class="btn btn-warning">Nueva Tarea</a>
 		</c:when>
 		<c:otherwise>
@@ -64,17 +64,38 @@
     </div>
 		</c:otherwise>
 		</c:choose>
+		<c:choose>
+		<c:when test="${empty proyecto.tareas}">
+						<div class="alert alert-warning">
+   			<strong>No hay Tareas!</strong> el proyecto no tiene tareas asignadas.
+    		</div>	
+		</c:when>
+		<c:otherwise>
+		
 		<table class="table table-striped table-bordered table-hover table-responsive">
 		<tr>
-			<th>Id</th>
+			<th>Prioridad</th>
 			<th>Titulo</th>
 			<th>Duracion Estimada</th>
 			<th></th>
 		</tr>
 		<c:forEach items="${proyecto.tareas}" var="t">
 			<tr>
-				<td>${t.id}</td>
-				<td>${t.titulo}</td>
+				<td>
+				<c:choose>
+				<c:when test="${t.prioridad == 'Alta' }">
+					<span class="label label-danger">Alta</span>
+				</c:when>
+				<c:when test="${t.prioridad == 'Media' }">
+				<span class="label label-warning">Media</span>
+				</c:when>
+				<c:otherwise>
+				<span class="label label-success">Baja</span>
+				</c:otherwise>
+				</c:choose>
+				<br></td>
+				<td>
+				${t.titulo}</td>
 				<td>${t.duracionEstimada} horas</td>
 				<td>
 					<a href="<c:url value="/tareas/vertarea.html?idT=${t.id}&idP=${proyecto.id}" />" class="btn btn-success">Ver</a>
@@ -84,6 +105,8 @@
 			</tr>
 		</c:forEach>
 	</table>
+		</c:otherwise>
+		</c:choose>
 		
       </div>
       <div class="modal-footer">
