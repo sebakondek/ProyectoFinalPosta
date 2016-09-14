@@ -165,6 +165,22 @@ function opcionComentario(idC, idT, idP, opcion){
 			break;
 	}	
 }
+
+/*******************************Tareas************************************************/
+
+
+function opcionTarea(idP, idT, opcion){
+	
+	switch (opcion) {
+	
+		case "editar":
+			$.get("editartarea.html?idT=" + idT + "&idP=" + idP, function(resp){
+				$("#myModalTarea").html(resp);
+				$("#myModalTarea").modal("show");
+			});
+			break;
+	}
+}
 /*******************************ALERTS************************************************/
 function noTieneHorasAsignadas(usuarioPpal){
 	alert("Usted no tiene horas para asignarle a la tarea, contactese con "+ usuarioPpal +" para que le asigne");

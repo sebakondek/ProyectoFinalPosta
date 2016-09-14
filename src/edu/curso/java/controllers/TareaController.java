@@ -80,33 +80,36 @@ public class TareaController {
 		Tarea tarea = null;
 		Long idActual = tareaForm.getId();
 		if(idActual != null){
+			
 			tarea = tareaService.recuperarTareaPorId(idActual);
 			tarea.setTitulo(tareaForm.getTitulo());
 			tarea.setDuracionEstimada(tareaForm.getDuracionEstimada());
 			tarea.setDuracionReal(0.0);
 			tarea.setDescripcion(tareaForm.getDescripcion());
 			tarea.setPrioridad(tareaForm.getPrioridad());
+			
 			proyectoService.editarTiempoProyecto(tareaForm.getDuracionEstimada(), tareaForm.getIdProyecto());
 			tareaService.editarTarea(tarea);
+			
 		} else {
-			//log.info("La id de PROYECTO en TareaController:" +tareaForm.getIdProyecto());
+			
 			tarea = new Tarea();
 			tarea.setTitulo(tareaForm.getTitulo());
 			tarea.setDuracionEstimada(tareaForm.getDuracionEstimada());
 			tarea.setDuracionReal(0.0);
 			tarea.setDescripcion(tareaForm.getDescripcion());
 			tarea.setPrioridad(tareaForm.getPrioridad());
+			
 			proyectoService.editarTiempoProyecto(tareaForm.getDuracionEstimada(), tareaForm.getIdProyecto());
 			tareaService.guardarTarea(tarea,tareaForm.getIdProyecto());
 		}
 	
-		//return "redirect:/tareas/vertarea.html?id=" + idActual;
 		return "redirect:/proyectos/listar.html";
 	}
 	
 	@RequestMapping(value="/editartarea")
-	public String editarTarea(Model model, @RequestParam Long id){
-		Tarea tarea = tareaService.recuperarTareaPorId(id);
+	public String editarTarea(Model model, @RequestParam Long idT, Long idP){
+		Tarea tarea = tareaService.recuperarTareaPorId(idT);
 		TareaForm tareaForm = new TareaForm();
 		
 		tareaForm.setId(tarea.getId());
@@ -115,8 +118,9 @@ public class TareaController {
 		tareaForm.setDuracionEstimada(tarea.getDuracionEstimada());
 		tareaForm.setDuracionReal(tarea.getDuracionReal());
 		tareaForm.setPrioridad(tarea.getPrioridad());
+		tareaForm.setIdProyecto(idP);
 		
-		Proyecto proyecto = proyectoService.recuperarProyectoPorId(tareaForm.getIdProyecto());
+		Proyecto proyecto = proyectoService.recuperarProyectoPorId(idP);
 		model.addAttribute("tiempoProyecto", proyecto.getTiempoEstimado());
 		model.addAttribute("tareaForm", tareaForm);
 		return "/tareas/formeditado";

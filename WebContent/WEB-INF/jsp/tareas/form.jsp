@@ -28,9 +28,9 @@
 			<form:input class="form-control" path="duracionEstimada"  max="${tiempoProyecto}" min="0" type="number"/>
 		</div>
 			<div class="form-group">
-			<label for="idUsuarios">Prioridad</label>
+			<label for="prioridad">Prioridad</label>
 			<form:select id="select-multiple" class="js-example-basic-single js-states form-control" 
-				path="prioridad" itemLabel="nombreCompleto" itemValue="id">
+				path="prioridad" itemLabel="prioridad" itemValue="id">
 				<option value="Alta"> Alta</option>
 				<option value="Media">Media</option>
 				<option value="Baja">Baja</option>

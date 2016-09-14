@@ -83,24 +83,24 @@
 			<tr>
 				<td>
 				<c:choose>
-				<c:when test="${t.prioridad == 'Alta' }">
-					<span class="label label-danger">Alta</span>
-				</c:when>
-				<c:when test="${t.prioridad == 'Media' }">
-				<span class="label label-warning">Media</span>
-				</c:when>
-				<c:otherwise>
-				<span class="label label-success">Baja</span>
-				</c:otherwise>
+					<c:when test="${t.prioridad == 'Alta' }">
+						<h4><span class="label label-danger">Alta</span></h4>
+					</c:when>
+					<c:when test="${t.prioridad == 'Media' }">
+						<h4><span class="label label-warning">Media</span></h4>
+					</c:when>
+					<c:otherwise>
+						<h4><span class="label label-success">Baja</span></h4>
+					</c:otherwise>
 				</c:choose>
 				<br></td>
 				<td>
 				${t.titulo}</td>
 				<td>${t.duracionEstimada} horas</td>
 				<td>
+				
 					<a href="<c:url value="/tareas/vertarea.html?idT=${t.id}&idP=${proyecto.id}" />" class="btn btn-success">Ver</a>
 					
-					<a href="<c:url value="/tareas/editartarea.html?id=${t.id}" />" class="btn btn-primary">Editar</a>
 				</td>
 			</tr>
 		</c:forEach>

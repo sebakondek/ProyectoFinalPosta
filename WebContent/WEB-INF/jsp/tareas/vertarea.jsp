@@ -33,7 +33,27 @@
 	    <th>Descripción</th>
 	    <td><textarea rows="3" cols="70" class="textAreaDesc">${tarea.descripcion}</textarea></td>
     </tr>
+    <tr>
+    	<th>Prioridad</th>
+    	<td>
+    		<c:choose>
+				<c:when test="${tarea.prioridad == 'Alta' }">
+					<h3><span class="label label-danger label-vista">Alta</span></h3>
+				</c:when>
+				<c:when test="${tarea.prioridad == 'Media' }">
+					<h3><span class="label label-warning label-vista">Media</span></h3>
+				</c:when>
+				<c:otherwise>
+					<h4><span class="label label-success label-vista">Baja</span></h3>
+				</c:otherwise>
+			</c:choose>
+		</td>
+		
+		<button type="button" data-toggle="modal" onclick="opcionTarea(${proyecto.id}, ${tarea.id},'editar')" class="btn btn-primary" id="editarBtn">Editar</button>
+		
 </table>
+
+<div id="myModalTarea" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"></div>
 
 
 
@@ -71,7 +91,15 @@
 				</tr>
 				<c:forEach items="${tarea.comentarios}" var="c">
 					<tr>
-						<td>${c.usuario.nombreCompleto}</td>
+						<c:choose>
+							<c:when test="${not c.usuario.activo}">
+								<td style="color: red;">${c.usuario.nombreCompleto}</td>
+							</c:when>
+							<c:otherwise>
+								<td>${c.usuario.nombreCompleto}</td>
+							</c:otherwise>
+						</c:choose>
+						
 						<td rowspan="2"><textarea rows="3" cols="90" class="textAreaDesc" readonly>${c.comentario}</textarea></td>
 						<td rowspan="2" class="tdOpciones">
 							<a onclick="opcionComentario(${c.id}, ${tarea.id}, ${proyecto.id},'editar')" class="btn btn-primary">Editar</a>
