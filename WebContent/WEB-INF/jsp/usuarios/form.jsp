@@ -20,8 +20,9 @@ $(function(){
 		<div class="modal-body" id="modal-body">
 
 			<div class="form form-group table">
-				<form:form method="post" modelAttribute="usuarioForm" action="guardarusuario.html" id="form">
+				<form:form method="post" modelAttribute="usuarioForm" action="../usuarios/guardarusuario.html" id="form">
 					<form:input path="id" type="hidden" />
+					<form:input path="lugar" type="hidden" />
 					<div class="form-group">
 						<label for="nombreCompleto">Nombre Completo</label>
 						<form:input class="form-control required" path="nombreCompleto" type="text" />

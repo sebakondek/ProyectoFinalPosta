@@ -47,14 +47,18 @@ public class UsuariosController {
 	}
 
 	@RequestMapping(value = "/nuevousuario")
-	public String nuevoUsuario(Model model) {
-		model.addAttribute("usuarioForm", new UsuarioForm());
+	public String nuevoUsuario(@RequestParam boolean lugar, Model model) {
+		UsuarioForm usuarioForm = new UsuarioForm();
+		usuarioForm.setLugar(lugar);
+		model.addAttribute("usuarioForm", usuarioForm);
 		return "/usuarios/form";
 	}
 
 	@RequestMapping(value = "/guardarusuario", method = RequestMethod.POST)
 	public String guardarUsuario(@ModelAttribute("usuarioForm") UsuarioForm usuarioForm, Model model) {
 
+		boolean lugar = usuarioForm.isLugar();
+		
 		Usuario usuario = new Usuario();
 		usuario.setNombreCompleto(usuarioForm.getNombreCompleto());
 		usuario.setUsuario(usuarioForm.getUsuario());
@@ -62,6 +66,8 @@ public class UsuariosController {
 
 		Long idGenerado = usuarioService.crearNuevoUsuario(usuario);
 
+		if(lugar)
+			return "redirect:/proyectos/listar.html";
 		return "redirect:/usuarios/listar.html";
 	}
 

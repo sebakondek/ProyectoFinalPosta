@@ -29,9 +29,6 @@
 
 
 
-
-
-
 <div id="divTareas" class="table-responsive"></div>
 
 <div id="myModalProy" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"></div>

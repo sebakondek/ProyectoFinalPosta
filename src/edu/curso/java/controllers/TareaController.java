@@ -1,6 +1,5 @@
 package edu.curso.java.controllers;
 
-import java.util.Date;
 import java.util.List;
 
 import org.apache.log4j.Logger;
@@ -12,7 +11,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import edu.curso.java.bo.Comentario;
 import edu.curso.java.bo.Proyecto;
 import edu.curso.java.bo.Tarea;
 import edu.curso.java.controllers.forms.TareaForm;
@@ -64,10 +62,10 @@ public class TareaController {
 	}
 	
 	@RequestMapping(value = "/nuevatarea")
-	public String nuevaTarea(@RequestParam Long id, Model model) {
+	public String nuevaTarea(@RequestParam Long idP, Model model) {
 		
 		TareaForm tareaForm = new TareaForm();
-		tareaForm.setIdProyecto(id);
+		tareaForm.setIdProyecto(idP);
 		Proyecto proyecto = proyectoService.recuperarProyectoPorId(tareaForm.getIdProyecto());
 		model.addAttribute("tiempoProyecto", proyecto.getTiempoReal());
 		model.addAttribute("tareaForm", tareaForm);

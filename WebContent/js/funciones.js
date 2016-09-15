@@ -94,6 +94,14 @@ function opcionProyecto(id, opcion){
 				$("#myModalProy").modal("show");
 			});
 			break;
+			
+		case "crearUsuario":
+			$("myModalProy").modal("hide");
+			$.get("../usuarios/nuevousuario.html?lugar=" + id, function(resp){
+				$("#myModalProy").html(resp);
+				$("#myModalProy").modal("show");
+			});
+			break;
 
 		case "buscar":
 			var proyectos = $("#miFormBuscadorProy").serialize();
@@ -128,7 +136,7 @@ function opcionUsuario(id, opcion){
 					});
 					break;
 				case "crear":
-					$.get("nuevousuario.html", function(resp){
+					$.get("nuevousuario.html?lugar=" + id, function(resp){
 						$("#myModalUsu").html(resp);
 						$("#myModalUsu").modal("show");
 					});
@@ -185,8 +193,16 @@ function opcionTarea(idP, idT, opcion){
 	
 	switch (opcion) {
 	
+		case "crear":
+				$("#myModalProy").modal("hide");
+			$.get("../tareas/nuevatarea.html?idP=" + idP, function(resp){
+				$("#myModalProy").html(resp);
+				$("#myModalProy").modal("show");
+			});
+			break;
+			
 		case "editar":
-			$.get("editartarea.html?idT=" + idT + "&idP=" + idP, function(resp){
+			$.get("../tareas/editartarea.html?idT=" + idT + "&idP=" + idP, function(resp){
 				$("#myModalTarea").html(resp);
 				$("#myModalTarea").modal("show");
 			});

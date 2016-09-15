@@ -55,7 +55,7 @@
 		
 		<c:choose>
 			<c:when test="${proyecto.tiempoReal > 0}">
-				<a href="<c:url value="/tareas/nuevatarea.html?id=${proyecto.id}" />" id="nuevaTareaBtn" class="btn btn-warning">Nueva Tarea</a>
+				<a onclick="opcionTarea(${proyecto.id}, 0, 'crear')" id="nuevaTareaBtn" class="btn btn-warning">Nueva Tarea</a>
 			</c:when>
 			<c:otherwise>
 					<div class="alert alert-warning">

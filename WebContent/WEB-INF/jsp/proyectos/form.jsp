@@ -40,7 +40,7 @@
 			<c:when test="${empty usuarios}">
 						<div class="alert alert-warning">
 			   			<strong>No tiene Usuarios!</strong> Debe crear un usuuario para asignar al proyecto.
-			   			<a href="../usuarios/nuevousuario.html" class="btn btn-warning">Nuevo Usuario</a>
+			   			<a onclick="opcionProyecto(true,'crearUsuario')" class="btn btn-warning">Nuevo Usuario</a>
 			    		</div>
 			</c:when>
 			<c:otherwise>
