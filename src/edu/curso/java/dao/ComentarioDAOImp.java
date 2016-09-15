@@ -3,6 +3,7 @@ package edu.curso.java.dao;
 import java.util.List;
 
 import org.hibernate.Query;
+import org.hibernate.SQLQuery;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -48,12 +49,13 @@ public class ComentarioDAOImp implements ComentarioDAO {
 
 	@SuppressWarnings("unchecked")
 	@Override
-	public List<Comentario> buscarComentarioPorContenido(String campoBuscar) {
-		String hql = "from Comentario as c where c.comentario like :textoBuscar and estado=1";
-		Query query = sessionFactory.getCurrentSession().createQuery(hql);
+	public List<Comentario> buscarComentario(String campoBuscar, Long idTarea) {
+		String sql = "SELECT * FROM tarea_comentario as t INNER JOIN comentario as c ON t.comentarios_id = c.id where t.Tarea_id = :idTarea AND c.estado = 1 AND c.comentario LIKE :textoBuscar ORDER BY c.fecha";
+		SQLQuery query = sessionFactory.getCurrentSession().createSQLQuery(sql);
+		query.addEntity(Comentario.class);
+		query.setLong("idTarea", idTarea );
 		query.setString("textoBuscar", "%" + campoBuscar + "%");
 		return query.list();
 	}
-
 	
 }

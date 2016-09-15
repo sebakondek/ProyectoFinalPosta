@@ -14,6 +14,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import edu.curso.java.bo.Comentario;
 import edu.curso.java.bo.Proyecto;
+import edu.curso.java.bo.Tarea;
+import edu.curso.java.controllers.forms.BuscarForm;
 import edu.curso.java.controllers.forms.ComentarioForm;
 import edu.curso.java.dao.ComentarioDAO;
 import edu.curso.java.services.ProyectoService;
@@ -117,9 +119,18 @@ public class ComentariosController {
 	}
 	
 	@RequestMapping(value = "/buscarcomentarios", method = RequestMethod.POST)
-	public String buscarProyectos(@ModelAttribute("campoBuscar") String campoBuscar, Model model) {
-		List<Comentario> comentarios = comentarioDAO.buscarComentarioPorContenido(campoBuscar);
-		model.addAttribute("comentarios",comentarios);
+	public String buscarProyectos(@ModelAttribute("buscarForm") BuscarForm buscarForm, Model model) {
+		Long idTarea = buscarForm.getIdTarea();
+		Long idProy = buscarForm.getIdProy();
+		String campoBuscar = buscarForm.getCampoBuscar();
+		
+		Tarea tarea = tareaService.recuperarTareaPorId(idTarea);
+		Proyecto proyecto = proyectoService.recuperarProyectoPorId(idProy);
+		List<Comentario> comentarios = tareaService.buscarComentario(campoBuscar, idTarea);
+		
+		model.addAttribute("tarea", tarea);
+		model.addAttribute("comentarios", comentarios);
+		model.addAttribute("proyecto", proyecto);
 		return "/comentarios/buscadorcomentarios";
 	}
 }

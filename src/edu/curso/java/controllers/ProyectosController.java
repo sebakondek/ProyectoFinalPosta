@@ -16,6 +16,7 @@ import edu.curso.java.bo.Proyecto;
 import edu.curso.java.bo.Usuario;
 import edu.curso.java.controllers.forms.ProyectoForm;
 import edu.curso.java.services.ProyectoService;
+import edu.curso.java.services.TareaService;
 import edu.curso.java.services.UsuarioService;
 
 @Controller
@@ -29,6 +30,9 @@ public class ProyectosController {
 
 	@Autowired
 	private UsuarioService usuarioService;
+	
+	@Autowired
+	private TareaService tareaService;
 	
 	@RequestMapping(value = "/listar", method = RequestMethod.GET)
 	public String listar(Model model) {
@@ -109,7 +113,7 @@ public class ProyectosController {
 	@RequestMapping(value = "/buscarproyectos", method = RequestMethod.POST)
 	public String buscarProyectos(@ModelAttribute("campoBuscar") String campoBuscar, Model model) {
 		log.info("Listando los proyectos");
-		List<Proyecto> proyectos = proyectoService.buscarProyectosPorNombre(campoBuscar);
+		List<Proyecto> proyectos = proyectoService.buscarProyectos(campoBuscar);
 		model.addAttribute("proyectos",proyectos);
 		return "/proyectos/buscadorproyectos";
 	}

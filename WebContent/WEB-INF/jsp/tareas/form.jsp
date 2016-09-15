@@ -33,12 +33,12 @@ $(function(){
 			<form:input class="form-control" path="duracionEstimada" max="${tiempoProyecto}" min="0" type="number" name="number" required="required"/>
 		</div>
 			<div class="form-group">
-			<label for="idUsuarios">Prioridad</label>
+			<label for="prioridad">Prioridad</label>
 			<form:select id="select-multiple" class="js-example-basic-single js-states form-control" 
-				path="prioridad" itemLabel="nombreCompleto" itemValue="id" required="required">
-				<option value="Alta"> Alta</option>
-				<option value="Media">Media</option>
-				<option value="Baja">Baja</option>
+					path="prioridad" itemLabel="prioridad" itemValue="id" required="required">
+				<option value="1"> Alta</option>
+				<option value="2">Media</option>
+				<option value="3">Baja</option>
 		</form:select>
 		</div>
 		<div class="form-group">

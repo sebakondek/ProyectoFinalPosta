@@ -29,8 +29,7 @@ public class UsuarioDAOImp implements UsuarioDAO {
 	 */
 	@Override
 	public Usuario recuperarUsuarioPorId(Long id) {
-		return (Usuario) sessionFactory.getCurrentSession()
-				.load(Usuario.class, id);
+		return (Usuario) sessionFactory.getCurrentSession().load(Usuario.class, id);
 	}
 	
 	/* (non-Javadoc)
@@ -59,8 +58,8 @@ public class UsuarioDAOImp implements UsuarioDAO {
 
 	@SuppressWarnings("unchecked")
 	@Override
-	public List<Usuario> buscarUsuariosPorNombre(String campoBuscar) {
-		String hql = "from Usuario as u where u.activo = 1 and (u.nombreCompleto like :textoBuscar or u.usuario like :textoBuscar)";
+	public List<Usuario> buscarUsuarios(String campoBuscar) {
+		String hql = "from Usuario as u where u.activo = 1 and (u.nombreCompleto like :textoBuscar or u.usuario like :textoBuscar) ORDER BY u.nombreCompleto";
 		Query query = sessionFactory.getCurrentSession().createQuery(hql);
 		query.setString("textoBuscar", "%" + campoBuscar + "%");
 		return query.list();

@@ -15,7 +15,7 @@ public interface ProyectoService {
 	void editarProyecto(Proyecto proyecto);
 	public Long guardarProyecto(Proyecto proyecto, Long idUsuarioPrincipal);
 	public Long actualizarProyecto(Proyecto proyecto, Long idUsuarioPrincipal, Long[] idUsuarios);
-	public List<Proyecto> buscarProyectosPorNombre(String campoBuscar);
+	public List<Proyecto> buscarProyectos(String campoBuscar);
 	void editarTiempoProyecto(Double duracionEstimada, Long idProyecto);
 
 }

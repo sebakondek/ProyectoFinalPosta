@@ -18,9 +18,9 @@ public interface TareaService {
 	public void borrarTareaPorId(Long id);
 	
 	public void editarTarea(Tarea tarea);
-	public List<Tarea> buscarTareaPorNombre(String campoBuscar);
+//	public List<Tarea> buscarTarea(String campoBuscar);
 	
 	public Long guardarComentario(Comentario comentario, Long idTarea);
-	public List<Comentario> buscarComentarioPorContenido(String campoBuscar);
+	public List<Comentario> buscarComentario(String campoBuscar, Long idTarea);
 	
 }

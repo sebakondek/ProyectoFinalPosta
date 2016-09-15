@@ -15,7 +15,7 @@
 
 <form id="miFormBuscadorUsu" method="post" onsubmit="opcionUsuario(0,'buscar'); return false;" class="form-inline">
 	<div class="form-group">
-		<input name="campoBuscar" class="form-control" id="campoBuscarProy" type="text" placeholder="Buscar">
+		<input name="campoBuscar" class="form-control" id="campoBuscarProy" type="text" placeholder="Buscar Usuario">
 	</div>
 		<input type="submit" class="btn btn-default" value="Buscar" >
 </form>

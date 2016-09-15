@@ -72,10 +72,10 @@ public class TareaServiceImp implements TareaService {
 		tareaDAO.editarTarea(tarea);
 	}
 
-	@Override
-	public List<Tarea> buscarTareaPorNombre(String campoBuscar) {
-		return tareaDAO.buscarTareaPorNombre(campoBuscar);
-	}
+//	@Override
+//	public List<Tarea> buscarTarea(String campoBuscar) {
+//		return tareaDAO.buscarTarea(campoBuscar);
+//	}
 
 	@Override
 	public Long guardarComentario(Comentario comentario, Long idTarea) {
@@ -89,8 +89,8 @@ public class TareaServiceImp implements TareaService {
 	}
 	
 	@Override
-	public List<Comentario> buscarComentarioPorContenido(String campoBuscar) {
-		return comentarioDAO.buscarComentarioPorContenido(campoBuscar);
+	public List<Comentario> buscarComentario(String campoBuscar, Long idTarea) {
+		return comentarioDAO.buscarComentario(campoBuscar, idTarea);
 	}
 
 }

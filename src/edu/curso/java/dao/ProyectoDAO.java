@@ -14,6 +14,6 @@ public interface ProyectoDAO {
 	void agregarUsuarioProyecto(Usuario usuario, Long id);
 	List<Tarea> borrarProyectoPorId(Long id);
 	void editarProyecto(Proyecto proyecto);
-	public List<Proyecto> buscarProyectoPorNombre(String campoBuscar);
+	public List<Proyecto> buscarProyecto(String campoBuscar);
 	
 }

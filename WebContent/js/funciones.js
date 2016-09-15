@@ -28,7 +28,7 @@ function formInit(clase){
 /****************************************LIST FUNCTIONS************************************/
 
 function listarInit(clase){
-	
+		
 		hacerBusqueda(clase);	
 }
 
@@ -51,9 +51,9 @@ function hacerBusqueda(clase) {
 		});	
 		break;
 		
-	case "Comentarios":
+	case "Comentario":
 		var datosDelForm = $("#miFormBuscadorComent").serialize();
-		$.post("buscarcomentarios.html",datosDelForm, function(resp){
+		$.post("../comentarios/buscarcomentarios.html", datosDelForm, function(resp){
 			$("#divComentarios").html(resp);
 		});
 		break;
@@ -152,9 +152,10 @@ function opcionUsuario(id, opcion){
 function opcionComentario(idC, idT, idP, opcion){
 	
 	switch (opcion) {
+	
 		case "buscar":
 			var datosDelForm = $("#miFormBuscadorComent").serialize();
-			$.post("../comentarios/buscarcomentarios.html",datosDelForm, function(resp){
+			$.post("../comentarios/buscarcomentarios.html", datosDelForm, function(resp){
 				$("#divComentarios").html(resp);
 			});
 			break;
@@ -177,6 +178,22 @@ function opcionComentario(idC, idT, idP, opcion){
 			 alert("Acaba de ocurrir un error. Por favor contactese con los areperos...")
 			break;
 	}	
+}
+
+/*******************************Tareas************************************************/
+
+
+function opcionTarea(idP, idT, opcion){
+	
+	switch (opcion) {
+	
+		case "editar":
+			$.get("editartarea.html?idT=" + idT + "&idP=" + idP, function(resp){
+				$("#myModalTarea").html(resp);
+				$("#myModalTarea").modal("show");
+			});
+			break;
+	}
 }
 /*******************************ALERTS************************************************/
 function noTieneHorasAsignadas(usuarioPpal){

@@ -16,5 +16,5 @@ public interface UsuarioDAO {
 	
 	void editarUsuario(Usuario usuario);
 
-	List<Usuario> buscarUsuariosPorNombre(String campoBuscar);
+	List<Usuario> buscarUsuarios(String campoBuscar);
 }

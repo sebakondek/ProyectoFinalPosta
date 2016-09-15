@@ -3,6 +3,7 @@ package edu.curso.java.dao;
 import java.util.List;
 
 import org.hibernate.Query;
+import org.hibernate.SQLQuery;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -31,7 +32,7 @@ public class TareaDAOImp implements TareaDAO {
 	@SuppressWarnings("unchecked")
 	@Override
 	public List<Tarea> listarTareas() {
-		Query query = sessionFactory.getCurrentSession().createQuery("from Tarea where estado=1");
+		Query query = sessionFactory.getCurrentSession().createQuery("from Tarea as t where t.estado = 1 ORDER BY t.prioridad ASC, t.fecha DESC");
 		return query.list();
 	}
 
@@ -64,11 +65,22 @@ public class TareaDAOImp implements TareaDAO {
 
 	@SuppressWarnings("unchecked")
 	@Override
-	public List<Tarea> buscarTareaPorNombre(String campoBuscar) {
-		String hql = "from Tarea as t where t.estado=1 and (t.titulo like :textoBuscar OR t.descripcion like :textoBuscar)";
-		Query query = sessionFactory.getCurrentSession().createQuery(hql);
-		query.setString("textoBuscar", "%" + campoBuscar + "%");
+	public List<Tarea> recuperarTareasProyecto(Long idProy) {
+		String sql = "SELECT * FROM tarea as t INNER JOIN proyecto_tarea as p ON t.id = p.tareas_id WHERE p.Proyecto_id = :idProyecto " +
+					"AND t.estado = 1 ORDER BY t.prioridad, t.fecha DESC";
+		SQLQuery query = sessionFactory.getCurrentSession().createSQLQuery(sql);
+		query.addEntity(Tarea.class);
+		query.setLong("idProyecto", idProy);
 		return query.list();
 	}
+
+//	@SuppressWarnings("unchecked")
+//	@Override
+//	public List<Tarea> buscarTarea(String campoBuscar) {
+//		String hql = "from Tarea as t where t.estado=1 and (t.titulo like :textoBuscar OR t.descripcion like :textoBuscar)";
+//		Query query = sessionFactory.getCurrentSession().createQuery(hql);
+//		query.setString("textoBuscar", "%" + campoBuscar + "%");
+//		return query.list();
+//	}
 
 }

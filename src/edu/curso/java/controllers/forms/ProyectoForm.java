@@ -22,80 +22,50 @@ public class ProyectoForm {
 	public Long getIdUsuarioPrincipal() {
 		return idUsuarioPrincipal;
 	}
-
 	public void setIdUsuarioPrincipal(Long idUsuarioPrincipal) {
 		this.idUsuarioPrincipal = idUsuarioPrincipal;
 	}
-
-
-
 	public Long getId() {
 		return id;
 	}
-
-		
 	public List<Tarea> getTareas() {
 		return tareas;
 	}
-
-
-
 	public void setTareas(List<Tarea> tareas) {
 		this.tareas = tareas;
 	}
-
-
-
 	public void setId(Long id) {
 		this.id = id;
 	}
-
 	public String getNombre() {
 		return nombre;
 	}
-
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}
-
 	public String getDescripcion() {
 		return descripcion;
 	}
-
 	public void setDescripcion(String descripcion) {
 		this.descripcion = descripcion;
 	}
-
 	public List<Usuario> getUsuarios() {
 		return usuarios;
 	}
-
 	public void setUsuarios(List<Usuario> usuarios) {
 		this.usuarios = usuarios;
 	}
-
-
-
 	public Long[] getIdUsuarios() {
 		return idUsuarios;
 	}
-
-
-
 	public void setIdUsuarios(Long[] idUsuarios) {
 		this.idUsuarios = idUsuarios;
 	}
-	
 	public Double getTiempoEstimado() {
 		return tiempoEstimado;
 	}
-
-
 	public void setTiempoEstimado(Double tiempoEstimado) {
 		this.tiempoEstimado = tiempoEstimado;
 	}
 
-
-
-	
 }

@@ -87,12 +87,12 @@ public class UsuariosController {
 		usuario.setId(id);
 		usuarioService.editarUsuario(usuario);
 
-		return "redirect:/usuarios/verusuario.html?id="+ usuario.getId();
+		return "redirect:/usuarios/listar.html";
 	}
 	
 	@RequestMapping(value = "/buscarusuarios", method = RequestMethod.POST)
 	public String buscarUsuarios(@ModelAttribute("campoBuscar") String campoBuscar, Model model) {
-		List<Usuario> usuarios = usuarioService.buscarUsuariosPorNombre(campoBuscar);
+		List<Usuario> usuarios = usuarioService.buscarUsuarios(campoBuscar);
 		model.addAttribute("usuarios",usuarios);
 		return "/usuarios/buscadorusuarios";
 	}
