@@ -18,36 +18,22 @@ public class ProyectoForm {
 	private Double tiempoEstimado;
 	
 	
+	
 	public Long getIdUsuarioPrincipal() {
 		return idUsuarioPrincipal;
 	}
-
-
-
 	public void setIdUsuarioPrincipal(Long idUsuarioPrincipal) {
 		this.idUsuarioPrincipal = idUsuarioPrincipal;
 	}
-
-
-
 	public Long getId() {
 		return id;
 	}
-
-	
-	
 	public List<Tarea> getTareas() {
 		return tareas;
 	}
-
-
-
 	public void setTareas(List<Tarea> tareas) {
 		this.tareas = tareas;
 	}
-
-
-
 	public void setId(Long id) {
 		this.id = id;
 	}

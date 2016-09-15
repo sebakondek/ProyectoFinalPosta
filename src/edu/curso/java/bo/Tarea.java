@@ -23,18 +23,18 @@ public class Tarea {
 	@OneToMany(cascade=CascadeType.ALL)
 	private List<Comentario> comentarios = new ArrayList<>();
 	private Boolean estado;
-	private String prioridad;
+	private Integer prioridad;
 	
 	
 	public Tarea(){
 		this.estado = true;
 	}
 	
-	public String getPrioridad() {
+	public Integer getPrioridad() {
 		return prioridad;
 	}
 
-	public void setPrioridad(String prioridad) {
+	public void setPrioridad(Integer prioridad) {
 		this.prioridad = prioridad;
 	}
 

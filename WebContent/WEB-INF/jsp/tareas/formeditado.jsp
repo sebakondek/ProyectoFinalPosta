@@ -34,9 +34,9 @@
 						<label for="Prioridad">Prioridad</label>
 						<form:select id="select-multiple" class="js-example-basic-single js-states form-control" 
 							path="prioridad" itemLabel="prioridad" itemValue="id">
-							<option value="Alta"> Alta</option>
-							<option value="Media">Media</option>
-							<option value="Baja">Baja</option>
+							<option value="1"> Alta</option>
+							<option value="2">Media</option>
+							<option value="3">Baja</option>
 					</form:select>
 					</div>
 					<div class="form-group">

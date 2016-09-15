@@ -11,5 +11,5 @@ public interface ComentarioDAO {
 	public Comentario recuperarComentarioPorId(Long id);
 	void borrarComentarioPorId(Long id);
 	void editarComentario(Comentario comentario);
-	public List<Comentario> buscarComentarioPorContenido(String campoBuscar);
+	public List<Comentario> buscarComentario(String campoBuscar, Long idTarea);
 }
