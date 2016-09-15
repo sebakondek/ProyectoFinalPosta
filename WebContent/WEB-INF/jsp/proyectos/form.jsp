@@ -33,7 +33,7 @@
 						<form:textarea class="form-control required" path="descripcion" />
 					</div>
 					<div class="form-group">
-						<label for="totalHoras">Duracion Estimada en Horas</label>
+						<label for="tiempoEstimado">Duracion Estimada en Horas</label>
 						<form:input class="form-control required" path="tiempoEstimado"  max="1000" min="0" type="number"/>
 					</div>
 			<c:choose>

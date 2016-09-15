@@ -28,20 +28,18 @@ function formInit(clase){
 /****************************************LIST FUNCTIONS************************************/
 
 function listarInit(clase){
-		
 		hacerBusqueda(clase);	
 }
 
 function hacerBusqueda(clase) {
 	
-	
 	switch (clase) {
 	
 	case "Usuario":
 		var datosDelForm = $("#miFormBuscadorUsu").serialize();
-		$.post("buscarusuarios.html", datosDelForm, function(resp) {
+		$.post("buscarusuarios.html", datosDelForm, function(resp){
 			$("#divUsuarios").html(resp);
-		});	
+		});
 		break;
 
 	case "Proyecto":
