@@ -23,7 +23,7 @@
 			<tr>
 		 		<th>Usuario Principal</th>
 			 	<c:if test="${not empty proyecto.usuarioPrincipal}">
-					<td>${proyecto.usuarioPrincipal.nombreCompleto}</td>
+					<td><b>${proyecto.usuarioPrincipal.nombreCompleto}</b></td>
 				</c:if>
 			</tr>
 			<tr>
@@ -77,33 +77,42 @@
 						<th>Prioridad</th>
 						<th>Titulo</th>
 						<th>Duracion Estimada</th>
+						<th>Estado</th>
 						<th></th>
 					</tr>
 					<c:forEach items="${proyecto.tareas}" var="t">
-						<c:if test="${t.estado}">
-							<tr>
-								<td>
-									<c:choose>
-										<c:when test="${t.prioridad == '1' }">
-											<h4><span class="label label-danger">Alta</span></h4>
-										</c:when>
-										<c:when test="${t.prioridad == '2' }">
-											<h4><span class="label label-warning">Media</span></h4>
-										</c:when>
-										<c:otherwise>
-											<h4><span class="label label-success">Baja</span></h4>
-										</c:otherwise>
-									</c:choose>
-								</td>
-								<td>${t.titulo}</td>
-								<td>${t.duracionEstimada} horas</td>
-								<td>
+						<tr>
+							<td>
+								<c:choose>
+									<c:when test="${t.prioridad == '1' }">
+										<h4><span class="label label-danger">Alta</span></h4>
+									</c:when>
+									<c:when test="${t.prioridad == '2' }">
+										<h4><span class="label label-warning">Media</span></h4>
+									</c:when>
+									<c:otherwise>
+										<h4><span class="label label-success">Baja</span></h4>
+									</c:otherwise>
+								</c:choose>
+							</td>
+							<td><b>${t.titulo}</b></td>
+							<td>${t.duracionEstimada} horas</td>
+							<td>
+								<c:choose>
+									<c:when test="${t.estado == '1' }">
+										<h4><span class="label label-warning">En Curso</span></h4>
+									</c:when>
+									<c:otherwise>
+										<h4><span class="label label-success">Completado</span></h4>
+									</c:otherwise>
+								</c:choose>
+							</td>
+							<td>
+							
+								<a href="<c:url value="/tareas/vertarea.html?idT=${t.id}&idP=${proyecto.id}" />" class="btn btn-primary">Ver</a>
 								
-									<a href="<c:url value="/tareas/vertarea.html?idT=${t.id}&idP=${proyecto.id}" />" class="btn btn-success">Ver</a>
-									
-								</td>
-							</tr>
-						</c:if>
+							</td>
+						</tr>
 					</c:forEach>
 				</table>
 			</c:otherwise>
