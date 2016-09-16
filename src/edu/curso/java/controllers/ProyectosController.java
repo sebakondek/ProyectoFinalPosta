@@ -34,8 +34,6 @@ public class ProyectosController {
 	@Autowired
 	private UsuarioService usuarioService;
 	
-	@Autowired
-	private TareaService tareaService;
 	
 	@RequestMapping(value = "/listar", method = RequestMethod.GET)
 	public String listar(Model model) {
@@ -82,9 +80,10 @@ public class ProyectosController {
 			if (proyecto.getTiempoEstimado()  !=  proyectoForm.getTiempoEstimado() && proyectoForm.getTiempoEstimado() >= proyecto.getTiempoAcumulado()) {
 				proyecto.setTiempoReal(proyectoForm.getTiempoEstimado() - proyecto.getTiempoAcumulado());	
 			}
-			
 			proyecto.setTiempoEstimado(proyectoForm.getTiempoEstimado());
-			
+			if (!proyecto.getEstado()) {
+				proyecto.setFechaFin(new Date());
+			}
 			idActual = proyectoService.actualizarProyecto(proyecto,idUsuarioPrincipal, idUsuarios);
 		} else {
 			proyecto = new Proyecto();

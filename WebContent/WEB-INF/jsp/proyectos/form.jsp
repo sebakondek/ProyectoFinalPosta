@@ -36,6 +36,7 @@
 						<label for="tiempoEstimado">Duracion Estimada en Horas</label>
 						<form:input class="form-control required" path="tiempoEstimado"  max="1000" min="0" type="number"/>
 					</div>
+					
 			<c:choose>
 				<c:when test="${empty usuarios}">
 							<div class="alert alert-warning">

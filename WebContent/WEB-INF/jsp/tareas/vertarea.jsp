@@ -10,16 +10,16 @@
 		listarInit("Comentario");
 	});
 </script>
+<div class="row">
 
+	<a href="<c:url value="/proyectos/listar.html"/>" class="btn btn-default pull-right">Volver</a>
+<div class="col-md-6 col-md-offset-3">
 
 <h2><b>${proyecto.nombre}</b></h2>
 
 <table class="table">
 	<td>
 		<h2><b>${tarea.titulo}</b></h2>
-	</td>
-	<td>
-		<a href="<c:url value="/proyectos/listar.html" />" class="btn btn-default" id="btnVolverTarea">Volver</a>
 	</td>
 </table>
 
@@ -63,6 +63,8 @@
 
 <div id="myModalTarea" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"></div>
 
+</div>
+</div>
 
 
 <!-- Comentarios -->

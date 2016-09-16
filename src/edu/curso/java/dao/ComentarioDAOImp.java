@@ -20,7 +20,7 @@ public class ComentarioDAOImp extends GenericDAOImp<Comentario, Long>implements 
 	@Override
 	public void borrarComentarioPorId(Long id) {
 		Comentario comentario = super.recuperarClasePorId(id);
-		comentario.setEstado(false);
+		comentario.setEstado(true);
 		super.editarClase(comentario);
 	}
 
