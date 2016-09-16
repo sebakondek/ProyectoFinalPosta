@@ -21,7 +21,7 @@
 			 	<td><textarea rows="2" cols="50" class="textAreaDesc" readonly>${proyecto.descripcion}</textarea></td>
 			</tr>
 			<tr>
-		 		<th>Usuario Principal</th>
+		 		<th>Project Manager</th>
 			 	<c:if test="${not empty proyecto.usuarioPrincipal}">
 					<td><b>${proyecto.usuarioPrincipal.nombreCompleto}</b></td>
 				</c:if>

@@ -11,7 +11,7 @@
 				<th>Id</th>
 				<th>Nombre</th>
 				<th>Descripcion</th>
-				<th>Usuario Principal</th>
+				<th>Project Manager</th>
 				<th>Opciones</th>
 			</tr>
 			<c:forEach items="${proyectos}" var="p">

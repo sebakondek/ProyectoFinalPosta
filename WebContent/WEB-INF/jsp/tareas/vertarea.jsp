@@ -40,6 +40,10 @@
 	    <td><textarea rows="3" cols="70" class="textAreaDesc">${tarea.descripcion}</textarea></td>
     </tr>
     <tr>
+    	<th>Fecha de Alta</th>
+    	<td>${tarea.fechaAlta}</td>
+    </tr>
+    <tr>
     	<th>Prioridad</th>
     	<td>
     		<c:choose>

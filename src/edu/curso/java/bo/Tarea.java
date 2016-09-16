@@ -1,6 +1,7 @@
 package edu.curso.java.bo;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -24,8 +25,18 @@ public class Tarea {
 	private List<Comentario> comentarios = new ArrayList<>();
 	private Boolean estado;
 	private Integer prioridad;
+	private Date fechaAlta;
 	
 	
+	
+	public Date getFechaAlta() {
+		return fechaAlta;
+	}
+
+	public void setFechaAlta(Date fechaAlta) {
+		this.fechaAlta = fechaAlta;
+	}
+
 	public Tarea(){
 		this.estado = true;
 	}

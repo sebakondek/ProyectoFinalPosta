@@ -1,5 +1,6 @@
 package edu.curso.java.controllers;
 
+import java.util.Date;
 import java.util.List;
 
 import org.apache.log4j.Logger;
@@ -100,6 +101,7 @@ public class TareaController {
 			tarea.setDuracionReal(0.0);
 			tarea.setDescripcion(tareaForm.getDescripcion());
 			tarea.setPrioridad(tareaForm.getPrioridad());
+			tarea.setFechaAlta(new Date());
 			
 			proyectoService.editarTiempoProyecto(tareaForm.getDuracionEstimada(), tareaForm.getIdProyecto());
 			tareaService.guardarTarea(tarea,tareaForm.getIdProyecto());
@@ -127,13 +129,5 @@ public class TareaController {
 		return "/tareas/formeditado";
 	}
 	
-		
-//	@RequestMapping(value = "/buscartareas", method = RequestMethod.POST)
-//	public String buscarTareas(@ModelAttribute String campoBuscar, Model model) {
-//		log.info("Listando los proyectos");
-//		List<Tarea> tareas = tareaService.buscarTarea(campoBuscar);
-//		model.addAttribute("tareas",tareas);
-//		return "/tareas/buscadortareas";
-//	}
 	
 }
