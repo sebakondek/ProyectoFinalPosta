@@ -12,7 +12,7 @@
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
     <meta name="description" content="">
     <meta name="author" content="">
-    <title>Track & Bug</title>
+    <title>Los Areperos</title>
     <link href="<c:url value="/css/bootstrap.min.css" />" rel="stylesheet">
     <link href="<c:url value="/css/general.css" />" rel="stylesheet">
 	<link href="<c:url value="/css/select2.css" />" rel="stylesheet">
@@ -34,7 +34,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="<c:url value="/home/index.html" />">Track & Bug</a>
+          <a class="navbar-brand" href="<c:url value="/home/index.html" />">Proyecto Final</a>
         </div>
         <div id="navbar" class="collapse navbar-collapse">
           <ul class="nav navbar-nav">

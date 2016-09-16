@@ -4,12 +4,8 @@ import java.util.List;
 
 import edu.curso.java.bo.Comentario;
 
-public interface ComentarioDAO {
+public interface ComentarioDAO extends GenericDAO<Comentario, Long> {
 	
-	public Long guardarComentario(Comentario comentario);
-	public List<Comentario> listarComentarios();
-	public Comentario recuperarComentarioPorId(Long id);
 	void borrarComentarioPorId(Long id);
-	void editarComentario(Comentario comentario);
 	public List<Comentario> buscarComentarioPorContenido(String campoBuscar);
 }

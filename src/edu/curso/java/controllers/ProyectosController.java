@@ -1,5 +1,7 @@
 package edu.curso.java.controllers;
 
+import java.io.FileWriter;
+import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 
@@ -12,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import edu.curso.java.CVSUtil.CSVUtil;
 import edu.curso.java.bo.Proyecto;
 import edu.curso.java.bo.Usuario;
 import edu.curso.java.controllers.forms.ProyectoForm;
@@ -66,12 +69,18 @@ public class ProyectosController {
 		Long idUsuarioPrincipal = proyectoForm.getIdUsuarioPrincipal();
 		Long [] idUsuarios = proyectoForm.getIdUsuarios();
 		
+		
+		
 		if(idActual != null){
 			proyecto= proyectoService.recuperarProyectoPorId(idActual);
 			proyecto.setNombre(proyectoForm.getNombre());
 			proyecto.setDescripcion(proyectoForm.getDescripcion());
+			if (proyecto.getTiempoEstimado()  !=  proyectoForm.getTiempoEstimado() && proyectoForm.getTiempoEstimado() >= proyecto.getTiempoAcumulado()) {
+				proyecto.setTiempoReal(proyectoForm.getTiempoEstimado() - proyecto.getTiempoAcumulado());	
+			}
+			
 			proyecto.setTiempoEstimado(proyectoForm.getTiempoEstimado());
-			proyecto.setTiempoReal(proyectoForm.getTiempoEstimado() - proyecto.getTiempoAcumulado());
+			
 			idActual = proyectoService.actualizarProyecto(proyecto,idUsuarioPrincipal, idUsuarios);
 		} else {
 			proyecto = new Proyecto();
@@ -114,5 +123,19 @@ public class ProyectosController {
 		return "/proyectos/buscadorproyectos";
 	}
 	
+	@RequestMapping(value= "/crearCVS")
+	public String crearCVS() throws Exception{
+		  String csvFile = "C:/Users/550714/Desktop/proyecto.csv";
+	      FileWriter writer = new FileWriter(csvFile);
+	      
+	      List<Proyecto> proyectos = proyectoService.listarProyectos();
+	     for (Proyecto proyecto : proyectos) {
+	    	 CSVUtil.writeLine(writer, Arrays.asList(proyecto.getNombre(), proyecto.getDescripcion(), proyecto.getFechaAlta().toString(), proyecto.getEstado().toString()));
+		      	
+		}
+	       writer.flush();
+	       writer.close();
+		return "redirect: listar.html";
+	}
 	
 }

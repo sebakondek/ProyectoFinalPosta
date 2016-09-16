@@ -10,41 +10,19 @@ import org.springframework.stereotype.Repository;
 import edu.curso.java.bo.Comentario;
 
 @Repository
-public class ComentarioDAOImp implements ComentarioDAO {
+public class ComentarioDAOImp extends GenericDAOImp<Comentario, Long>implements ComentarioDAO  {
 
 	@Autowired
 	private SessionFactory sessionFactory;
 	
-	
-	@Override
-	public Long guardarComentario(Comentario comentario) {
-		return (Long) sessionFactory.getCurrentSession().save(comentario);
-	}
-
-	@SuppressWarnings("unchecked")
-	@Override
-	public List<Comentario> listarComentarios() {
-		Query query = sessionFactory.getCurrentSession().createQuery("from Comentario where estado=1");
-		return query.list();
-	}
-
-	@Override
-	public Comentario recuperarComentarioPorId(Long id){
-		return (Comentario) sessionFactory.getCurrentSession().load(Comentario.class, id);
-	}
-	
+		
 	@Override
 	public void borrarComentarioPorId(Long id) {
-		Comentario comentario = this.recuperarComentarioPorId(id);
+		Comentario comentario = super.recuperarClasePorId(id);
 		comentario.setEstado(false);
-		editarComentario(comentario);
+		super.editarClase(comentario);
 	}
 
-	@Override
-	public void editarComentario(Comentario comentario) {
-		sessionFactory.getCurrentSession().update(comentario);
-		
-	}
 
 	@SuppressWarnings("unchecked")
 	@Override

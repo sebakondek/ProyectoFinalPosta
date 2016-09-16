@@ -17,7 +17,7 @@
 				<td>${u.nombreCompleto}</td>
 				<td>
 					<c:choose>
-						<c:when test="${u.activo}">SI</c:when>
+						<c:when test="${u.estado}">SI</c:when>
 						<c:otherwise>NO</c:otherwise>
 					</c:choose>
 				</td>

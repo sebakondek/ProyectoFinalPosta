@@ -56,7 +56,7 @@ public class UsuariosController {
 		usuario.setNombreCompleto(usuarioForm.getNombreCompleto());
 		usuario.setUsuario(usuarioForm.getUsuario());
 		usuario.setPassword(usuarioForm.getPassword());
-
+		
 		Long idGenerado = usuarioService.crearNuevoUsuario(usuario);
 
 		return "redirect:/usuarios/listar.html";
@@ -67,7 +67,7 @@ public class UsuariosController {
 		Usuario usuario = usuarioService.recuperarUsuarioPorId(id);
 		UsuarioForm usuarioForm= new UsuarioForm();
 		
-		usuarioForm.setActivo(usuario.isActivo());
+		usuarioForm.setEstado(usuario.getEstado());
 		usuarioForm.setNombreCompleto(usuario.getNombreCompleto());
 		usuarioForm.setUsuario(usuario.getUsuario());
 		usuarioForm.setPassword(usuario.getPassword());
@@ -83,7 +83,7 @@ public class UsuariosController {
 		usuario.setNombreCompleto(usuarioForm.getNombreCompleto());
 		usuario.setUsuario(usuarioForm.getUsuario());
 		usuario.setPassword(usuarioForm.getPassword());
-		usuario.setActivo(usuarioForm.isActivo());
+		usuario.setEstado(usuarioForm.getEstado());
 		usuario.setId(id);
 		usuarioService.editarUsuario(usuario);
 

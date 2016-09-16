@@ -33,4 +33,5 @@
 
 <div id="myModalProy" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"></div>
 
+				
 <c:import url="/general/template_bottom.jsp" />

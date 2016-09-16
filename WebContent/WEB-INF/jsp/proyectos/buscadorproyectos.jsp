@@ -33,3 +33,10 @@
 			
 		</c:forEach>
 	</table>
+	<c:choose>
+		<c:when test="${!empty proyectos}">
+		
+			<a class="btn btn-warning pull-left" href="crearCVS.html">Crear Reporte</a>
+		</c:when>
+	</c:choose>
+	

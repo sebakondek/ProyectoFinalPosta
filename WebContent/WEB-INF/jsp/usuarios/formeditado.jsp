@@ -35,7 +35,7 @@ $(function(){
 					<form:input class="form-control required" path="password" type="password" />
 				</div>
 				<div class="form-group">
-					<label for="activo">Activo<form:checkbox  path="activo"/></label>
+					<label for="estado">Estado<form:checkbox  path="estado"/></label>
 				</div>
 				<div>
 					<input type="submit" class="btn btn-success" value="Guardar">

@@ -1,8 +1,6 @@
 package edu.curso.java.controllers;
 
-import java.util.Date;
 import java.util.List;
-
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -11,7 +9,6 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-
 import edu.curso.java.bo.Comentario;
 import edu.curso.java.bo.Proyecto;
 import edu.curso.java.bo.Tarea;
@@ -79,14 +76,20 @@ public class TareaController {
 	public String guardarTarea(@ModelAttribute("tareaForm") TareaForm tareaForm, Model model) {
 		Tarea tarea = null;
 		Long idActual = tareaForm.getId();
+		Double tiempoX = null;
 		if(idActual != null){
 			tarea = tareaService.recuperarTareaPorId(idActual);
 			tarea.setTitulo(tareaForm.getTitulo());
-			tarea.setDuracionEstimada(tareaForm.getDuracionEstimada());
 			tarea.setDuracionReal(0.0);
 			tarea.setDescripcion(tareaForm.getDescripcion());
 			tarea.setPrioridad(tareaForm.getPrioridad());
-			proyectoService.editarTiempoProyecto(tareaForm.getDuracionEstimada(), tareaForm.getIdProyecto());
+			if(tarea.getDuracionEstimada() != tareaForm.getDuracionEstimada()) {
+				tiempoX = tareaForm.getDuracionEstimada() - tarea.getDuracionEstimada();
+				proyectoService.editarTiempoProyecto(tiempoX, tareaForm.getIdProyecto());
+			}
+			
+			tarea.setDuracionEstimada(tareaForm.getDuracionEstimada());
+			
 			tareaService.editarTarea(tarea);
 		} else {
 			//log.info("La id de PROYECTO en TareaController:" +tareaForm.getIdProyecto());

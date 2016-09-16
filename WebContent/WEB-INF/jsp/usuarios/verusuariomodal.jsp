@@ -26,7 +26,7 @@
 					<th>Activo</th>
 					<td>
 						<c:choose>
-							<c:when test="${usuario.activo}">SI</c:when>
+							<c:when test="${usuario.estado}">SI</c:when>
 							<c:otherwise>NO</c:otherwise>
 						</c:choose>
 					</td>
