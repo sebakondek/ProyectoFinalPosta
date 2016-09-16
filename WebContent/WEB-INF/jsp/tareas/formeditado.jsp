@@ -32,6 +32,10 @@
 						<form:textarea rows="3" cols="70" class="form-control required" path="descripcion" />
 					</div>
 					<div class="form-group">
+						<label for="totalHoras">Duracion Estimada en Horas<span style="color: red;">Tiene hasta ${tiempoProyecto + tareaForm.duracionEstimada} para asignar</span></label>
+						<form:input class="form-control" path="duracionEstimada" min="0" max="${tiempoProyecto + tareaForm.duracionEstimada}" type="number"/>
+					</div>
+					<div class="form-group">
 						<label for="Prioridad">Prioridad</label>
 						<form:select id="select-multiple" class="js-example-basic-single js-states form-control" 
 							path="prioridad" itemLabel="prioridad" itemValue="id">
@@ -41,9 +45,23 @@
 					</form:select>
 					</div>
 					<div class="form-group">
-						<label for="totalHoras">Duracion Estimada en Horas<span style="color: red;">Tiene hasta ${tiempoProyecto + tareaForm.duracionEstimada} para asignar</span></label>
-						<form:input class="form-control" path="duracionEstimada" min="0" max="${tiempoProyecto + tareaForm.duracionEstimada}" type="number"/>
+						<label for="tipoTarea">Tipo de Tarea</label>
+						<form:select id="select-single" class="js-example-basic-single js-states form-control" 
+								path="tipoTarea" itemLabel="tipoTarea" itemValue="id" required="required">
+							<option value="1">Desarrollo</option>
+							<option value="2">Análisis</option>
+							<option value="3">Testing</option>
+						</form:select>
 					</div>
+					<div class="form-group">
+						<label for="estado">Estado de la Tarea</label>
+						<form:select id="select-single" class="js-example-basic-single js-states form-control" 
+								path="estado" itemLabel="estado" itemValue="id" required="required">
+							<option value="false">En Curso</option>
+							<option value="true">Completado</option>
+						</form:select>
+					</div>
+					
 					<div class="form-group">
 						<input type="submit" class="btn btn-success" value="Guardar">
 					</div>

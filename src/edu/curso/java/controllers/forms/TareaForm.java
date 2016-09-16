@@ -15,7 +15,23 @@ public class TareaForm {
 	private List<Comentario> comentarios = new ArrayList<>();
 	private Long idProyecto;
 	private Integer prioridad;
+	private Integer tipoTarea;
+	private boolean estado;
 	
+	
+	
+	public boolean isEstado() {
+		return estado;
+	}
+	public void setEstado(boolean estado) {
+		this.estado = estado;
+	}
+	public Integer getTipoTarea() {
+		return tipoTarea;
+	}
+	public void setTipoTarea(Integer tipoTarea) {
+		this.tipoTarea = tipoTarea;
+	}
 	public Long getId() {
 		return id;
 	}

@@ -86,6 +86,8 @@ public class TareaController {
 			tarea.setDuracionReal(0.0);
 			tarea.setDescripcion(tareaForm.getDescripcion());
 			tarea.setPrioridad(tareaForm.getPrioridad());
+			tarea.setTipoTarea(tareaForm.getTipoTarea());
+			tarea.setEstado(tareaForm.isEstado());
 			if(tarea.getDuracionEstimada() != tareaForm.getDuracionEstimada()) {
 				tiempoX = tareaForm.getDuracionEstimada() - tarea.getDuracionEstimada();
 				proyectoService.editarTiempoProyecto(tiempoX, tareaForm.getIdProyecto());
@@ -105,6 +107,7 @@ public class TareaController {
 			tarea.setDescripcion(tareaForm.getDescripcion());
 			tarea.setPrioridad(tareaForm.getPrioridad());
 			tarea.setFechaAlta(new Date());
+			tarea.setTipoTarea(tareaForm.getTipoTarea());
 			
 			proyectoService.editarTiempoProyecto(tareaForm.getDuracionEstimada(), tareaForm.getIdProyecto());
 			tareaService.guardarTarea(tarea,tareaForm.getIdProyecto());
@@ -124,6 +127,7 @@ public class TareaController {
 		tareaForm.setDuracionEstimada(tarea.getDuracionEstimada());
 		tareaForm.setDuracionReal(tarea.getDuracionReal());
 		tareaForm.setPrioridad(tarea.getPrioridad());
+		tareaForm.setTipoTarea(tarea.getTipoTarea());
 		tareaForm.setIdProyecto(idP);
 		
 		Proyecto proyecto = proyectoService.recuperarProyectoPorId(tareaForm.getIdProyecto());

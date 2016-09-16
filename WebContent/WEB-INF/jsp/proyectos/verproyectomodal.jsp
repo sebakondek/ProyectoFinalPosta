@@ -37,7 +37,7 @@
 							</c:forEach>
 						</c:when>
 						<c:otherwise>
-							No hay usuarios asignados además del principal.
+							No hay usuarios asignados.
 						</c:otherwise>
 					</c:choose>
 				</td>
@@ -77,6 +77,7 @@
 						<th>Prioridad</th>
 						<th>Titulo</th>
 						<th>Duracion Estimada</th>
+						<th>Tipo de Tarea</th>
 						<th>Estado</th>
 						<th></th>
 					</tr>
@@ -97,6 +98,19 @@
 							</td>
 							<td><b>${t.titulo}</b></td>
 							<td>${t.duracionEstimada} horas</td>
+							<td>
+								<c:choose>
+									<c:when test="${tarea.tipoTarea == '1' }">
+										Desarrollo
+									</c:when>
+									<c:when test="${tarea.tipoTarea == '2' }">
+										Análisis
+									</c:when>
+									<c:otherwise>
+										Testing
+									</c:otherwise>
+								</c:choose>
+							</td>
 							<td>
 								<c:choose>
 									<c:when test="${t.estado == '1' }">

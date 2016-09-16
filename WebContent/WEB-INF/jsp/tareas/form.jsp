@@ -38,14 +38,23 @@ $(function(){
 						<label for="totalHoras">Duracion Estimada en Horas <span style="color: red;">Tiene hasta ${tiempoProyecto} para asignar</span></label>
 						<form:input class="form-control" path="duracionEstimada" max="${tiempoProyecto}" min="0" type="number" name="number" required="required"/>
 					</div>
-						<div class="form-group">
+					<div class="form-group">
 						<label for="prioridad">Prioridad</label>
-						<form:select id="select-multiple" class="js-example-basic-single js-states form-control" 
+						<form:select id="select-single" class="js-example-basic-single js-states form-control" 
 								path="prioridad" itemLabel="prioridad" itemValue="id" required="required">
 							<option value="1"> Alta</option>
 							<option value="2">Media</option>
 							<option value="3">Baja</option>
-					</form:select>
+						</form:select>
+					</div>
+					<div class="form-group">
+						<label for="tipoTarea">Tipo de Tarea</label>
+						<form:select id="select-single" class="js-example-basic-single js-states form-control" 
+								path="tipoTarea" itemLabel="tipoTarea" itemValue="id" required="required">
+							<option value="1">Desarrollo</option>
+							<option value="2">Análisis</option>
+							<option value="3">Testing</option>
+						</form:select>
 					</div>
 					<div class="form-group">
 						<input type="submit" class="btn btn-success" value="Guardar">

@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import edu.curso.java.CVSUtil.CSVUtil;
 import edu.curso.java.bo.Proyecto;
 import edu.curso.java.bo.Usuario;
 import edu.curso.java.controllers.forms.ProyectoForm;
@@ -126,20 +125,5 @@ public class ProyectosController {
 		model.addAttribute("proyectos",proyectos);
 		return "/proyectos/buscadorproyectos";
 	}
-	
-	@RequestMapping(value= "/crearCVS")
-	public String crearCVS() throws Exception{
-		  String csvFile = "C:/Users/550714/Desktop/proyecto.csv";
-	      FileWriter writer = new FileWriter(csvFile);
-	      
-	      List<Proyecto> proyectos = proyectoService.listarProyectos();
-	     for (Proyecto proyecto : proyectos) {
-	    	 CSVUtil.writeLine(writer, Arrays.asList(proyecto.getNombre(), proyecto.getDescripcion(), proyecto.getFechaAlta().toString(), proyecto.getEstado().toString()));
-		      	
-		}
-	       writer.flush();
-	       writer.close();
-		return "redirect: listar.html";
-	}
-	
+
 }
