@@ -4,17 +4,10 @@ import java.util.List;
 
 import edu.curso.java.bo.Usuario;
 
-public interface UsuarioDAO {
+public interface UsuarioDAO extends GenericDAO<Usuario, Long> {
 
-	Long guardarUsuario(Usuario usuario);
-
-	Usuario recuperarUsuarioPorId(Long id);
-
-	List<Usuario> recuperarUsuarios();
 
 	void borrarUsuarioPorId(Long id);
-	
-	void editarUsuario(Usuario usuario);
 
 	List<Usuario> buscarUsuarios(String campoBuscar);
 }

@@ -14,7 +14,7 @@
 				<c:forEach items="${comentarios}" var="c">
 					<tr>
 						<c:choose>
-							<c:when test="${not c.usuario.activo}">
+							<c:when test="${not c.usuario.estado}">
 								<td style="color: red;">${c.usuario.nombreCompleto} (inactivo)</td>
 							</c:when>
 							<c:otherwise>
@@ -24,7 +24,8 @@
 						
 						<td rowspan="2"><textarea rows="3" cols="90" class="textAreaDesc" readonly>${c.comentario}</textarea></td>
 						<td rowspan="2" class="tdOpciones">
-							<a onclick="opcionComentario(${c.id}, ${tarea.id}, ${proyecto.id},'editar')" class="btn btn-primary">Editar</a>
+							<a href="<c:url value="/comentarios/borrarcomentario.html?idC=${c.id}&idT=${tarea.id}&idP=${proyecto.id} "/>" 
+									class="btn btn-danger">Borrar</a>
 						</td>
 					</tr>
 					<tr>

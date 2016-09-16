@@ -21,7 +21,7 @@
 			 	<td><textarea rows="2" cols="50" class="textAreaDesc" readonly>${proyecto.descripcion}</textarea></td>
 			</tr>
 			<tr>
-		 		<th>Usuario Principal</th>
+		 		<th>Project Manager</th>
 			 	<c:if test="${not empty proyecto.usuarioPrincipal}">
 					<td><b>${proyecto.usuarioPrincipal.nombreCompleto}</b></td>
 				</c:if>
@@ -32,12 +32,12 @@
 					<c:choose>
 						<c:when test="${not empty proyecto.usuarios}">
 							<c:forEach items="${proyecto.usuarios}" var="u" varStatus="loop">
-								<c:if test="${u.activo == true}">${u.nombreCompleto}</c:if>
+								<c:if test="${u.estado == true}">${u.nombreCompleto}</c:if>
 								<c:if test="${!loop.last}">,&nbsp;</c:if>
 							</c:forEach>
 						</c:when>
 						<c:otherwise>
-							No hay usuarios asignados además del principal.
+							No hay usuarios asignados.
 						</c:otherwise>
 					</c:choose>
 				</td>
@@ -78,6 +78,7 @@
 						<th>Prioridad</th>
 						<th>Titulo</th>
 						<th>Duracion Estimada</th>
+						<th>Tipo de Tarea</th>
 						<th>Estado</th>
 						<th></th>
 					</tr>
@@ -98,6 +99,19 @@
 							</td>
 							<td><b>${t.titulo}</b></td>
 							<td>${t.duracionEstimada} horas</td>
+							<td>
+								<c:choose>
+									<c:when test="${tarea.tipoTarea == '1' }">
+										Desarrollo
+									</c:when>
+									<c:when test="${tarea.tipoTarea == '2' }">
+										Análisis
+									</c:when>
+									<c:otherwise>
+										Testing
+									</c:otherwise>
+								</c:choose>
+							</td>
 							<td>
 								<c:choose>
 									<c:when test="${t.estado == '1' }">

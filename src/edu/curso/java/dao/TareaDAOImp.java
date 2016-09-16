@@ -14,7 +14,7 @@ import edu.curso.java.bo.Tarea;
 import edu.curso.java.services.ProyectoService;
 
 @Repository
-public class TareaDAOImp implements TareaDAO {
+public class TareaDAOImp extends GenericDAOImp<Tarea, Long>implements TareaDAO {
 
 	@Autowired
 	private SessionFactory sessionFactory;
@@ -24,22 +24,8 @@ public class TareaDAOImp implements TareaDAO {
 	
 	
 
-	@Override
-	public Long guardarTarea(Tarea tarea) {
-		return (Long) sessionFactory.getCurrentSession().save(tarea);
-	}
-
-	@SuppressWarnings("unchecked")
-	@Override
-	public List<Tarea> listarTareas() {
-		Query query = sessionFactory.getCurrentSession().createQuery("from Tarea as t where t.estado = 1 ORDER BY t.prioridad ASC, t.fecha DESC");
-		return query.list();
-	}
-
-	@Override
-	public Tarea recuperarTareaPorId(Long id) {
-		return (Tarea) sessionFactory.getCurrentSession().load(Tarea.class, id);
-	}
+	
+	
 
 	@Override
 	public void agregarTareaProyecto(Tarea tarea, Long idProyecto) {
@@ -49,19 +35,15 @@ public class TareaDAOImp implements TareaDAO {
 
 	@Override
 	public List<Comentario> borrarTareaPorId(Long id) {
-		Tarea tarea = this.recuperarTareaPorId(id);
+		Tarea tarea = super.recuperarClasePorId(id);
 		List<Comentario> comentarios = tarea.getComentarios();
 		
 		tarea.setEstado(false);
-		editarTarea(tarea);
+		super.editarClase(tarea);
 		
 		return comentarios;
 	}
 
-	@Override
-	public void editarTarea(Tarea tarea) {
-		sessionFactory.getCurrentSession().update(tarea);
-	}
 
 	@SuppressWarnings("unchecked")
 	@Override
@@ -73,14 +55,4 @@ public class TareaDAOImp implements TareaDAO {
 		query.setLong("idProyecto", idProy);
 		return query.list();
 	}
-
-//	@SuppressWarnings("unchecked")
-//	@Override
-//	public List<Tarea> buscarTarea(String campoBuscar) {
-//		String hql = "from Tarea as t where t.estado=1 and (t.titulo like :textoBuscar OR t.descripcion like :textoBuscar)";
-//		Query query = sessionFactory.getCurrentSession().createQuery(hql);
-//		query.setString("textoBuscar", "%" + campoBuscar + "%");
-//		return query.list();
-//	}
-
 }

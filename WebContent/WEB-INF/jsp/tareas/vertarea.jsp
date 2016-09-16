@@ -10,16 +10,16 @@
 		listarInit("Comentario");
 	});
 </script>
+<div class="row">
 
+	<a href="<c:url value="/proyectos/listar.html"/>" class="btn btn-default pull-right">Volver</a>
+<div class="col-md-6 col-md-offset-3">
 
 <h2><b>${proyecto.nombre}</b></h2>
 
 <table class="table">
 	<td>
 		<h2><b>${tarea.titulo}</b></h2>
-	</td>
-	<td>
-		<a href="<c:url value="/proyectos/listar.html" />" class="btn btn-default" id="btnVolverTarea">Volver</a>
 	</td>
 </table>
 
@@ -40,6 +40,40 @@
 	    <td><textarea rows="3" cols="70" class="textAreaDesc">${tarea.descripcion}</textarea></td>
     </tr>
     <tr>
+    	<th>Fecha de Alta</th>
+    	<td>${tarea.fechaAlta}</td>
+    </tr>
+    <tr>
+    	<th>Tipo de Tarea</th>
+    	<td>
+    		<c:choose>
+				<c:when test="${tarea.tipoTarea == '1' }">
+					Desarrollo
+				</c:when>
+				<c:when test="${tarea.tipoTarea == '2' }">
+					Análisis
+				</c:when>
+				<c:otherwise>
+					Testing
+				</c:otherwise>
+			</c:choose>
+		</td>
+	</tr>
+    <tr>
+    <tr>
+    	<th>Estado</th>
+    	<td>
+    		<c:choose>
+				<c:when test="${tarea.estado}">
+					<h3><span class="label label-success label-vista">Completado</span></h3>
+				</c:when>
+				<c:otherwise>
+					<h3><span class="label label-warning label-vista">En Curso</span></h3>
+				</c:otherwise>
+			</c:choose>
+		</td>
+	</tr>
+    <tr>
     	<th>Prioridad</th>
     	<td>
     		<c:choose>
@@ -59,6 +93,8 @@
 
 <div id="myModalTarea" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"></div>
 
+</div>
+</div>
 
 
 <!-- Comentarios -->

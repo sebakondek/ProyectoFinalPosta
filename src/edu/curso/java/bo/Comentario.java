@@ -17,9 +17,6 @@ public class Comentario {
 	private Boolean estado;
 	
 
-	public Comentario(){
-		this.estado = true;
-	}
 	public Boolean getEstado() {
 		return estado;
 	}

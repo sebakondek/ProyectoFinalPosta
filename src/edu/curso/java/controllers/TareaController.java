@@ -1,7 +1,7 @@
 package edu.curso.java.controllers;
 
+import java.util.Date;
 import java.util.List;
-
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-
+import edu.curso.java.bo.Comentario;
 import edu.curso.java.bo.Proyecto;
 import edu.curso.java.bo.Tarea;
 import edu.curso.java.controllers.forms.TareaForm;
@@ -77,17 +77,23 @@ public class TareaController {
 	public String guardarTarea(@ModelAttribute("tareaForm") TareaForm tareaForm, Model model) {
 		Tarea tarea = null;
 		Long idActual = tareaForm.getId();
+		Double tiempoX = null;
 		Long idProyecto = tareaForm.getIdProyecto();
 		if(idActual != null){
 			
 			tarea = tareaService.recuperarTareaPorId(idActual);
 			tarea.setTitulo(tareaForm.getTitulo());
-			tarea.setDuracionEstimada(tareaForm.getDuracionEstimada());
 			tarea.setDuracionReal(0.0);
 			tarea.setDescripcion(tareaForm.getDescripcion());
 			tarea.setPrioridad(tareaForm.getPrioridad());
+			tarea.setTipoTarea(tareaForm.getTipoTarea());
+			tarea.setEstado(tareaForm.isEstado());
+			if(tarea.getDuracionEstimada() != tareaForm.getDuracionEstimada()) {
+				tiempoX = tareaForm.getDuracionEstimada() - tarea.getDuracionEstimada();
+				proyectoService.editarTiempoProyecto(tiempoX, tareaForm.getIdProyecto());
+			}
 			
-			proyectoService.editarTiempoProyecto(tareaForm.getDuracionEstimada(), tareaForm.getIdProyecto());
+			tarea.setDuracionEstimada(tareaForm.getDuracionEstimada());
 			tareaService.editarTarea(tarea);
 			
 			return "redirect:/tareas/vertarea.html?idT=" + idActual + "&idP=" + idProyecto;
@@ -100,6 +106,8 @@ public class TareaController {
 			tarea.setDuracionReal(0.0);
 			tarea.setDescripcion(tareaForm.getDescripcion());
 			tarea.setPrioridad(tareaForm.getPrioridad());
+			tarea.setFechaAlta(new Date());
+			tarea.setTipoTarea(tareaForm.getTipoTarea());
 			
 			proyectoService.editarTiempoProyecto(tareaForm.getDuracionEstimada(), tareaForm.getIdProyecto());
 			tareaService.guardarTarea(tarea,tareaForm.getIdProyecto());
@@ -119,6 +127,7 @@ public class TareaController {
 		tareaForm.setDuracionEstimada(tarea.getDuracionEstimada());
 		tareaForm.setDuracionReal(tarea.getDuracionReal());
 		tareaForm.setPrioridad(tarea.getPrioridad());
+		tareaForm.setTipoTarea(tarea.getTipoTarea());
 		tareaForm.setIdProyecto(idP);
 		
 		Proyecto proyecto = proyectoService.recuperarProyectoPorId(tareaForm.getIdProyecto());
@@ -127,13 +136,5 @@ public class TareaController {
 		return "/tareas/formeditado";
 	}
 	
-		
-//	@RequestMapping(value = "/buscartareas", method = RequestMethod.POST)
-//	public String buscarTareas(@ModelAttribute String campoBuscar, Model model) {
-//		log.info("Listando los proyectos");
-//		List<Tarea> tareas = tareaService.buscarTarea(campoBuscar);
-//		model.addAttribute("tareas",tareas);
-//		return "/tareas/buscadortareas";
-//	}
 	
 }

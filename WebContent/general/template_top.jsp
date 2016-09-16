@@ -12,7 +12,7 @@
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
     <meta name="description" content="">
     <meta name="author" content="">
-    <title>Track & Bug</title>
+    <title>Los Areperos</title>
     <link href="<c:url value="/css/bootstrap.min.css" />" rel="stylesheet">
     <link href="<c:url value="/css/general.css" />" rel="stylesheet">
 	<link href="<c:url value="/css/select2.css" />" rel="stylesheet">
@@ -25,7 +25,7 @@
 
   <body>
 
-    <nav class="navbar navbar-inverse navbar-fixed-top">
+    <nav class="navbar navbar-default navbar-inverse navbar-fixed-top">
       <div class="container">
         <div class="navbar-header">
           <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
@@ -34,7 +34,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="<c:url value="/home/index.html" />">Track & Bug</a>
+          <a class="navbar-brand" href="<c:url value="/home/index.html" />">Proyecto Final</a>
         </div>
         <div id="navbar" class="collapse navbar-collapse">
           <ul class="nav navbar-nav">
@@ -42,11 +42,6 @@
             <li><a href="<c:url value="/usuarios/listar.html" />">Usuarios</a></li>
             <li><a href="<c:url value="/proyectos/listar.html" />">Proyectos</a></li>
           </ul>
-          <form class="navbar-form navbar-left">
-      		  <div class="form-group">
-        		  <input type="text" class="form-control" placeholder="Buscar">
-       		 </div>
-     	 </form>
         </div><!--/.nav-collapse -->
       </div>
     </nav>

@@ -11,9 +11,11 @@
 				<th>Id</th>
 				<th>Nombre</th>
 				<th>Descripcion</th>
-				<th>Usuario Principal</th>
+				<th>Project Manager</th>
 				<th>Opciones</th>
 			</tr>
+
+	
 			<c:forEach items="${proyectos}" var="p">
 				<tr>
 					<td>${p.id}</td>
@@ -33,6 +35,12 @@
 				</tr>
 			</c:forEach>
 		</table>
+			<c:choose>
+				<c:when test="${!empty proyectos}">
+				
+					<a class="btn btn-warning pull-left" href="crearCVS.html">Crear Reporte</a>
+				</c:when>
+			</c:choose>
 	</c:when>
 	<c:otherwise>
 		<h2 style="margin-top: 30px;"><b>No hay Proyectos activos</b></h2>

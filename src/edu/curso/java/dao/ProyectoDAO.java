@@ -6,14 +6,10 @@ import edu.curso.java.bo.Proyecto;
 import edu.curso.java.bo.Tarea;
 import edu.curso.java.bo.Usuario;
 
-public interface ProyectoDAO {
+public interface ProyectoDAO extends GenericDAO<Proyecto, Long> {
 
-	public Long guardarProyecto(Proyecto proyecto);
-	public List<Proyecto> listarProyectos();
-	public Proyecto recuperarProyectoPorId(Long id);
-	void agregarUsuarioProyecto(Usuario usuario, Long id);
 	List<Tarea> borrarProyectoPorId(Long id);
-	void editarProyecto(Proyecto proyecto);
+	void agregarUsuarioProyecto(Usuario usuario, Long id);
 	public List<Proyecto> buscarProyecto(String campoBuscar);
 	
 }

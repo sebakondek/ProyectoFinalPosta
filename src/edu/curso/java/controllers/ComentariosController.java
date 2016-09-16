@@ -42,14 +42,14 @@ public class ComentariosController {
 
 	@RequestMapping(value="/listarcomentarios", method = RequestMethod.GET)
 	public String listarComentarios(Model model) {
-		List<Comentario> comentarios = comentarioDAO.listarComentarios();
+		List<Comentario> comentarios = comentarioDAO.listarClase(new Comentario());
 		model.addAttribute("comentarios", comentarios);
 		return "/comentarios/listar";
 	}
 	
 	@RequestMapping(value="/vercomentario")
 	public String verComentario(@RequestParam Long id, Model model) {
-		Comentario comentario = comentarioDAO.recuperarComentarioPorId(id);
+		Comentario comentario = comentarioDAO.recuperarClasePorId(id);
 		model.addAttribute("comentario", comentario);
 		return "/comentarios/vercomentariomodal";
 	}
@@ -75,12 +75,12 @@ public class ComentariosController {
 		Long idUsuario = (long) 1;				 //a cambiar cuando se implemente el login
 		
 		if(idActual != null){
-			comentario = comentarioDAO.recuperarComentarioPorId(idActual);
+			comentario = comentarioDAO.recuperarClasePorId(idActual);
 			comentario.setComentario(comentarioForm.getComentario());
 			comentario.setUsuario(usuarioService.recuperarUsuarioPorId(idUsuario));
 			comentario.setFecha(new Date());
 			comentario.setEstado(comentarioForm.getEstado());
-			comentarioDAO.editarComentario(comentario);
+			comentarioDAO.editarClase(comentario);
 		} else {
 			comentario = new Comentario();
 			comentario.setComentario(comentarioForm.getComentario());
@@ -95,14 +95,14 @@ public class ComentariosController {
 	}
 	
 	@RequestMapping(value="/borrarcomentario")
-	public String borrarComentario(@RequestParam Long id) {
-		comentarioDAO.borrarComentarioPorId(id);
-		return "redirect:/comentarios/listar.html";
+	public String borrarComentario(@RequestParam Long idC, Long idT, Long idP) {
+		comentarioDAO.borrarComentarioPorId(idC);
+		return "redirect:/tareas/vertarea.html?idT=" + idT + "&idP=" + idP;
 	}
 	
 	@RequestMapping(value="/editarcomentario")
 	public String editarComentario(Model model, @RequestParam Long idC, Long idT, Long idP){
-		Comentario comentario = comentarioDAO.recuperarComentarioPorId(idC);
+		Comentario comentario = comentarioDAO.recuperarClasePorId(idC);
 		Proyecto proyecto = proyectoService.recuperarProyectoPorId(idP);
 		ComentarioForm comentarioForm = new ComentarioForm();
 		

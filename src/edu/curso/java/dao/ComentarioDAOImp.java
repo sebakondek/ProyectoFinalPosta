@@ -2,6 +2,7 @@ package edu.curso.java.dao;
 
 import java.util.List;
 
+import org.apache.log4j.Logger;
 import org.hibernate.Query;
 import org.hibernate.SQLQuery;
 import org.hibernate.SessionFactory;
@@ -9,43 +10,24 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import edu.curso.java.bo.Comentario;
+import edu.curso.java.controllers.ComentariosController;
 
 @Repository
-public class ComentarioDAOImp implements ComentarioDAO {
+public class ComentarioDAOImp extends GenericDAOImp<Comentario, Long>implements ComentarioDAO  {
 
+	private static final Logger log = Logger.getLogger(ComentarioDAOImp.class);
+	
 	@Autowired
 	private SessionFactory sessionFactory;
 	
-	
-	@Override
-	public Long guardarComentario(Comentario comentario) {
-		return (Long) sessionFactory.getCurrentSession().save(comentario);
-	}
-
-	@SuppressWarnings("unchecked")
-	@Override
-	public List<Comentario> listarComentarios() {
-		Query query = sessionFactory.getCurrentSession().createQuery("from Comentario where estado=1");
-		return query.list();
-	}
-
-	@Override
-	public Comentario recuperarComentarioPorId(Long id){
-		return (Comentario) sessionFactory.getCurrentSession().load(Comentario.class, id);
-	}
-	
+		
 	@Override
 	public void borrarComentarioPorId(Long id) {
-		Comentario comentario = this.recuperarComentarioPorId(id);
-		comentario.setEstado(false);
-		editarComentario(comentario);
+		Comentario comentario = super.recuperarClasePorId(id);
+		comentario.setEstado(true);
+		super.editarClase(comentario);
 	}
 
-	@Override
-	public void editarComentario(Comentario comentario) {
-		sessionFactory.getCurrentSession().update(comentario);
-		
-	}
 
 	@SuppressWarnings("unchecked")
 	@Override

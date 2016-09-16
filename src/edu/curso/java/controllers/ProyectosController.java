@@ -1,6 +1,6 @@
 package edu.curso.java.controllers;
 
-import java.util.ArrayList;
+
 import java.util.Date;
 import java.util.List;
 
@@ -34,8 +34,6 @@ public class ProyectosController {
 	@Autowired
 	private UsuarioService usuarioService;
 	
-	@Autowired
-	private TareaService tareaService;
 	
 	@RequestMapping(value = "/listar", method = RequestMethod.GET)
 	public String listar(Model model) {
@@ -73,12 +71,19 @@ public class ProyectosController {
 		Long idUsuarioPrincipal = proyectoForm.getIdUsuarioPrincipal();
 		Long [] idUsuarios = proyectoForm.getIdUsuarios();
 		
+		
+		
 		if(idActual != null){
 			proyecto= proyectoService.recuperarProyectoPorId(idActual);
 			proyecto.setNombre(proyectoForm.getNombre());
 			proyecto.setDescripcion(proyectoForm.getDescripcion());
+			if (proyecto.getTiempoEstimado()  !=  proyectoForm.getTiempoEstimado() && proyectoForm.getTiempoEstimado() >= proyecto.getTiempoAcumulado()) {
+				proyecto.setTiempoReal(proyectoForm.getTiempoEstimado() - proyecto.getTiempoAcumulado());	
+			}
 			proyecto.setTiempoEstimado(proyectoForm.getTiempoEstimado());
-			proyecto.setTiempoReal(proyectoForm.getTiempoEstimado() - proyecto.getTiempoAcumulado());
+			if (!proyecto.getEstado()) {
+				proyecto.setFechaFin(new Date());
+			}
 			idActual = proyectoService.actualizarProyecto(proyecto,idUsuarioPrincipal, idUsuarios);
 		} else {
 			proyecto = new Proyecto();
@@ -130,5 +135,4 @@ public class ProyectosController {
         // return a view which will be resolved by an excel view resolver
         return new ModelAndView("excelView", "proyecto", proyecto);
     }
-	
 }

@@ -31,7 +31,16 @@ public class Proyecto {
 	private Double tiempoReal;
 	private Double tiempoAcumulado;
 	private Date fechaAlta;
+	private Date fechaFin;
 	
+	public Date getFechaFin() {
+		return fechaFin;
+	}
+
+	public void setFechaFin(Date fechaFin) {
+		this.fechaFin = fechaFin;
+	}
+
 	public Proyecto(){
 		this.estado = true;
 	}

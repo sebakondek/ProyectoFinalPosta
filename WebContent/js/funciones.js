@@ -196,8 +196,8 @@ function opcionTarea(idP, idT, opcion){
 		case "crear":
 				$("#myModalProy").modal("hide");
 			$.get("../tareas/nuevatarea.html?idP=" + idP, function(resp){
-				$("#myModalProy").html(resp);
-				$("#myModalProy").modal("show");
+				$("#myModalTarea").html(resp);
+				$("#myModalTarea").modal("show");
 			});
 			break;
 			
