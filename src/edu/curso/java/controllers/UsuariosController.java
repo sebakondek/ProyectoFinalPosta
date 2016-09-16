@@ -2,6 +2,7 @@ package edu.curso.java.controllers;
 
 import java.util.List;
 
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -19,6 +20,8 @@ import edu.curso.java.services.UsuarioService;
 @RequestMapping(value = "/usuarios")
 public class UsuariosController {
 
+	private static final Logger log = Logger.getLogger(UsuariosController.class);
+	
 	@Autowired
 	private UsuarioService usuarioService;
 
@@ -44,14 +47,18 @@ public class UsuariosController {
 	}
 
 	@RequestMapping(value = "/nuevousuario")
-	public String nuevoUsuario(Model model) {
-		model.addAttribute("usuarioForm", new UsuarioForm());
+	public String nuevoUsuario(@RequestParam boolean lugar, Model model) {
+		UsuarioForm usuarioForm = new UsuarioForm();
+		usuarioForm.setLugar(lugar);
+		model.addAttribute("usuarioForm", usuarioForm);
 		return "/usuarios/form";
 	}
 
 	@RequestMapping(value = "/guardarusuario", method = RequestMethod.POST)
 	public String guardarUsuario(@ModelAttribute("usuarioForm") UsuarioForm usuarioForm, Model model) {
 
+		boolean lugar = usuarioForm.isLugar();
+		
 		Usuario usuario = new Usuario();
 		usuario.setNombreCompleto(usuarioForm.getNombreCompleto());
 		usuario.setUsuario(usuarioForm.getUsuario());
@@ -59,6 +66,8 @@ public class UsuariosController {
 		
 		Long idGenerado = usuarioService.crearNuevoUsuario(usuario);
 
+		if(lugar)
+			return "redirect:/proyectos/listar.html";
 		return "redirect:/usuarios/listar.html";
 	}
 
@@ -87,12 +96,12 @@ public class UsuariosController {
 		usuario.setId(id);
 		usuarioService.editarUsuario(usuario);
 
-		return "redirect:/usuarios/verusuario.html?id="+ usuario.getId();
+		return "redirect:/usuarios/listar.html";
 	}
 	
 	@RequestMapping(value = "/buscarusuarios", method = RequestMethod.POST)
 	public String buscarUsuarios(@ModelAttribute("campoBuscar") String campoBuscar, Model model) {
-		List<Usuario> usuarios = usuarioService.buscarUsuariosPorNombre(campoBuscar);
+		List<Usuario> usuarios = usuarioService.buscarUsuarios(campoBuscar);
 		model.addAttribute("usuarios",usuarios);
 		return "/usuarios/buscadorusuarios";
 	}

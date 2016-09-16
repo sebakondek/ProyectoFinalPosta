@@ -28,20 +28,18 @@ function formInit(clase){
 /****************************************LIST FUNCTIONS************************************/
 
 function listarInit(clase){
-	
 		hacerBusqueda(clase);	
 }
 
 function hacerBusqueda(clase) {
 	
-	
 	switch (clase) {
 	
 	case "Usuario":
 		var datosDelForm = $("#miFormBuscadorUsu").serialize();
-		$.post("buscarusuarios.html", datosDelForm, function(resp) {
+		$.post("buscarusuarios.html", datosDelForm, function(resp){
 			$("#divUsuarios").html(resp);
-		});	
+		});
 		break;
 
 	case "Proyecto":
@@ -51,9 +49,9 @@ function hacerBusqueda(clase) {
 		});	
 		break;
 		
-	case "Comentarios":
+	case "Comentario":
 		var datosDelForm = $("#miFormBuscadorComent").serialize();
-		$.post("buscarcomentarios.html",datosDelForm, function(resp){
+		$.post("../comentarios/buscarcomentarios.html", datosDelForm, function(resp){
 			$("#divComentarios").html(resp);
 		});
 		break;
@@ -96,6 +94,14 @@ function opcionProyecto(id, opcion){
 				$("#myModalProy").modal("show");
 			});
 			break;
+			
+		case "crearUsuario":
+			$("myModalProy").modal("hide");
+			$.get("../usuarios/nuevousuario.html?lugar=" + id, function(resp){
+				$("#myModalProy").html(resp);
+				$("#myModalProy").modal("show");
+			});
+			break;
 
 		case "buscar":
 			var proyectos = $("#miFormBuscadorProy").serialize();
@@ -130,7 +136,7 @@ function opcionUsuario(id, opcion){
 					});
 					break;
 				case "crear":
-					$.get("nuevousuario.html", function(resp){
+					$.get("nuevousuario.html?lugar=" + id, function(resp){
 						$("#myModalUsu").html(resp);
 						$("#myModalUsu").modal("show");
 					});
@@ -152,9 +158,10 @@ function opcionUsuario(id, opcion){
 function opcionComentario(idC, idT, idP, opcion){
 	
 	switch (opcion) {
+	
 		case "buscar":
 			var datosDelForm = $("#miFormBuscadorComent").serialize();
-			$.post("../comentarios/buscarcomentarios.html",datosDelForm, function(resp){
+			$.post("../comentarios/buscarcomentarios.html", datosDelForm, function(resp){
 				$("#divComentarios").html(resp);
 			});
 			break;
@@ -177,6 +184,30 @@ function opcionComentario(idC, idT, idP, opcion){
 			 alert("Acaba de ocurrir un error. Por favor contactese con los areperos...")
 			break;
 	}	
+}
+
+/*******************************Tareas************************************************/
+
+
+function opcionTarea(idP, idT, opcion){
+	
+	switch (opcion) {
+	
+		case "crear":
+				$("#myModalProy").modal("hide");
+			$.get("../tareas/nuevatarea.html?idP=" + idP, function(resp){
+				$("#myModalTarea").html(resp);
+				$("#myModalTarea").modal("show");
+			});
+			break;
+			
+		case "editar":
+			$.get("../tareas/editartarea.html?idT=" + idT + "&idP=" + idP, function(resp){
+				$("#myModalTarea").html(resp);
+				$("#myModalTarea").modal("show");
+			});
+			break;
+	}
 }
 /*******************************ALERTS************************************************/
 function noTieneHorasAsignadas(usuarioPpal){

@@ -1,5 +1,6 @@
 package edu.curso.java.controllers;
 
+import java.util.Date;
 import java.util.List;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -61,10 +62,10 @@ public class TareaController {
 	}
 	
 	@RequestMapping(value = "/nuevatarea")
-	public String nuevaTarea(@RequestParam Long id, Model model) {
+	public String nuevaTarea(@RequestParam Long idP, Model model) {
 		
 		TareaForm tareaForm = new TareaForm();
-		tareaForm.setIdProyecto(id);
+		tareaForm.setIdProyecto(idP);
 		Proyecto proyecto = proyectoService.recuperarProyectoPorId(tareaForm.getIdProyecto());
 		model.addAttribute("tiempoProyecto", proyecto.getTiempoReal());
 		model.addAttribute("tareaForm", tareaForm);
@@ -77,7 +78,9 @@ public class TareaController {
 		Tarea tarea = null;
 		Long idActual = tareaForm.getId();
 		Double tiempoX = null;
+		Long idProyecto = tareaForm.getIdProyecto();
 		if(idActual != null){
+			
 			tarea = tareaService.recuperarTareaPorId(idActual);
 			tarea.setTitulo(tareaForm.getTitulo());
 			tarea.setDuracionReal(0.0);
@@ -89,27 +92,30 @@ public class TareaController {
 			}
 			
 			tarea.setDuracionEstimada(tareaForm.getDuracionEstimada());
-			
 			tareaService.editarTarea(tarea);
+			
+			return "redirect:/tareas/vertarea.html?idT=" + idActual + "&idP=" + idProyecto;
+			
 		} else {
-			//log.info("La id de PROYECTO en TareaController:" +tareaForm.getIdProyecto());
+			
 			tarea = new Tarea();
 			tarea.setTitulo(tareaForm.getTitulo());
 			tarea.setDuracionEstimada(tareaForm.getDuracionEstimada());
 			tarea.setDuracionReal(0.0);
 			tarea.setDescripcion(tareaForm.getDescripcion());
 			tarea.setPrioridad(tareaForm.getPrioridad());
+			tarea.setFechaAlta(new Date());
+			
 			proyectoService.editarTiempoProyecto(tareaForm.getDuracionEstimada(), tareaForm.getIdProyecto());
 			tareaService.guardarTarea(tarea,tareaForm.getIdProyecto());
-		}
-	
-		//return "redirect:/tareas/vertarea.html?id=" + idActual;
-		return "redirect:/proyectos/listar.html";
+			
+			return "redirect:/proyectos/listar.html";
+		}		
 	}
 	
 	@RequestMapping(value="/editartarea")
-	public String editarTarea(Model model, @RequestParam Long id){
-		Tarea tarea = tareaService.recuperarTareaPorId(id);
+	public String editarTarea(Model model, @RequestParam Long idT, Long idP){
+		Tarea tarea = tareaService.recuperarTareaPorId(idT);
 		TareaForm tareaForm = new TareaForm();
 		
 		tareaForm.setId(tarea.getId());
@@ -118,6 +124,7 @@ public class TareaController {
 		tareaForm.setDuracionEstimada(tarea.getDuracionEstimada());
 		tareaForm.setDuracionReal(tarea.getDuracionReal());
 		tareaForm.setPrioridad(tarea.getPrioridad());
+		tareaForm.setIdProyecto(idP);
 		
 		Proyecto proyecto = proyectoService.recuperarProyectoPorId(tareaForm.getIdProyecto());
 		model.addAttribute("tiempoProyecto", proyecto.getTiempoReal());
@@ -125,21 +132,5 @@ public class TareaController {
 		return "/tareas/formeditado";
 	}
 	
-		
-	@RequestMapping(value = "/buscartareas", method = RequestMethod.POST)
-	public String buscarTareas(@ModelAttribute String campoBuscar, Model model) {
-		log.info("Listando los proyectos");
-		List<Tarea> tareas = tareaService.buscarTareaPorNombre(campoBuscar);
-		model.addAttribute("tareas",tareas);
-		return "/tareas/buscadortareas";
-	}
 	
-	@RequestMapping(value = "/buscarcomentarios", method = RequestMethod.POST)
-	public String buscarProyectos(@ModelAttribute("campoBuscar") String campoBuscar, Model model) {
-		log.info("Listando los comentarios");
-		List<Comentario> comentarios = tareaService.buscarComentarioPorContenido(campoBuscar);
-		model.addAttribute("comentarios",comentarios);
-		return "/comentarios/tarea-comentarios";
-	}
-
 }

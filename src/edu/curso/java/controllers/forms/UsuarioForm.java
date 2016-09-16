@@ -7,7 +7,16 @@ public class UsuarioForm {
 	private String usuario;
 	private String password;
 	private boolean estado;
+	private boolean lugar;
 	
+	
+	
+	public boolean isLugar() {
+		return lugar;
+	}
+	public void setLugar(boolean lugar) {
+		this.lugar = lugar;
+	}
 	public Long getId() {
 		return id;
 	}

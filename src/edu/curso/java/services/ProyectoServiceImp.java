@@ -76,7 +76,6 @@ public class ProyectoServiceImp implements ProyectoService {
 			Usuario usuario = usuarioDAO.recuperarClasePorId(id);
 			proyecto.getUsuarios().add(usuario);
 		}
-			
 		
 		proyecto.setUsuarioPrincipal(usuarioPpal);
 		proyectoDAO.guardarClase(proyecto);
@@ -85,8 +84,8 @@ public class ProyectoServiceImp implements ProyectoService {
 	}
 
 	@Override
-	public List<Proyecto> buscarProyectosPorNombre(String campoBuscar) {
-		return proyectoDAO.buscarProyectoPorNombre(campoBuscar);
+	public List<Proyecto> buscarProyectos(String campoBuscar) {
+		return proyectoDAO.buscarProyecto(campoBuscar);
 	}
 	
 	@Override

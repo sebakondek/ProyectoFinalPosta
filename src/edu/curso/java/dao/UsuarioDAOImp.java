@@ -16,6 +16,7 @@ public class UsuarioDAOImp extends GenericDAOImp<Usuario, Long> implements Usuar
 	private SessionFactory sessionFactory;
 	
 
+
 	@Override
 	public void borrarUsuarioPorId(Long id) {
 		Usuario usuario = super.recuperarClasePorId(id);
@@ -25,8 +26,8 @@ public class UsuarioDAOImp extends GenericDAOImp<Usuario, Long> implements Usuar
 
 	@SuppressWarnings("unchecked")
 	@Override
-	public List<Usuario> buscarUsuariosPorNombre(String campoBuscar) {
-		String hql = "from Usuario as u where u.estado = 1 and (u.nombreCompleto like :textoBuscar or u.usuario like :textoBuscar)";
+	public List<Usuario> buscarUsuarios(String campoBuscar) {
+		String hql = "from Usuario as u where u.estado = 1 and (u.nombreCompleto like :textoBuscar or u.usuario like :textoBuscar) ORDER BY u.nombreCompleto";
 		Query query = sessionFactory.getCurrentSession().createQuery(hql);
 		query.setString("textoBuscar", "%" + campoBuscar + "%");
 		return query.list();

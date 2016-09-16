@@ -92,7 +92,7 @@ public class Proyecto {
 		this.usuarioPrincipal = usuarioPrincipal;
 	}
 
-	public double getTiempoEstimado() {
+	public Double getTiempoEstimado() {
 		return tiempoEstimado;
 	}
 

@@ -56,7 +56,7 @@ public class UsuarioServiceImp implements UsuarioService {
 	}
 
 	@Override
-	public List<Usuario> buscarUsuariosPorNombre(String campoBuscar) {
-		return usuarioDAO.buscarUsuariosPorNombre(campoBuscar);
+	public List<Usuario> buscarUsuarios(String campoBuscar) {
+		return usuarioDAO.buscarUsuarios(campoBuscar);
 	}
 }

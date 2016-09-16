@@ -18,7 +18,8 @@
 		<div class="modal-body" id="modal-body">
 
 			<div class="form form-group table">
-				<form:form method="post" modelAttribute="comentarioForm" action="../comentarios/guardarcomentario.html" class="form" id="form">
+				<form:form method="post" modelAttribute="comentarioForm" action="../comentarios/guardarcomentario.html" 
+							class="form" id="form">
 					<form:input path="id" type="hidden" />
 					<form:input path="idTarea" type="hidden" />
 					<form:input path="idProyecto" type="hidden" />

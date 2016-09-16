@@ -32,11 +32,11 @@ $(function(){
 			<form:textarea class="form-control required" path="descripcion" minlength="8" required="true"/>
 		</div>
 		<div class="form-group">
-			<label for="totalHoras">Duracion Estimada en Horas</label>
+			<label for="tiempoEstimado">Duracion Estimada en Horas</label>
 			<form:input class="form-control required" path="tiempoEstimado"  max="1000" min="0" type="number"/>
 		</div>
 		<div class="form-group">
-			<label for="idUsuarioPrincipal">Usuario Principal</label>
+			<label for="idUsuarioPrincipal">Project Manager</label>
 			<form:select path="idUsuarioPrincipal" id="select-single" class="js-example-basic-single js-states form-control" 
 				items="${usuarios}" itemLabel="nombreCompleto" itemValue="id">
 			<option></option>

@@ -9,5 +9,5 @@ public interface UsuarioDAO extends GenericDAO<Usuario, Long> {
 
 	void borrarUsuarioPorId(Long id);
 
-	List<Usuario> buscarUsuariosPorNombre(String campoBuscar);
+	List<Usuario> buscarUsuarios(String campoBuscar);
 }

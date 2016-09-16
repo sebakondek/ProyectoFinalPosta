@@ -1,6 +1,7 @@
 package edu.curso.java.bo;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -23,18 +24,28 @@ public class Tarea {
 	@OneToMany(cascade=CascadeType.ALL)
 	private List<Comentario> comentarios = new ArrayList<>();
 	private Boolean estado;
-	private String prioridad;
+	private Integer prioridad;
+	private Date fechaAlta;
 	
 	
+	
+	public Date getFechaAlta() {
+		return fechaAlta;
+	}
+
+	public void setFechaAlta(Date fechaAlta) {
+		this.fechaAlta = fechaAlta;
+	}
+
 	public Tarea(){
 		this.estado = true;
 	}
 	
-	public String getPrioridad() {
+	public Integer getPrioridad() {
 		return prioridad;
 	}
 
-	public void setPrioridad(String prioridad) {
+	public void setPrioridad(Integer prioridad) {
 		this.prioridad = prioridad;
 	}
 
