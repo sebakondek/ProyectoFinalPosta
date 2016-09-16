@@ -1,5 +1,6 @@
 package edu.curso.java.controllers;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -11,8 +12,10 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.ModelAndView;
 
 import edu.curso.java.bo.Proyecto;
+import edu.curso.java.bo.Tarea;
 import edu.curso.java.bo.Usuario;
 import edu.curso.java.controllers.forms.ProyectoForm;
 import edu.curso.java.services.ProyectoService;
@@ -118,5 +121,14 @@ public class ProyectosController {
 		return "/proyectos/buscadorproyectos";
 	}
 	
+	@RequestMapping(value = "/downloadExcel", method = RequestMethod.GET)
+    public ModelAndView downloadExcel(@RequestParam Long id, Model model) {
+		
+		Proyecto proyecto = proyectoService.recuperarProyectoPorId(id);
+		List<Tarea> tareas = proyecto.getTareas();
+		model.addAttribute("proyecto",proyecto);
+        // return a view which will be resolved by an excel view resolver
+        return new ModelAndView("excelView", "proyecto", proyecto);
+    }
 	
 }

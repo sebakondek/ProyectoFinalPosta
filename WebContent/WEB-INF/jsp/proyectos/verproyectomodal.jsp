@@ -48,6 +48,7 @@
 			</tr>
 		</table>
 		
+		<div><a class="btn btn-default" href="<c:url value="/proyectos/downloadExcel.html?output=excel&id=${proyecto.id}" />"> Descargar Información</a></div>
 <!-- Tareas -->
 
 		<hr>
