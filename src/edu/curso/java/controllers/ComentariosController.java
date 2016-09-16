@@ -95,9 +95,9 @@ public class ComentariosController {
 	}
 	
 	@RequestMapping(value="/borrarcomentario")
-	public String borrarComentario(@RequestParam Long id) {
-		comentarioDAO.borrarComentarioPorId(id);
-		return "redirect:/comentarios/listar.html";
+	public String borrarComentario(@RequestParam Long idC, Long idT, Long idP) {
+		comentarioDAO.borrarComentarioPorId(idC);
+		return "redirect:/tareas/vertarea.html?idT=" + idT + "&idP=" + idP;
 	}
 	
 	@RequestMapping(value="/editarcomentario")

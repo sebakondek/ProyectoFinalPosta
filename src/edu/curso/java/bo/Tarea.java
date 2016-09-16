@@ -26,9 +26,18 @@ public class Tarea {
 	private Boolean estado;
 	private Integer prioridad;
 	private Date fechaAlta;
+	private Integer tipoTarea;
 	
 	
 	
+	public Integer getTipoTarea() {
+		return tipoTarea;
+	}
+
+	public void setTipoTarea(Integer tipoTarea) {
+		this.tipoTarea = tipoTarea;
+	}
+
 	public Date getFechaAlta() {
 		return fechaAlta;
 	}

@@ -44,6 +44,36 @@
     	<td>${tarea.fechaAlta}</td>
     </tr>
     <tr>
+    	<th>Tipo de Tarea</th>
+    	<td>
+    		<c:choose>
+				<c:when test="${tarea.tipoTarea == '1' }">
+					Desarrollo
+				</c:when>
+				<c:when test="${tarea.tipoTarea == '2' }">
+					Análisis
+				</c:when>
+				<c:otherwise>
+					Testing
+				</c:otherwise>
+			</c:choose>
+		</td>
+	</tr>
+    <tr>
+    <tr>
+    	<th>Estado</th>
+    	<td>
+    		<c:choose>
+				<c:when test="${tarea.estado}">
+					<h3><span class="label label-success label-vista">Completado</span></h3>
+				</c:when>
+				<c:otherwise>
+					<h3><span class="label label-warning label-vista">En Curso</span></h3>
+				</c:otherwise>
+			</c:choose>
+		</td>
+	</tr>
+    <tr>
     	<th>Prioridad</th>
     	<td>
     		<c:choose>

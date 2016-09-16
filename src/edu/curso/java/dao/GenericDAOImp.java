@@ -45,7 +45,6 @@ public abstract class GenericDAOImp<Entity, K extends Serializable> implements G
 
 	@Override
 	public void editarClase(Entity clase) {
-		// TODO Auto-generated method stub
 		sessionFactory.getCurrentSession().update(clase);
 
 	}
