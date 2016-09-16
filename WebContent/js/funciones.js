@@ -98,8 +98,8 @@ function opcionProyecto(id, opcion){
 		case "crearUsuario":
 			$("myModalProy").modal("hide");
 			$.get("../usuarios/nuevousuario.html?lugar=" + id, function(resp){
-				$("#myModalUsu").html(resp);
-				$("#myModalUsu").modal("show");
+				$("#myModalProy").html(resp);
+				$("#myModalProy").modal("show");
 			});
 			break;
 

@@ -32,7 +32,6 @@
 <div id="divTareas" class="table-responsive"></div>
 
 <div id="myModalProy" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"></div>
-<div id="myModalUsu" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"></div>
 <div id="myModalTarea" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"></div>
 
 <c:import url="/general/template_bottom.jsp" />
