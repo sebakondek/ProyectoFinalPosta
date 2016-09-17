@@ -114,11 +114,11 @@
 							</td>
 							<td>
 								<c:choose>
-									<c:when test="${t.estado == '1' }">
-										<h4><span class="label label-warning">En Curso</span></h4>
+									<c:when test="${t.estado}">
+										<h4><span class="label label-success">Completado</span></h4>
 									</c:when>
 									<c:otherwise>
-										<h4><span class="label label-success">Completado</span></h4>
+										<h4><span class="label label-warning">En Curso</span></h4>
 									</c:otherwise>
 								</c:choose>
 							</td>

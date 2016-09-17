@@ -108,6 +108,7 @@ public class TareaController {
 			tarea.setPrioridad(tareaForm.getPrioridad());
 			tarea.setFechaAlta(new Date());
 			tarea.setTipoTarea(tareaForm.getTipoTarea());
+			tarea.setEstado(false);
 			
 			proyectoService.editarTiempoProyecto(tareaForm.getDuracionEstimada(), tareaForm.getIdProyecto());
 			tareaService.guardarTarea(tarea,tareaForm.getIdProyecto());

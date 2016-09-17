@@ -27,7 +27,7 @@ public class UsuarioDAOImp extends GenericDAOImp<Usuario, Long> implements Usuar
 	@SuppressWarnings("unchecked")
 	@Override
 	public List<Usuario> buscarUsuarios(String campoBuscar) {
-		String hql = "from Usuario as u where u.estado = 1 and (u.nombreCompleto like :textoBuscar or u.usuario like :textoBuscar) ORDER BY u.nombreCompleto";
+		String hql = "from Usuario as u where u.estado = 1 and (u.nombreCompleto like :textoBuscar or u.usuario like :textoBuscar or u.id like :textoBuscar) ORDER BY u.nombreCompleto";
 		Query query = sessionFactory.getCurrentSession().createQuery(hql);
 		query.setString("textoBuscar", "%" + campoBuscar + "%");
 		return query.list();

@@ -43,7 +43,7 @@ public class ProyectoDAOImp extends GenericDAOImp<Proyecto, Long> implements Pro
 	@SuppressWarnings("unchecked")
 	@Override
 	public List<Proyecto> buscarProyecto(String campoBuscar) {
-		String hql = "from Proyecto as p where p.estado = 1 and (p.nombre like :textoBuscar OR p.descripcion like :textoBuscar)";
+		String hql = "from Proyecto as p where p.estado = 1 and (p.nombre like :textoBuscar OR p.descripcion like :textoBuscar OR p.id like :textoBuscar) order by p.nombre";
 		Query query = sessionFactory.getCurrentSession().createQuery(hql);
 		query.setString("textoBuscar", "%" + campoBuscar + "%");
 		return query.list();
