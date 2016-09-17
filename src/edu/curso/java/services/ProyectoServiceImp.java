@@ -37,6 +37,7 @@ public class ProyectoServiceImp implements ProyectoService {
 		
 		return  (Proyecto)proyectoDAO.recuperarClasePorId(id);
 	}
+	
 
 	@Override
 	public void agregarUsuarioProyecto(Usuario usuario, Long id) {

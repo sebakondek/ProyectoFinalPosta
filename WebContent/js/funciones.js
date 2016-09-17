@@ -17,7 +17,7 @@ function formInit(clase){
 		}
 	});
 	
-	if (clase=="proyecto") {
+	if (clase=="proyecto" || clase=="tarea") {
 		$("#select-single").select2();
 		$(".js-example-basic-multiple").select2();	
 	}

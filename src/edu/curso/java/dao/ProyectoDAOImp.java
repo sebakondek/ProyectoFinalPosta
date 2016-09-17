@@ -1,6 +1,8 @@
 package edu.curso.java.dao;
 
 import java.util.List;
+
+
 import org.apache.log4j.Logger;
 import org.hibernate.Query;
 import org.hibernate.SessionFactory;
@@ -47,6 +49,12 @@ public class ProyectoDAOImp extends GenericDAOImp<Proyecto, Long> implements Pro
 		Query query = sessionFactory.getCurrentSession().createQuery(hql);
 		query.setString("textoBuscar", "%" + campoBuscar + "%");
 		return query.list();
+	}
+
+	
+	@Override
+	public Proyecto recuperarClasePorId2(Long id) {
+		return (Proyecto) sessionFactory.getCurrentSession().load(Proyecto.class, id);
 	}
 
 }

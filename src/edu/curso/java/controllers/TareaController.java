@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import edu.curso.java.bo.Comentario;
 import edu.curso.java.bo.Proyecto;
 import edu.curso.java.bo.Tarea;
+import edu.curso.java.bo.Usuario;
 import edu.curso.java.controllers.forms.TareaForm;
 import edu.curso.java.dao.ComentarioDAO;
 import edu.curso.java.services.ProyectoService;
@@ -69,6 +70,7 @@ public class TareaController {
 		Proyecto proyecto = proyectoService.recuperarProyectoPorId(tareaForm.getIdProyecto());
 		model.addAttribute("tiempoProyecto", proyecto.getTiempoReal());
 		model.addAttribute("tareaForm", tareaForm);
+		model.addAttribute("proyecto", proyecto);
 		
 		return "/tareas/form";
 	}
@@ -79,6 +81,7 @@ public class TareaController {
 		Long idActual = tareaForm.getId();
 		Double tiempoX = null;
 		Long idProyecto = tareaForm.getIdProyecto();
+		Long[] idUsuarios = tareaForm.getIdUsuarios();
 		if(idActual != null){
 			
 			tarea = tareaService.recuperarTareaPorId(idActual);
@@ -94,7 +97,7 @@ public class TareaController {
 			}
 			
 			tarea.setDuracionEstimada(tareaForm.getDuracionEstimada());
-			tareaService.editarTarea(tarea);
+			tareaService.editarTarea(tarea, idUsuarios);
 			
 			return "redirect:/tareas/vertarea.html?idT=" + idActual + "&idP=" + idProyecto;
 			
@@ -111,7 +114,7 @@ public class TareaController {
 			tarea.setEstado(false);
 			
 			proyectoService.editarTiempoProyecto(tareaForm.getDuracionEstimada(), tareaForm.getIdProyecto());
-			tareaService.guardarTarea(tarea,tareaForm.getIdProyecto());
+			tareaService.guardarTarea(tarea,tareaForm.getIdProyecto(), idUsuarios);
 			
 			return "redirect:/proyectos/listar.html";
 		}		
@@ -134,6 +137,7 @@ public class TareaController {
 		Proyecto proyecto = proyectoService.recuperarProyectoPorId(tareaForm.getIdProyecto());
 		model.addAttribute("tiempoProyecto", proyecto.getTiempoReal());
 		model.addAttribute("tareaForm", tareaForm);
+		model.addAttribute("proyecto", proyectoService.recuperarProyectoPorId(idP));
 		return "/tareas/formeditado";
 	}
 	

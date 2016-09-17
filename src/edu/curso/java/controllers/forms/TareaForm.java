@@ -17,9 +17,16 @@ public class TareaForm {
 	private Integer prioridad;
 	private Integer tipoTarea;
 	private boolean estado;
+	private Long[] idUsuarios;
 	
 	
 	
+	public Long[] getIdUsuarios() {
+		return idUsuarios;
+	}
+	public void setIdUsuarios(Long[] idUsuarios) {
+		this.idUsuarios = idUsuarios;
+	}
 	public boolean isEstado() {
 		return estado;
 	}

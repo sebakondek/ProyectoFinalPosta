@@ -33,6 +33,8 @@ public class Proyecto {
 	private Date fechaAlta;
 	private Date fechaFin;
 	
+	
+	
 	public Date getFechaFin() {
 		return fechaFin;
 	}

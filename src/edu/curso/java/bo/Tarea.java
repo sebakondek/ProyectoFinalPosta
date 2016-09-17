@@ -8,6 +8,7 @@ import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 
 
@@ -27,9 +28,19 @@ public class Tarea {
 	private Integer prioridad;
 	private Date fechaAlta;
 	private Integer tipoTarea;
+	@ManyToMany
+	private List<Usuario> usuarios = new ArrayList<Usuario>();
 	
 	
 	
+	public List<Usuario> getUsuarios() {
+		return usuarios;
+	}
+
+	public void setUsuarios(List<Usuario> usuarios) {
+		this.usuarios = usuarios;
+	}
+
 	public Integer getTipoTarea() {
 		return tipoTarea;
 	}

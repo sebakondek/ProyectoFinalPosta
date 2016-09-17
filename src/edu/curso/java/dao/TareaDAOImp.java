@@ -11,6 +11,7 @@ import org.springframework.stereotype.Repository;
 import edu.curso.java.bo.Comentario;
 import edu.curso.java.bo.Proyecto;
 import edu.curso.java.bo.Tarea;
+import edu.curso.java.bo.Usuario;
 import edu.curso.java.services.ProyectoService;
 
 @Repository
@@ -54,5 +55,14 @@ public class TareaDAOImp extends GenericDAOImp<Tarea, Long>implements TareaDAO {
 		query.addEntity(Tarea.class);
 		query.setLong("idProyecto", idProy);
 		return query.list();
+	}
+
+	@Override
+	public void agregarUsuarioTarea(Usuario usuario, Long id) {
+
+		Tarea tarea = super.recuperarClasePorId(id);
+		List<Usuario> usuarios = tarea.getUsuarios();
+		usuarios.add(usuario);
+		tarea.setUsuarios(usuarios);
 	}
 }

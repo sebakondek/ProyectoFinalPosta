@@ -40,6 +40,22 @@
 	    <td><textarea rows="3" cols="70" class="textAreaDesc">${tarea.descripcion}</textarea></td>
     </tr>
     <tr>
+		<th>Usuarios de la Tarea</th>
+		<td>	
+			<c:choose>
+				<c:when test="${not empty tarea.usuarios}">
+					<c:forEach items="${tarea.usuarios}" var="u" varStatus="loop">
+						<c:if test="${u.estado == true}">${u.nombreCompleto}</c:if>
+						<c:if test="${!loop.last}">,&nbsp;</c:if>
+					</c:forEach>
+				</c:when>
+				<c:otherwise>
+					No hay usuarios asignados.
+				</c:otherwise>
+			</c:choose>
+		</td>
+	</tr>
+    <tr>
     	<th>Fecha de Alta</th>
     	<td>${tarea.fechaAlta}</td>
     </tr>

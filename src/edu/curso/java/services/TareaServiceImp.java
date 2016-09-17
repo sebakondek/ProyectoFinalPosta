@@ -13,10 +13,11 @@ import org.springframework.transaction.annotation.Transactional;
 import edu.curso.java.bo.Comentario;
 import edu.curso.java.bo.Proyecto;
 import edu.curso.java.bo.Tarea;
-
+import edu.curso.java.bo.Usuario;
 import edu.curso.java.dao.ComentarioDAO;
 import edu.curso.java.dao.ProyectoDAO;
 import edu.curso.java.dao.TareaDAO;
+import edu.curso.java.dao.UsuarioDAO;
 
 @Service
 @Transactional
@@ -34,12 +35,20 @@ public class TareaServiceImp implements TareaService {
 	@Autowired
 	ComentarioDAO comentarioDAO;
 	
+	@Autowired
+	UsuarioDAO usuarioDAO;
 
 	@Override
-	public void guardarTarea(Tarea tarea, Long idProyecto) {
+	public void guardarTarea(Tarea tarea, Long idProyecto, Long[] idUsuarios) {
 		tareaDAO.guardarClase(tarea);
 		//log.info("ID de Proyecto en TAREA SERVICE: "+idProyecto);
 		Proyecto proyecto = proyectoDAO.recuperarClasePorId(idProyecto);
+		tarea.getUsuarios().clear();
+		for (Long id : idUsuarios) {
+			Usuario usuario = usuarioDAO.recuperarClasePorId(id);
+			tarea.getUsuarios().add(usuario);
+		}
+		
 		proyecto.getTareas().add(tarea);
 		proyectoDAO.editarClase(proyecto);
 	}
@@ -68,7 +77,14 @@ public class TareaServiceImp implements TareaService {
 	}
 
 	@Override
-	public void editarTarea(Tarea tarea) {
+	public void editarTarea(Tarea tarea, Long[] idUsuarios) {
+		tarea.getUsuarios().clear();
+		if(idUsuarios != null) {
+			for (Long id : idUsuarios) {
+				Usuario usuario = usuarioDAO.recuperarClasePorId(id);
+				tarea.getUsuarios().add(usuario);
+			}
+		}
 		tareaDAO.editarClase(tarea);
 	}
 
@@ -91,6 +107,11 @@ public class TareaServiceImp implements TareaService {
 	@Override
 	public List<Comentario> buscarComentario(String campoBuscar, Long idTarea) {
 		return comentarioDAO.buscarComentario(campoBuscar, idTarea);
+	}
+
+	@Override
+	public void agregarUsuarioTarea(Usuario usuario, Long id) {
+		tareaDAO.agregarUsuarioTarea(usuario, id);
 	}
 
 }
