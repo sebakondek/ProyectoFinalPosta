@@ -88,7 +88,6 @@ public class ComentariosController {
 			comentario.setFecha(new Date());
 			comentario.setEstado(true);
 			idActual = tareaService.guardarComentario(comentario, idTarea);
-			tareaService.editarTarea(tareaService.recuperarTareaPorId(idTarea), null);
 		}
 	
 		return "redirect:/tareas/vertarea.html?idT=" + idTarea + "&idP=" + idProyecto;
