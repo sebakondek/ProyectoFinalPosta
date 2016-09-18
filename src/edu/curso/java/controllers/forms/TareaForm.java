@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import edu.curso.java.bo.Comentario;
+import edu.curso.java.bo.Usuario;
 
 public class TareaForm {
 
@@ -18,6 +19,7 @@ public class TareaForm {
 	private Integer tipoTarea;
 	private boolean estado;
 	private Long[] idUsuarios;
+	
 	
 	
 	

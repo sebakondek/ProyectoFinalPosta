@@ -63,8 +63,8 @@
 					</div>
 					<div class="form-group">
 						<label for="idUsuarios">Usuarios de la Tarea</label>
-						<form:select id="select-multiple" class="js-example-basic-multiple js-states form-control" multiple="multiple" 
-							path="idUsuarios" items="${proyecto.usuarios}" itemLabel="nombreCompleto" itemValue="id">
+						<form:select id="select-multiple" class="js-example-basic-multiple js-states form-control" multiple="multiple" path="idUsuarios" 
+ 								items="${proyecto.usuarios}" itemLabel="nombreCompleto" itemValue="id">
 						</form:select>
 					</div>
 					<div class="form-group">

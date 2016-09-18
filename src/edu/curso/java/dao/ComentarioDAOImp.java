@@ -24,7 +24,7 @@ public class ComentarioDAOImp extends GenericDAOImp<Comentario, Long>implements 
 	@Override
 	public void borrarComentarioPorId(Long id) {
 		Comentario comentario = super.recuperarClasePorId(id);
-		comentario.setEstado(true);
+		comentario.setEstado(false);
 		super.editarClase(comentario);
 	}
 
@@ -32,7 +32,7 @@ public class ComentarioDAOImp extends GenericDAOImp<Comentario, Long>implements 
 	@SuppressWarnings("unchecked")
 	@Override
 	public List<Comentario> buscarComentario(String campoBuscar, Long idTarea) {
-		String sql = "SELECT * FROM tarea_comentario as t INNER JOIN comentario as c ON t.comentarios_id = c.id where t.Tarea_id = :idTarea AND c.estado = 1 AND c.comentario LIKE :textoBuscar ORDER BY c.fecha";
+		String sql = "SELECT * FROM tarea_comentario as t INNER JOIN comentario as c ON t.comentarios_id = c.id where t.Tarea_id = :idTarea AND c.estado = 1 AND c.comentario LIKE :textoBuscar ORDER BY c.fecha DESC";
 		SQLQuery query = sessionFactory.getCurrentSession().createSQLQuery(sql);
 		query.addEntity(Comentario.class);
 		query.setLong("idTarea", idTarea );

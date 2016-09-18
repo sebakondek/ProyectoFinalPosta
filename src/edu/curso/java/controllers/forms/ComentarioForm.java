@@ -7,7 +7,7 @@ public class ComentarioForm {
 	private Long idUsuario;
 	private Long idTarea;
 	private Long idProyecto;
-	private Boolean estado;
+	private boolean estado;
 	
 	
 	public Long getIdProyecto() {
@@ -16,10 +16,10 @@ public class ComentarioForm {
 	public void setIdProyecto(Long idProyecto) {
 		this.idProyecto = idProyecto;
 	}
-	public Boolean getEstado() {
+	public boolean getEstado() {
 		return estado;
 	}
-	public void setEstado(Boolean estado) {
+	public void setEstado(boolean estado) {
 		this.estado = estado;
 	}
 	public Long getIdUsuario() {
